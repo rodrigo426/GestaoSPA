@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
 
+
+#calendario/agenda
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 #processamento de imagens
 gem 'mini_magick'
 gem 'carrierwave'
