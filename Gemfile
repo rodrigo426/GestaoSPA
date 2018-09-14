@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
 
+# autorizacao
+gem 'cancancan', '~> 1.15.0'
+# autenticacao
+gem 'devise'
 #dashbord administracao
 gem 'rails_admin', github: 'sferik/rails_admin'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_184451) do
+ActiveRecord::Schema.define(version: 2018_09_14_045449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,10 +22,8 @@ ActiveRecord::Schema.define(version: 2018_09_13_184451) do
     t.string "neighborhood"
     t.string "street"
     t.string "number"
-    t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_addresses_on_client_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -35,16 +33,23 @@ ActiveRecord::Schema.define(version: 2018_09_13_184451) do
     t.string "occupation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "address_id"
   end
 
-  create_table "phones", force: :cascade do |t|
+  create_table "phone_clients", force: :cascade do |t|
     t.string "number"
     t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_phone_clients_on_client_id"
+  end
+
+  create_table "phone_users", force: :cascade do |t|
+    t.string "number"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_phones_on_client_id"
-    t.index ["user_id"], name: "index_phones_on_user_id"
+    t.index ["user_id"], name: "index_phone_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,9 +59,15 @@ ActiveRecord::Schema.define(version: 2018_09_13_184451) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "addresses", "clients"
-  add_foreign_key "phones", "clients"
-  add_foreign_key "phones", "users"
+  add_foreign_key "phone_clients", "clients"
+  add_foreign_key "phone_users", "users"
 end

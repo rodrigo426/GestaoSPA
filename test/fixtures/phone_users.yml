@@ -2,10 +2,8 @@
 
 one:
   number: MyString
-  client: one
   user: one
 
 two:
   number: MyString
-  client: two
   user: two
