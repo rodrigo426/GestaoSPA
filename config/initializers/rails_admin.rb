@@ -1,17 +1,32 @@
 RailsAdmin.config do |config|
   
-  config.model 'Phone_client' do
-    list do
+  config.model 'PhoneClient' do
+    edit do
       field :number
     end
   end
 
-  config.model 'Phone_user' do
-    list do
+  config.model 'PhoneUser' do
+    edit do
       field :number
     end
   end
 
+  config.model 'Address' do
+    visible false
+  end
+
+  config.model 'Address' do
+    edit do
+      field :street
+      field :number
+      field :complement
+      field :neighborhood
+      field :city
+      field :state
+      field :country
+    end
+  end
   ### Popular gems integration
 
   ## == Devise ==

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_14_060920) do
+ActiveRecord::Schema.define(version: 2018_09_14_172751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_060920) do
     t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "complement"
     t.index ["client_id"], name: "index_addresses_on_client_id"
   end
 
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_060920) do
     t.string "occupation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
   end
 
   create_table "phone_clients", force: :cascade do |t|

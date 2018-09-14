@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
 
+#processamento de imagens
+gem 'mini_magick'
+gem 'carrierwave'
 # autorizacao
 gem 'cancancan', '~> 1.15.0'
 # autenticacao
