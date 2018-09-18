@@ -1,2 +1,7 @@
-json.extract! schedule, :id, :user_id, :client_id, :description, :start_time, :end_time, :created_at, :updated_at
-json.url schedule_url(schedule, format: :json)
+json.extract! schedule, :id, :description
+json.title schedule.client.name
+json.user schedule.user.name
+json.therapy schedule.therapy
+json.start schedule.start_time
+json.end schedule.end_time
+json.url schedule_url(schedule, format: :html)

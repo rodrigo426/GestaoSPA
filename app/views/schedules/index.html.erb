@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'New Schedule', new_schedule_path %>
+<%= render 'form', schedule: @schedule %>
 
 <h1>Agenda</h1>
 <div class='calendar'></div>

@@ -22,11 +22,6 @@
 
 $(document).ready(function() {
 
-    // page is now ready, initialize the calendar...
-
-    $('#calendar').fullCalendar({
-        // put your options and callbacks here
-    })
 
 
   $('.calendar').each(function(){
@@ -41,11 +36,15 @@ $(document).ready(function() {
       selectHelper: true,
       editable: true,
       eventLimit: true,
+      eventSources: [{
+        url: '/events.json'
+    }]
+
       //events: '/events.json',
 
-        events: [
+        /**events: [
     {
-      title: 'Event Title1',
+      title: String(event.user_id),
       start: '2018-09-19T13:13:55.008',
       end: '2015-09-19T13:14:55.008'
     },
@@ -55,6 +54,15 @@ $(document).ready(function() {
       end: '2018-10-19T13:14:00-0400'
     }
   ]
+
+  $.getJSON("events.json", function(data) {
+    var events = data.events;
+    var allevents;
+    for (i = 0; i < events.length; i++) {
+    allevents = "  events: [    {      title: String(events[i].description),      start: '2018-09-19T13:13:55.008',      end: '2015-09-19T13:14:55.008'    },"
+    }
+    events: allevents;
+  });**/
 
     });
   })

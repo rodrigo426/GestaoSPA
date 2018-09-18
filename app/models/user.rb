@@ -8,5 +8,6 @@ class User < ApplicationRecord
 
   #has_many :consultas
   has_many :phone_users
+  has_and_belongs_to_many :therapies
 
 end

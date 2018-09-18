@@ -1,3 +1,4 @@
+require 'therapy.rb'
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
@@ -5,6 +6,7 @@ class SchedulesController < ApplicationController
   # GET /schedules.json
   def index
     @schedules = Schedule.all
+    @schedule = Schedule.new
   end
 
   # GET /schedules/1
@@ -69,6 +71,6 @@ class SchedulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def schedule_params
-      params.require(:schedule).permit(:user_id, :client_id, :description, :start_time, :end_time)
+      params.require(:schedule).permit(:user_id, :client_id, :therapy_id, :description, :start_time, :end_time)
     end
 end
