@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
 
-
+gem 'jquery-ui-rails'
 gem 'brazilian-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'

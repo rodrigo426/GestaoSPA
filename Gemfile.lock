@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/sferik/rails_admin.git
-  revision: 171fb91e4cb9de2af5068cd13e20ca76b7d9dce5
+  revision: 6d0823404447504946068e2999fe357be9d4a1ac
   specs:
     rails_admin (1.4.1)
       builder (~> 3.1)
@@ -102,7 +102,7 @@ GEM
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (1.15.0)
-    capybara (3.7.2)
+    capybara (3.8.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -115,7 +115,7 @@ GEM
       mime-types (>= 1.16)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
-    chromedriver-helper (1.2.0)
+    chromedriver-helper (2.1.0)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
     coffee-rails (4.2.2)
@@ -138,7 +138,10 @@ GEM
     ffi (1.9.25)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
-    fullcalendar-rails (2.0.2.0)
+    fullcalendar-rails (3.9.0.0)
+      jquery-rails (>= 4.0.5, < 5.0.0)
+      jquery-ui-rails (>= 5.0.2)
+      momentjs-rails (>= 2.9.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -177,7 +180,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    marcel (0.3.2)
+    marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
     mime-types (3.2.2)
@@ -240,7 +243,7 @@ GEM
       railties (>= 4.2.0, < 5.3)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
-    sass (3.5.7)
+    sass (3.6.0)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -305,6 +308,7 @@ DEPENDENCIES
   devise
   fullcalendar-rails
   jbuilder (~> 2.5)
+  jquery-ui-rails
   listen (>= 3.0.5, < 3.2)
   mini_magick
   momentjs-rails

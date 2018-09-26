@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cream_allergy: false
+  blood_pressure: 1
+  uses_pacemaker: false
+  diabetes: false
+  surgery: false
+  surgery_where: MyString
+  accident_fracture: false
+  accident_where: MyString
+  bone_disease: false
+  medicine: false
+  medicine_which: MyString
+  faint_seizure: false
+  woman_pregnant: false
+  woman_contraceptive: false
+  pains: MyText
+  client: one
+
+two:
+  cream_allergy: false
+  blood_pressure: 1
+  uses_pacemaker: false
+  diabetes: false
+  surgery: false
+  surgery_where: MyString
+  accident_fracture: false
+  accident_where: MyString
+  bone_disease: false
+  medicine: false
+  medicine_which: MyString
+  faint_seizure: false
+  woman_pregnant: false
+  woman_contraceptive: false
+  pains: MyText
+  client: two
