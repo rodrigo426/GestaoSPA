@@ -1,21 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  client: one
-  user: one
-  therapy: one
-  description: MyText
   price: 9.99
   paymment: 1
   paid_value: 9.99
-  paid: false
+  paid: 1
 
 two:
-  client: two
-  user: two
-  therapy: two
-  description: MyText
   price: 9.99
   paymment: 1
   paid_value: 9.99
-  paid: false
+  paid: 1

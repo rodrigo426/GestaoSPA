@@ -1,4 +1,5 @@
 require 'therapy.rb'
+require 'client.rb'
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
@@ -7,6 +8,7 @@ class SchedulesController < ApplicationController
   def index
     @schedules = Schedule.all
     @schedule = Schedule.new
+    @client = Client.all
   end
 
   # GET /schedules/1

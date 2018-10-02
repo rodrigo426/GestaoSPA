@@ -1,5 +1,35 @@
 RailsAdmin.config do |config|
   
+  config.model 'Item' do
+    edit do
+      field :client
+      field :user
+      field :therapy
+      field :description
+    end
+  end
+
+
+  config.model 'Record' do
+    edit do
+      field :cream_allergy
+      field :blood_pressure
+      field :uses_pacemaker
+      field :diabetes
+      field :surgery
+      field :surgery_where
+      field :accident_fracture
+      field :accident_where
+      field :bone_disease
+      field :medicine
+      field :medicine_which
+      field :faint_seizure
+      field :woman_pregnant
+      field :woman_contraceptive
+      field :pains
+    end
+  end
+
   config.model 'PhoneClient' do
     edit do
       field :number

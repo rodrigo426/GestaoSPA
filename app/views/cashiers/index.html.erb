@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cashiers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Client</th>
+      <th>Therapy</th>
+      <th>Price</th>
+      <th>Paymment</th>
+      <th>Paid value</th>
+      <th>Paid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cashiers.each do |cashier| %>
+      <tr>
+        <td><%= cashier.user %></td>
+        <td><%= cashier.client %></td>
+        <td><%= cashier.therapy %></td>
+        <td><%= cashier.price %></td>
+        <td><%= cashier.payment %></td>
+        <!--<td> 
+          <div class="field">
+            <%= form.label :paymment %>
+            <%= form.collection_select :paymment %>
+          </div> -->
+        </td>
+        <td><%= cashier.paid_value %></td>
+        <td><%= cashier.paid %></td>
+        <td><%= link_to 'Show', cashier %></td>
+        <td><%= link_to 'Edit', edit_cashier_path(cashier) %></td>
+        <td><%= link_to 'Destroy', cashier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cashier', new_cashier_path %>

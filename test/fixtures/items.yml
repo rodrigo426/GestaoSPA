@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  user: one
+  therapy: one
+  description: MyText
+  cashier: one
+
+two:
+  client: two
+  user: two
+  therapy: two
+  description: MyText
+  cashier: two

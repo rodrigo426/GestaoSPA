@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_25_191639) do
+ActiveRecord::Schema.define(version: 2018_10_01_191213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,25 +29,16 @@ ActiveRecord::Schema.define(version: 2018_09_25_191639) do
     t.index ["client_id"], name: "index_addresses_on_client_id"
   end
 
-  create_table "appointments", force: :cascade do |t|
-    t.bigint "client_id"
-    t.bigint "user_id"
-    t.bigint "therapy_id"
-    t.text "description"
+  create_table "cashiers", force: :cascade do |t|
     t.decimal "price"
     t.integer "paymment"
     t.decimal "paid_value"
-    t.boolean "paid"
+    t.integer "paid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_appointments_on_client_id"
-    t.index ["therapy_id"], name: "index_appointments_on_therapy_id"
-    t.index ["user_id"], name: "index_appointments_on_user_id"
-  end
-
-  create_table "calendars", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "user"
+    t.string "therapy"
+    t.string "client"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -58,6 +49,21 @@ ActiveRecord::Schema.define(version: 2018_09_25_191639) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "user_id"
+    t.bigint "therapy_id"
+    t.text "description"
+    t.bigint "cashier_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "active"
+    t.index ["cashier_id"], name: "index_items_on_cashier_id"
+    t.index ["client_id"], name: "index_items_on_client_id"
+    t.index ["therapy_id"], name: "index_items_on_therapy_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "phone_clients", force: :cascade do |t|
@@ -144,9 +150,10 @@ ActiveRecord::Schema.define(version: 2018_09_25_191639) do
   end
 
   add_foreign_key "addresses", "clients"
-  add_foreign_key "appointments", "clients"
-  add_foreign_key "appointments", "therapies"
-  add_foreign_key "appointments", "users"
+  add_foreign_key "items", "cashiers"
+  add_foreign_key "items", "clients"
+  add_foreign_key "items", "therapies"
+  add_foreign_key "items", "users"
   add_foreign_key "phone_clients", "clients"
   add_foreign_key "phone_users", "users"
   add_foreign_key "records", "clients"

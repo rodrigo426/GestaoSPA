@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @cashier.price %>
+</p>
+
+<p>
+  <strong>Paymment:</strong>
+  <%= @cashier.paymment %>
+</p>
+
+<p>
+  <strong>Paid value:</strong>
+  <%= @cashier.paid_value %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @cashier.paid %>
+</p>
+
+<%= link_to 'Edit', edit_cashier_path(@cashier) %> |
+<%= link_to 'Back', cashiers_path %>

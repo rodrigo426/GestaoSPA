@@ -10,20 +10,20 @@
       </ul>
     </div>
   <% end %>
-<input id="example-clients" placeholder="Clients" />
+
   <div class="field">
-    <%= form.label :user_name %>
-    <%= form.text_field :user_name, data: {autocomplete_source: User.order(:name).map(&:name)} %>
+    <%= form.label :user_id %>
+    <%= form.collection_select :user_id, User.order(:name), :id, :name, include_blank: true %>
   </div>
 
   <div class="field">
-    <%= form.label :client_name %>
-    <%= form.text_field :client_name, data: {autocomplete_source: Client.order(:name).map(&:name)} %>
+    <%= form.label :client_id %>
+    <%= form.collection_select :client_id, Client.order(:name), :id, :name, include_blank: true %>
   </div>
 
-    <div class="field">
-    <%= form.label :therapy_name %>
-    <%= form.text_field :therapy_name, data: {autocomplete_source: Therapy.order(:name).map(&:name)} %>
+  <div class="field">
+    <%= form.label :therapy_id %>
+    <%= form.collection_select :therapy_id, Therapy.order(:name), :id, :name, include_blank: true %>
   </div>
 
   <div class="field">

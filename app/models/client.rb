@@ -1,6 +1,5 @@
 class Client < ApplicationRecord
 #	require 'carrierwave/processing/mini_magick'
-	enum status: [:active, :inactive]
 	has_many :phone_clients
 	has_one :address
 	has_one :record
