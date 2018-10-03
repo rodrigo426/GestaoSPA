@@ -11,14 +11,13 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui/widgets/autocomplete
 //= require rails-ujs
-//= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
 //= require moment 
 //= require fullcalendar
 //= require daterangepicker
+//= require bootstrap-sprockets
 //= require_tree .
 
 
