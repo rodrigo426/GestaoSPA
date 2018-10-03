@@ -12,22 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :price %>
+    <%= form.label "Valor" %>
     <%= form.text_field :price, :disabled=>true %>
   </div>
 
   <div class="field">
-    <%= form.label :paymment %>
+    <%= form.label "Forma de pagamento" %>
     <%= form.select :paymment, options_for_select(Cashier.paymments.map {|k,v| [k,v]}) %>
   </div>
 
   <div class="field">
-    <%= form.label :paid_value %>
+    <%= form.label "Valor pago" %>
     <%= form.text_field :paid_value %>
   </div>
 
   <div class="field">
-    <%= form.label :paid %>
+    <%= form.label "Pago?" %>
     <%= form.select :paid, options_for_select(Cashier.paids.map {|k,v| [k,v]}) %>
   </div>
 

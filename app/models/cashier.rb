@@ -1,8 +1,8 @@
 class Cashier < ApplicationRecord
 	has_many :item
 
-	enum paid: [:no, :yes]
-	enum paymment: [:credit_card, :debit_card, :money, :check]
+	enum paid: [:nao, :sim]
+	enum paymment: [:cartao_credito, :cartao_debito, :dinheiro, :cheque]
 	usar_como_dinheiro :price
 	usar_como_dinheiro :paid_value
 end
