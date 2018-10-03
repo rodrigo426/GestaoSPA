@@ -1,4 +1,14 @@
 RailsAdmin.config do |config|
+
+  config.main_app_name = ["Representantes Comerciais", ""]
+
+
+  config.navigation_static_links = {
+    'Frente de Caixa' => 'cashiers#index',
+    'Agenda' => 'schedules#index'
+  }
+ 
+  config.navigation_static_label = "Recepção"
   
   config.model 'Item' do
     edit do
