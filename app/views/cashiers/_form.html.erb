@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.text_field :price, :disabled=>true %>
   </div>
 
   <div class="field">
     <%= form.label :paymment %>
-    <%= form.number_field :paymment %>
+    <%= form.select :paymment, options_for_select(Cashier.paymments.map {|k,v| [k,v]}) %>
   </div>
 
   <div class="field">
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :paid %>
-    <%= form.number_field :paid %>
+    <%= form.select :paid, options_for_select(Cashier.paids.map {|k,v| [k,v]}) %>
   </div>
 
   <div class="actions">

@@ -5,6 +5,7 @@ class CashiersController < ApplicationController
   # GET /cashiers.json
   def index
     @cashiers = Cashier.all
+    @cashier = Cashier.new
   end
 
   # GET /cashiers/1
@@ -69,6 +70,9 @@ class CashiersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cashier_params
-      params.require(:cashier).permit(:price, :paymment, :paid_value, :paid)
+      cp = params.require(:cashier).permit(:price, :paymment, :paid_value, :paid)
+      cp[:paymment] = params[:cashier][:paymment].to_i
+      cp[:paid] = params[:cashier][:paid].to_i
+      return cp
     end
 end

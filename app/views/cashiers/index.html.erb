@@ -1,11 +1,12 @@
+<%= form_with(model: @cashier, local: true) do |form| %>
 <p id="notice"><%= notice %></p>
 
-<h1>Cashiers</h1>
-
-<table>
+<div class="container">
+<h1>Caixa</h1>
+<table class="table">
   <thead>
     <tr>
-      <th>User</th>
+      <th >User</th>
       <th>Client</th>
       <th>Therapy</th>
       <th>Price</th>
@@ -18,28 +19,22 @@
 
   <tbody>
     <% @cashiers.each do |cashier| %>
-      <tr>
-        <td><%= cashier.user %></td>
-        <td><%= cashier.client %></td>
-        <td><%= cashier.therapy %></td>
-        <td><%= cashier.price %></td>
-        <td><%= cashier.payment %></td>
-        <!--<td> 
-          <div class="field">
-            <%= form.label :paymment %>
-            <%= form.collection_select :paymment %>
-          </div> -->
-        </td>
-        <td><%= cashier.paid_value %></td>
-        <td><%= cashier.paid %></td>
-        <td><%= link_to 'Show', cashier %></td>
-        <td><%= link_to 'Edit', edit_cashier_path(cashier) %></td>
-        <td><%= link_to 'Destroy', cashier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if cashier.paid != "yes" %>
+        <tr>
+          <td><%= cashier.user %></td>
+          <td><%= cashier.client %></td>
+          <td><%= cashier.therapy %></td>
+          <td><%= cashier.price %></td>
+          <td><%= cashier.paymment %></td>
+          <td><%= cashier.paid_value %></td>
+          <td><%= cashier.paid %></td>
+          <td><%= link_to 'Concluir Venda', edit_cashier_path(cashier), class: 'btn btn-success' %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
-
-<%= link_to 'New Cashier', new_cashier_path %>
+<% end %>

@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery-ui/widgets/autocomplete
 //= require rails-ujs
+//= require jquery.purr
+//= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
 //= require moment 
