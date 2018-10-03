@@ -10,6 +10,14 @@ RailsAdmin.config do |config|
  
   config.navigation_static_label = "Recepção"
   
+  config.model 'Schedule' do
+    visible false
+  end
+
+  config.model 'Record' do
+    visible false
+  end
+
   config.model 'Item' do
     edit do
       field :client
@@ -50,14 +58,6 @@ RailsAdmin.config do |config|
     edit do
       field :number
     end
-  end
-
-  config.model 'Schedules' do
-    visible false
-  end
-
-  config.model 'Records' do
-    visible false
   end
 
   config.model 'Address' do
