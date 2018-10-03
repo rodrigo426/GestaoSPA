@@ -1,11 +1,11 @@
 RailsAdmin.config do |config|
 
-  config.main_app_name = ["Representantes Comerciais", ""]
+  config.main_app_name = ["SPA Urbano Julio Ganiko", ""]
 
 
   config.navigation_static_links = {
-    'Frente de Caixa' => 'cashiers#index',
-    'Agenda' => 'schedules#index'
+    'Frente de Caixa' => '/cashiers',
+    'Agenda' => '/schedules'
   }
  
   config.navigation_static_label = "Recepção"
@@ -50,6 +50,14 @@ RailsAdmin.config do |config|
     edit do
       field :number
     end
+  end
+
+  config.model 'Schedules' do
+    visible false
+  end
+
+  config.model 'Records' do
+    visible false
   end
 
   config.model 'Address' do
