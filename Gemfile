@@ -5,7 +5,6 @@ ruby '2.4.1'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
-gem 'best_in_place'
 gem 'jquery-ui-rails'
 gem 'brazilian-rails'
 gem 'fullcalendar-rails'

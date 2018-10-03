@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery-ui/widgets/autocomplete
 //= require rails-ujs
-//= require jquery.purr
 //= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
@@ -42,30 +41,6 @@ $(document).ready(function() {
       eventSources: [{
         url: '/events.json'
     }]
-
-      //events: '/events.json',
-
-        /**events: [
-    {
-      title: String(event.user_id),
-      start: '2018-09-19T13:13:55.008',
-      end: '2015-09-19T13:14:55.008'
-    },
-    {
-      title: 'Event Title2',
-      start: '2018-10-17T13:13:00-0400',
-      end: '2018-10-19T13:14:00-0400'
-    }
-  ]
-
-  $.getJSON("events.json", function(data) {
-    var events = data.events;
-    var allevents;
-    for (i = 0; i < events.length; i++) {
-    allevents = "  events: [    {      title: String(events[i].description),      start: '2018-09-19T13:13:55.008',      end: '2015-09-19T13:14:55.008'    },"
-    }
-    events: allevents;
-  });**/
 
     });
   })
