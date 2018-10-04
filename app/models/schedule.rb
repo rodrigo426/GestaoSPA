@@ -7,6 +7,8 @@ class Schedule < ApplicationRecord
   validates :client_id, presence: true
   validates :therapy_id, presence: true
 
+  #enum color: [:green, :red, :blue]
+
 #----------Autocomplete-Client
   def client_name
   	client.try(:name)

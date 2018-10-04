@@ -10,4 +10,6 @@ class User < ApplicationRecord
   has_many :phone_users
   has_and_belongs_to_many :therapies
 
+  validates :color, uniqueness: true
+
 end

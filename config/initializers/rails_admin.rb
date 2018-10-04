@@ -9,9 +9,24 @@ RailsAdmin.config do |config|
   }
  
   config.navigation_static_label = "Recepção"
+
+
+  config.model 'User' do
+    edit do
+      field :name
+      field :kind
+      field :status
+      field :notes
+      field :email
+      field :password
+      field :password_confirmation
+      field :color, :color
+    end
+  end
+
   
   config.model 'Schedule' do
-    visible false
+    visible true
   end
 
   config.model 'Record' do
