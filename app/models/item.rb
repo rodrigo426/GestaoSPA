@@ -10,7 +10,7 @@ class Item < ApplicationRecord
 		user.name.to_s if user
 	end
 
-	after_save do
+	after_create do
   		Cashier.create(price: self.therapy.price, paid: :nao, client: self.client.name, therapy: self.therapy.name, user: self.user.name)
   		
 	end
