@@ -20,7 +20,7 @@ RailsAdmin.config do |config|
       field :email
       field :password
       field :password_confirmation
-      field :color, :color
+      field :color#, :color
     end
   end
 
