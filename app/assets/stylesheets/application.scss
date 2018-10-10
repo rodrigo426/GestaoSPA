@@ -11,9 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  *= require fullcalendar
+ *= require jquery-ui/datepicker
  */
-
-@import "bootstrap-sprockets"
-@import "bootstrap"
-@import "fullcalendar"
-@import "jquery-ui/datepicker"
+ @import "bootstrap/scss/bootstrap";
