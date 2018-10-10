@@ -1,5 +1,5 @@
-<%= form_with(model: cashier, local: true) do |form| %>
-  <% if cashier.errors.any? %>
+<%= form_with(model: @cashier, local: true) do |form| %>
+  <% if @cashier.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(cashier.errors.count, "error") %> prohibited this cashier from being saved:</h2>
 
@@ -10,27 +10,21 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
-    <%= form.label "Valor" %>
-    <%= form.text_field :price, :disabled=>true %>
+    <%= form.label :user_id %>
+    <%= form.collection_select :user_id, User.order(:name), :id, :name, include_blank: true %>
   </div>
 
   <div class="field">
-    <%= form.label "Forma de pagamento" %>
-    <%= form.select :paymment, options_for_select(Cashier.paymments.map {|k,v| [k,v]}) %>
+    <%= form.label :client_id %>
+    <%= form.collection_select :client_id, Client.order(:name), :id, :name, include_blank: true %>
   </div>
 
   <div class="field">
-    <%= form.label "Valor pago" %>
-    <%= form.text_field :paid_value %>
+    <%= form.label :therapy_id %>
+    <%= form.collection_select :therapy_id, Therapy.order(:name), :id, :name, include_blank: true %>
   </div>
-
-  <div class="field">
-    <%= form.label "Pago?" %>
-    <%= form.select :paid, options_for_select(Cashier.paids.map {|k,v| [k,v]}) %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>

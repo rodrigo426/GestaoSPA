@@ -11,7 +11,7 @@ class Item < ApplicationRecord
 	end
 
 	after_create do
-  		Cashier.create(price: self.therapy.price, paid: :nao, client: self.client.name, therapy: self.therapy.name, user: self.user.name)
+  		Cashier.create(price: self.therapy.price, paid: :nao, client_id: self.client_id, therapy_id: self.therapy_id, user_id: self.user_id)
   		
 	end
 end

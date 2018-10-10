@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= render 'form', cashier: @cashier %>
 <div class="container">
 <h1>Caixa</h1>
 <table class="table">
@@ -20,9 +20,9 @@
     <% @cashiers.each do |cashier| %>
       <% if cashier.paid != "sim" %>
         <tr>
-          <td><%= cashier.user %></td>
-          <td><%= cashier.client %></td>
-          <td><%= cashier.therapy %></td>
+          <td><%= cashier.user.name if cashier.user%></td>
+          <td><%= cashier.client.name if cashier.client%></td>
+          <td><%= cashier.therapy.name if cashier.therapy%></td>
           <td><%= cashier.price %></td>
           <td><%= cashier.paymment %></td>
           <td><%= cashier.paid_value %></td>

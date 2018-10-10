@@ -20,13 +20,27 @@ RailsAdmin.config do |config|
       field :email
       field :password
       field :password_confirmation
-      field :color#, :color
+      field :color, :color
     end
   end
 
-  
+  config.model 'Audit' do
+    visible false
+  end
+  config.model 'Check' do
+    visible false
+  end
+  config.model 'Dashborad' do
+    visible false
+  end
+  config.model 'DashboardQuery' do
+    visible false
+  end
+  config.model 'Query' do
+    visible false
+  end
   config.model 'Schedule' do
-    visible true
+    visible false
   end
 
   config.model 'Record' do

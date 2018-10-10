@@ -1,3 +1,6 @@
+#require 'user.rb'
+require 'therapy.rb'
+require 'client.rb'
 class CashiersController < ApplicationController
   before_action :set_cashier, only: [:show, :edit, :update, :destroy]
 
@@ -6,6 +9,9 @@ class CashiersController < ApplicationController
   def index
     @cashiers = Cashier.all
     @cashier = Cashier.new
+    #@user = User.all
+    @therapy = Therapy.all
+    @client = Client.all
   end
 
   # GET /cashiers/1
