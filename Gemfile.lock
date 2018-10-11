@@ -76,8 +76,6 @@ GEM
       safely_block (>= 0.1.1)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
-    bootstrap-sass (3.2.0.2)
-      sass (~> 3.2)
     brI18n (3.3.0)
       actionpack (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -318,7 +316,6 @@ DEPENDENCIES
   autoprefixer-rails
   blazer
   bootsnap (>= 1.1.0)
-  bootstrap-sass (~> 3.2.0)
   brazilian-rails
   byebug
   cancancan (~> 1.15.0)
