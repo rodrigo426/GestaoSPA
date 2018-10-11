@@ -1,5 +1,10 @@
 {
   "name": "gestao-spa-ganiko",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "postcss-scss": "^2.0.0"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.1.3"
+  }
 }

@@ -43,7 +43,6 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'listen', '>= 3.0.5', '< 3.2'
 end
 
 group :test do
