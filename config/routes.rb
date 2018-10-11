@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   #root :to => redirect('/admin')
   mount Blazer::Engine, at: "blazer"
+  
 
   get '/events', to: 'schedules#index'
   #get '/therapies', to: 'schedules#index'

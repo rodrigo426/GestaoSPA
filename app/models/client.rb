@@ -8,9 +8,9 @@ class Client < ApplicationRecord
 	accepts_nested_attributes_for :record, update_only: false
 
 	mount_uploader :photo, PhotoUploader
+	usar_como_dinheiro :credit
 
-	def self.search(term)
-  		where('LOWER(name) LIKE :term OR LOWER(email) LIKE :term', term: "%#{term.downcase}%")
-	end
+
+
 
 end

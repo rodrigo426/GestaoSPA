@@ -15,4 +15,12 @@ class Cashier < ApplicationRecord
 	usar_como_dinheiro :paid_value
 
 	accepts_nested_attributes_for :item
+	accepts_nested_attributes_for :client
+
+
+	after_save do
+		if paymment == "abatimento_credito"
+  			puts "foi!"
+  		end
+	end
 end

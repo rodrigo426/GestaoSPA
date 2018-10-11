@@ -21,10 +21,19 @@
     <%= form.select :paymment, options_for_select(Cashier.paymments.map {|k,v| [k,v]}) %>
   </div>
 
-  <div class="field">
+  <div class="field" style="display: flex">
     <%= form.label "Valor pago" %>
     <%= form.text_field :paid_value %>
+      <%= form.fields_for :client do |ff| %>
+  <div>
+    <%= ff.label "Credito" %>
+    <%= ff.text_field :credit, :disabled=>true %>
   </div>
+<% end %>
+
+  </div>
+
+
 
   <div class="field">
     <%= form.label "Pago?" %>
