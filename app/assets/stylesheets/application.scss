@@ -13,4 +13,12 @@
  *= require fullcalendar
  *= require jquery-ui/datepicker
  */
+ @import "bootstrap/scss/functions";
+ @import "bootstrap-color-yiq";
+ @import "variables";
  @import "bootstrap/scss/bootstrap";
+ @import 'material-design-kit/src/style';
+ @import 'material-icons';
+ @import 'layout';
+ @import 'drawer';
+ @import "navbar";
