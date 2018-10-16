@@ -1,36 +1,35 @@
-<p id="notice"><%= notice %></p>
+<body style="background-color:#f4f4f4;">
+  <div id="example1" align="center">
+    <p id="notice"><%= notice %></p>
 
-<div class="container">
-<h1>Caixa</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th >Terapeuta</th>
-      <th>Cliente</th>
-      <th>Terapia</th>
-      <th>Valor</th>
-      <th>Forma de Pagamento</th>
-      <th>Valor Pago</th>
-      <th>Pago?</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="table-responsive">
+      <br/>
+      <h1>Caixa</h1>
+      <table class="table" style="width: 90%;">
+        <thead>
+          <tr>
+            <th >Terapeuta</th>
+            <th>Cliente</th>
+            <th>Terapia</th>
+            <th>Valor</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @cashiers.each do |cashier| %>
-      <% if cashier.paid != "sim" %>
-        <tr>
-          <td><%= cashier.user.name if cashier.user%></td>
-          <td><%= cashier.client.name if cashier.client%></td>
-          <td><%= cashier.therapy.name if cashier.therapy%></td>
-          <td><%= cashier.price %></td>
-          <td><%= cashier.paymment %></td>
-          <td><%= cashier.paid_value %></td>
-          <td><%= cashier.paid %></td>
-          <td><%= link_to 'Concluir Venda', edit_cashier_path(cashier), class: 'btn btn-success' %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-</div>
+        <tbody>
+          <% @cashiers.each do |cashier| %>
+            <% if cashier.paid != "sim" %>
+              <tr>
+                <td><%= cashier.user.name if cashier.user%></td>
+                <td><%= cashier.client.name if cashier.client%></td>
+                <td><%= cashier.therapy.name if cashier.therapy%></td>
+                <td><%= cashier.price %></td>
+                <td><%= link_to 'Concluir Venda', edit_cashier_path(cashier), class: 'btn btn-success' %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>

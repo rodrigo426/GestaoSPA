@@ -10,8 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require fullcalendar
- *= require jquery-ui/datepicker
  */
  @import "bootstrap/scss/functions";
  @import "bootstrap-color-yiq";
@@ -19,6 +17,18 @@
  @import "bootstrap/scss/bootstrap";
  @import 'material-design-kit/src/style';
  @import 'material-icons';
+ @import "fullcalendar";
+ @import "jquery-ui/datepicker";
+ @import "bootstrap-datepicker3";
  @import 'layout';
  @import 'drawer';
  @import "navbar";
+
+
+#example1 {
+	width: 90%;
+	margin:0 auto;
+	background-color:white;
+	border-radius: 7px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

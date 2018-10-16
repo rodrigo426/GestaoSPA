@@ -7,7 +7,10 @@ class Schedule < ApplicationRecord
   validates :client_id, presence: true
   validates :therapy_id, presence: true
 
-  #enum color: [:green, :red, :blue]
+  extend TimeSplitter::Accessors
+  #split_accessor :start_time
+  #split_accessor :end_time
+  split_accessor :start_time, :end_time, format: "%D", time_format: "%I:%M%p"
 
 
 end

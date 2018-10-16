@@ -15,13 +15,13 @@
 //= require bootstrap/dist/js/bootstrap.min.js
 //= require dom-factory/dist/dom-factory.js
 //= require material-design-kit/dist/material-design-kit.js
+//= require bootstrap-datepicker
 //= require activestorage
 //= require turbolinks
 //= require moment 
 //= require fullcalendar
 //= require daterangepicker
 //= require_tree .
-
 
 //template dashboard
 $('.dropdown.notifications ul a.nav-link').click(function (e) {
@@ -55,9 +55,6 @@ document.addEventListener("turbolinks:load", function() {
 })
 
 
-
-
-
 ///////////////////////////////////////////////////
 //calendar
 $(document).ready(function() {
@@ -83,3 +80,5 @@ $(document).ready(function() {
     });
   })
 });
+
+$('.datepicker').datepicker();

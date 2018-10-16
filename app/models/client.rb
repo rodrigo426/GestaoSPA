@@ -8,7 +8,7 @@ class Client < ApplicationRecord
 	accepts_nested_attributes_for :record, update_only: false
 
 	mount_uploader :photo, PhotoUploader
-	usar_como_dinheiro :credit
+	#usar_como_dinheiro :credit
 
 
 

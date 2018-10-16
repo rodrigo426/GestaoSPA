@@ -3,7 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
 
-
+gem 'bootstrap-datepicker-rails'
+gem 'time_splitter'
 #gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
 gem 'blazer'
 #gem 'bootstrap-sass', '~> 3.2.0'

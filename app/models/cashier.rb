@@ -10,8 +10,8 @@ class Cashier < ApplicationRecord
   validates :therapy_id, presence: true
 
 	enum paid: [:nao, :sim]
-	enum paymment: [:cartao_credito, :cartao_debito, :dinheiro, :cheque, :permuta, :abatimento_credito]
-	usar_como_dinheiro :price
+	enum paymment: ["Cartão de crédito", "cartão de débito", "Dinheiro", "Cheque", "Permuta", "Abatimento de credito"]
+	#usar_como_dinheiro :price
 	usar_como_dinheiro :paid_value
 
 	accepts_nested_attributes_for :item
@@ -19,8 +19,16 @@ class Cashier < ApplicationRecord
 
 
 	after_save do
-		if paymment == "abatimento_credito"
-  			puts "foi!"
+		if paymment == "Abatimento de credito"
+  			puts "foi!?????????????????????????????????????????????????????"
+  			puts client.name
+  			credit = client.credit - price if client
+  			
+
+  			@client.update(credit: credit)
+
+  			#paid_value = price
+  			#puts @client.credit.to_s
   		end
 	end
 end

@@ -1,0 +1,34 @@
+<body style="background-color:#f4f4f4;">
+  <div id="example1" align="center">
+    <p id="notice"><%= notice %></p>
+
+    <div class="table-responsive">
+      <br/>
+      <h1>Clientes</h1>
+      <%= link_to 'Cadastrar novo Cliente', new_client_path, class: 'btn btn-success' %>
+      <table class="table" style="width: 90%;">
+        <thead>
+          <tr>
+            <th >Nome</th>
+            <th>Cliente</th>
+            <th>Terapia</th>
+            <th>Valor</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @clients.each do |client| %>
+              <tr>
+                <td><%= client.name if client.name%></td>
+                <td><%= client.birthdate.to_s(:long) %></td>
+                <td><%= client.email %></td>
+                <td><%= client.occupation %></td>
+                <td><%= link_to 'Editar', edit_client_path(client), class: 'btn btn-primary' %></td>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>

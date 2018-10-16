@@ -1,3 +1,5 @@
+<table style="width:50%;" align="center">
+  <tr><th>
 <%= form_with(model: cashier, local: true) do |form| %>
   <% if cashier.errors.any? %>
     <div id="error_explanation">
@@ -11,23 +13,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label "Valor" %>
-    <%= form.text_field :price, :disabled=>true %>
+    <%= form.text_field :price, :disabled=>true, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label "Forma de pagamento" %>
-    <%= form.select :paymment, options_for_select(Cashier.paymments.map {|k,v| [k,v]}) %>
+    <%= form.select :paymment, options_for_select(Cashier.paymments.map {|k,v| [k,v]}), {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
   </div>
 
-  <div class="field" style="display: flex">
+
+  <div class="form-group" style="display:inline;">
     <%= form.label "Valor pago" %>
-    <%= form.text_field :paid_value %>
+    <%= form.text_field :paid_value, class: 'form-control' %>
       <%= form.fields_for :client do |ff| %>
-  <div>
-    <%= ff.label "Credito" %>
-    <%= ff.text_field :credit, :disabled=>true %>
+  <div><br/><br/>
+    <%= ff.label "Credito do Cliente" %>
+    <%= ff.text_field :credit, :disabled=>true, class: 'form-control' %>
   </div>
 <% end %>
 
@@ -35,12 +38,15 @@
 
 
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label "Pago?" %>
-    <%= form.select :paid, options_for_select(Cashier.paids.map {|k,v| [k,v]}) %>
+    <%= form.select :paid, options_for_select(Cashier.paids.map {|k,v| [k,v]}), {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button "Confirmar", class: "btn btn-primary" %>
+    <%= link_to 'Voltar', cashiers_path, class: 'btn btn-warning' %>
   </div>
 <% end %>
+</th></tr>
+</table>

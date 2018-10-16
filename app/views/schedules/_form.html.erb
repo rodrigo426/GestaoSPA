@@ -1,3 +1,6 @@
+<div id="example1" align="center"><br/>
+<table style="width:50%;" align="center">
+  <tr><th>
 <%= form_with(model: schedule, local: true) do |form| %>
   <% if schedule.errors.any? %>
     <div id="error_explanation">
@@ -11,37 +14,58 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :user_id %>
     <%= form.collection_select :user_id, User.order(:name), :id, :name, include_blank: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :client_id %>
     <%= form.collection_select :client_id, Client.order(:name), :id, :name, include_blank: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :therapy_id %>
     <%= form.collection_select :therapy_id, Therapy.order(:name), :id, :name, include_blank: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
+  <div class="form-group">
+    <%= form.label "Data" %>
+    <%= form.text_field :start_time_date, as: :string, class: 'datepicker' %>
+    <%= form.label "Hora" %>
+    <%= form.select :start_time_hour, [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23], {}, {required: 'true', autofocus: 'true', class: 'selectpicker'} %>
+    <%= form.label "Minuto" %>
+    <%= form.select :start_time_min, [0,15,30,45] %>
   </div>
 
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.datetime_select :end_time %>
+  <div class="form-group">
+    <%= form.label "Data" %>
+    <%= form.text_field :end_time_date, class: 'datepicker' %>
+    <%= form.label "Hora" %>
+    <%= form.select :end_time_hour, [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23] %>
+    <%= form.label "Minuto" %>
+    <%= form.select :end_time_min, [0,15,30,45] %>
+    <div><input type="checkbox" name="billingtoo" onclick="FillBilling(this.form)"></div>
   </div>
+  <script type="text/javascript">
+function FillBilling(f) {
+  if(f.billingtoo.checked == true) {
+    f.schedule_end_time_date.value = f.schedule_start_time_date.value;
+  }
+}
+
+  </script>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button "Agendar", class: "btn btn-primary" %>
   </div>
 <% end %>
+</th></tr>
+</table>
+<br/>
+</div>

@@ -22,10 +22,12 @@ class CashiersController < ApplicationController
   # GET /cashiers/new
   def new
     @cashier = Cashier.new
+    @client = Client.all
   end
 
   # GET /cashiers/1/edit
   def edit
+    @client = Client.all
   end
 
   # POST /cashiers
