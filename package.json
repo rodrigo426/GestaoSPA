@@ -4,12 +4,13 @@
   "dependencies": {
     "bootstrap": "^4.0.0",
     "dom-factory": "1.0.0-alpha.10",
+    "grunt-contrib-uglify-es": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
     "highcharts": "^6.2.0",
     "jquery": "3.2.1",
     "jquery-ujs": "^1.2.2",
     "material-design-icons-iconfont": "3.0.3",
     "material-design-kit": "1.0.0-alpha.20",
-    "popper.js": "1.12.9",
+    "popper.js": "^1.14.4",
     "postcss-scss": "^2.0.0"
   },
   "devDependencies": {
