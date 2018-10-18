@@ -18,7 +18,7 @@
 //= require material-design-kit/dist/material-design-kit.js
 //= require bootstrap-datepicker
 //= require activestorage
-//= require highcharts
+//= require Chart.bundle
 //= require chartkick
 //= require turbolinks
 //= require moment 

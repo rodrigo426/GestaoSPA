@@ -46,6 +46,7 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'rails-ujs'
 end
 
 group :test do
