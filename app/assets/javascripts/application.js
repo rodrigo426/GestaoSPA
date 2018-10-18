@@ -11,17 +11,21 @@
 // about supported directives.
 //
 //= require jquery/dist/jquery.min.js
+//= require jquery-ujs
 //= require popper.js/dist/umd/popper.js
 //= require bootstrap/dist/js/bootstrap.min.js
 //= require dom-factory/dist/dom-factory.js
 //= require material-design-kit/dist/material-design-kit.js
 //= require bootstrap-datepicker
 //= require activestorage
+//= require highcharts
+//= require chartkick
 //= require turbolinks
 //= require moment 
 //= require fullcalendar
 //= require daterangepicker
 //= require_tree .
+
 
 //template dashboard
 $('.dropdown.notifications ul a.nav-link').click(function (e) {
@@ -82,3 +86,23 @@ $(document).ready(function() {
 });
 
 $('.datepicker').datepicker();
+
+
+
+$(document).on('turbolinks:load', function() {
+
+  $('form').on('click', '.remove_record', function(event) {
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('tr').hide();
+    return event.preventDefault();
+  });
+
+  $('form').on('click', '.add_fields', function(event) {
+    var regexp, time;
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    $('.fields').append($(this).data('fields').replace(regexp, time));
+    return event.preventDefault();
+  });
+  
+});

@@ -3,11 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
 
+gem 'groupdate'
+gem 'chartkick'
+gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 gem 'time_splitter'
-#gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
 gem 'blazer'
-#gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-rails'

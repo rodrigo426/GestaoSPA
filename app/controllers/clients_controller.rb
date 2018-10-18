@@ -19,10 +19,12 @@ class ClientsController < ApplicationController
   # GET /clients/new
   def new
     @client = Client.new
+    @client.phone_clients.build
   end
 
   # GET /clients/1/edit
   def edit
+    @client.phone_clients.build
   end
 
   # POST /clients
@@ -73,6 +75,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:name, :birthdate, :email, :occupation, :photo)
+      params.require(:client).permit(:name, :birthdate, :email, :occupation, :indication , :credit , phone_clients_attributes: PhoneClient.attribute_names.map(&:to_sym).push(:_destroy))
     end
 end

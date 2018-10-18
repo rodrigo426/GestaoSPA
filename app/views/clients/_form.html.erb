@@ -43,9 +43,26 @@
     <%= form.text_field :credit, class: 'form-control' %>
   </div><br/>
 
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Telefone</th>
+      </tr>
+    </thead>
+    <tbody class='fields'>
+      <%= form.simple_fields_for :phone_clients do |builder| %>
+        <%= render 'phone_client', form: builder %>
+      <% end %>
+    </tbody>
+    <%= link_to_add_row '+Telefone', form, :phone_clients, class: 'btn btn-primary' %>
+  </table>
+
   <div class="actions">
     <%= form.button "Confirmar", class: "btn btn-primary" %>
     <%= link_to 'Voltar', clients_path, class: 'btn btn-warning' %>
+    
   </div>
 <% end %>
 </th></tr>
