@@ -35,6 +35,7 @@ nav.drawer {
     margin-bottom: $spacer;
     .drawer-menu-item {
       position: relative;
+      
       &:last-of-type { border-bottom-color: transparent; }
 
       [data-toggle=collapse] {

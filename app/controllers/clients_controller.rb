@@ -4,11 +4,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
-    respond_to do |format|
-    	format.html
-    	format.json { @clients = Client.search(params[:term]) }
-    end
+    @clients = Client.order(:name).page(params[:page])
   end
 
   # GET /clients/1
@@ -19,7 +15,7 @@ class ClientsController < ApplicationController
   # GET /clients/new
   def new
     @client = Client.new
-    @client.phone_clients.build
+    @client.build_address
   end
 
   # GET /clients/1/edit
@@ -75,6 +71,8 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:name, :birthdate, :email, :occupation, :indication , :credit , phone_clients_attributes: PhoneClient.attribute_names.map(&:to_sym).push(:_destroy))
+      params.require(:client).permit(:name, :birthdate, :email, :occupation, :indication, :credit, 
+        phone_clients_attributes: [:id, :number, :_destroy], 
+        address_attributes: Address.attribute_names.map(&:to_sym).push(:_destroy))
     end
 end

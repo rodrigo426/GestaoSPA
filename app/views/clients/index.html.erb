@@ -29,11 +29,14 @@
                 <td><%= client.birthdate.to_s(:long) %></td>
                 <td><%= client.email %></td>
                 <td><%= client.occupation %></td>
+                <td><%= link_to 'Detalhes', client_path(client), class: 'btn btn-primary' %></td>
                 <td><%= link_to 'Editar', edit_client_path(client), class: 'btn btn-primary' %></td>
               </tr>
           <% end %>
         </tbody>
+        
       </table>
+      <%= paginate @clients, theme: 'twitter-bootstrap-4'%>
     </div>
   </div>
 </body>

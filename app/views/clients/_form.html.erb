@@ -20,7 +20,7 @@
 
   <div class="field">
     <%= form.label :birthdate %>
-    <%= form.date_select :birthdate, class: 'form-control' %>
+    <%= form.date_select :birthdate, start_year: 1900, class: 'form-control' %>
   </div>
 
   <div class="field">
@@ -35,29 +35,26 @@
 
   <div class="field">
     <%= form.label :indication %>
-    <%= form.text_field :indication, class: 'form-control' %>
+    <%= form.text_field :indication %>
   </div>
 
   <div class="field">
     <%= form.label :credit %>
-    <%= form.text_field :credit, class: 'form-control' %>
+    <%= form.text_field :credit %>
   </div><br/>
 
+  <%= form.fields_for :address do |address_form| %>
+    <div class='field'>Endereco: <%= address_form.text_field :street %></div>
+    <div class='field'>Cidade: <%= address_form.text_field :city %></div>
+    <div class='field'>Estado: <%= address_form.select :state, options_for_state(@client.address.state) %></div>
+  <% end %>
 
-  <table class='table'>
-    <thead>
-      <tr>
-        <th></th>
-        <th>Telefone</th>
-      </tr>
-    </thead>
-    <tbody class='fields'>
-      <%= form.simple_fields_for :phone_clients do |builder| %>
-        <%= render 'phone_client', form: builder %>
-      <% end %>
-    </tbody>
-    <%= link_to_add_row '+Telefone', form, :phone_clients, class: 'btn btn-primary' %>
-  </table>
+  <div id="phone_clients">
+    <%= link_to_add_association('+', form, :phone_clients) %>
+    <%= form.fields_for :phone_clients do |phone_clients_fields| %>
+      <%= render partial: "phone_client_fields", locals: { f: phone_clients_fields } %>
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= form.button "Confirmar", class: "btn btn-primary" %>

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Records</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cream allergy</th>
+      <th>Blood pressure</th>
+      <th>Uses pacemaker</th>
+      <th>Diabetes</th>
+      <th>Surgery</th>
+      <th>Surgery where</th>
+      <th>Accident fracture</th>
+      <th>Accident where</th>
+      <th>Bone disease</th>
+      <th>Medicine</th>
+      <th>Medicine which</th>
+      <th>Faint seizure</th>
+      <th>Woman pregnant</th>
+      <th>Woman contraceptive</th>
+      <th>Pains</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @records.each do |record| %>
+      <tr>
+        <td><%= record.cream_allergy %></td>
+        <td><%= record.blood_pressure %></td>
+        <td><%= record.uses_pacemaker %></td>
+        <td><%= record.diabetes %></td>
+        <td><%= record.surgery %></td>
+        <td><%= record.surgery_where %></td>
+        <td><%= record.accident_fracture %></td>
+        <td><%= record.accident_where %></td>
+        <td><%= record.bone_disease %></td>
+        <td><%= record.medicine %></td>
+        <td><%= record.medicine_which %></td>
+        <td><%= record.faint_seizure %></td>
+        <td><%= record.woman_pregnant %></td>
+        <td><%= record.woman_contraceptive %></td>
+        <td><%= record.pains %></td>
+        <td><%= link_to 'Show', record %></td>
+        <td><%= link_to 'Edit', edit_record_path(record) %></td>
+        <td><%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Record', new_record_path %>

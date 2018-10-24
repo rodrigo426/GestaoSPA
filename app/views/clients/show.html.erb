@@ -21,8 +21,28 @@
 </p>
 
 <p>
-  <strong>Photo:</strong>
-  <%= @client.photo %>
+  <strong>Indication:</strong>
+  <%= @client.indication %>
+</p>
+
+<p>
+  <strong>Telefones:</strong>
+  <%= @client.phone_clients if @client.phone_clients%>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @client.address.street if @client.address%>
+</p>
+
+<p>
+  <strong>Cidade:</strong>
+  <%= @client.address.city if @client.address%>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @client.address.state if @client.address%>
 </p>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |

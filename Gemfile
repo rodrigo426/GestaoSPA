@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
 
+gem 'cocoon'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 gem 'groupdate'
 gem 'chartkick'
 gem 'simple_form'
@@ -15,8 +18,6 @@ gem 'jquery-rails'
 gem 'brazilian-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-gem 'mini_magick'
-gem 'carrierwave'
 gem 'cancancan', '~> 1.15.0'
 gem 'devise'
 gem 'rails_admin', github: 'sferik/rails_admin'

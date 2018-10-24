@@ -10,6 +10,7 @@
     "jquery-ujs": "^1.2.2",
     "material-design-icons-iconfont": "3.0.3",
     "material-design-kit": "1.0.0-alpha.20",
+    "materialize-css": "^1.0.0",
     "popper.js": "^1.14.4",
     "postcss-scss": "^2.0.0"
   },

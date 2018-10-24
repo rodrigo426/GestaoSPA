@@ -1,0 +1,27 @@
+
+<%= simple_form_for(@record) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :cream_allergy %>
+    <%= f.input :blood_pressure %>
+    <%= f.input :uses_pacemaker %>
+    <%= f.input :diabetes %>
+    <%= f.input :surgery %>
+    <%= f.input :surgery_where %>
+    <%= f.input :accident_fracture %>
+    <%= f.input :accident_where %>
+    <%= f.input :bone_disease %>
+    <%= f.input :medicine %>
+    <%= f.input :medicine_which %>
+    <%= f.input :faint_seizure %>
+    <%= f.input :woman_pregnant %>
+    <%= f.input :woman_contraceptive %>
+    <%= f.input :pains %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

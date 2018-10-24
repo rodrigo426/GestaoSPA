@@ -24,6 +24,7 @@
 //= require moment 
 //= require fullcalendar
 //= require daterangepicker
+//= require cocoon
 //= require_tree .
 
 
@@ -106,3 +107,6 @@ $(document).on('turbolinks:load', function() {
   });
   
 });
+
+
+
