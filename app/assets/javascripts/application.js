@@ -25,7 +25,9 @@
 //= require fullcalendar
 //= require daterangepicker
 //= require cocoon
+//= require datatables
 //= require_tree .
+
 
 
 //template dashboard
@@ -104,6 +106,20 @@ $(document).on('turbolinks:load', function() {
     regexp = new RegExp($(this).data('id'), 'g');
     $('.fields').append($(this).data('fields').replace(regexp, time));
     return event.preventDefault();
+  });
+
+
+
+
+
+
+
+    $("table[role='datatable']").each(function(){
+    $(this).DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: $(this).data('url')
+    });
   });
   
 });

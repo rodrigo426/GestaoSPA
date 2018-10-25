@@ -4,8 +4,14 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.order(:name).page(params[:page])
+    #@clients = Client.order(:name).page(params[:page])
+    respond_to do |format|
+      format.html
+      format.json { render json: ClientsDatatable.new(view_context) }
+    end    
   end
+
+
 
   # GET /clients/1
   # GET /clients/1.json

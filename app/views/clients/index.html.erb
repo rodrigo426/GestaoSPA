@@ -1,8 +1,3 @@
-<head>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-</head>
 <body style="background-color:#f4f4f4;">
   <div id="example1" align="center">
     <p id="notice"><%= notice %></p>
@@ -11,32 +6,28 @@
       <br/>
       <h1>Clientes</h1>
       <%= link_to 'Cadastrar novo Cliente', new_client_path, class: 'btn btn-success' %><br/>
-      <table class="table" style="width: 90%;">
-        <thead>
+      
+        <%= content_tag :table, role: :datatable, data: { url: clients_path(format: :json)} do %>
+        <thead class="table">
           <tr>
-            <th >Nome</th>
-            <th>Cliente</th>
-            <th>Terapia</th>
-            <th>Valor</th>
-            <th colspan="3"></th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ocupacao</th>
+            <th></th>
+
           </tr>
         </thead>
 
-        <tbody>
-          <% @clients.each do |client| %>
-              <tr>
-                <td><%= client.name if client.name%></td>
-                <td><%= client.birthdate.to_s(:long) %></td>
-                <td><%= client.email %></td>
-                <td><%= client.occupation %></td>
-                <td><%= link_to 'Detalhes', client_path(client), class: 'btn btn-primary' %></td>
-                <td><%= link_to 'Editar', edit_client_path(client), class: 'btn btn-primary' %></td>
-              </tr>
-          <% end %>
+        <tbody class="table">
+
         </tbody>
-        
-      </table>
-      <%= paginate @clients, theme: 'twitter-bootstrap-4'%>
+        <% end %>
+      
+      
     </div>
   </div>
 </body>
+
+
+<table class="table" style="width: 90%;">
+  </table>

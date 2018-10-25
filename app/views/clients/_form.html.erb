@@ -1,3 +1,4 @@
+
 <table style="width:50%;" align="center">
   <tr><th>
 <%= form_with(model: client, local: true) do |form| %>
@@ -28,6 +29,13 @@
     <%= form.text_field :email, class: 'form-control' %>
   </div>
 
+  <div id="phone_clients">
+    <%= link_to_add_association('+', form, :phone_clients) %>
+    <%= form.fields_for :phone_clients do |phone_clients_fields| %>
+      <%= render partial: "phone_client_fields", locals: { f: phone_clients_fields } %>
+    <% end %>
+  </div>
+
   <div class="field">
     <%= form.label :occupation %>
     <%= form.text_field :occupation, class: 'form-control' %>
@@ -48,13 +56,6 @@
     <div class='field'>Cidade: <%= address_form.text_field :city %></div>
     <div class='field'>Estado: <%= address_form.select :state, options_for_state(@client.address.state) %></div>
   <% end %>
-
-  <div id="phone_clients">
-    <%= link_to_add_association('+', form, :phone_clients) %>
-    <%= form.fields_for :phone_clients do |phone_clients_fields| %>
-      <%= render partial: "phone_client_fields", locals: { f: phone_clients_fields } %>
-    <% end %>
-  </div>
 
   <div class="actions">
     <%= form.button "Confirmar", class: "btn btn-primary" %>
