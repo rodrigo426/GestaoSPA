@@ -28,8 +28,6 @@
 //= require datatables
 //= require_tree .
 
-
-
 //template dashboard
 $('.dropdown.notifications ul a.nav-link').click(function (e) {
   e.stopPropagation();

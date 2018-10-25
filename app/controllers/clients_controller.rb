@@ -4,7 +4,6 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    #@clients = Client.order(:name).page(params[:page])
     respond_to do |format|
       format.html
       format.json { render json: ClientsDatatable.new(view_context) }
@@ -26,7 +25,11 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
-    @client.phone_clients.build
+    #@client.phone_clients.build
+    @client = Client.find(params[:id])
+    if @client.address.blank?
+      @client.build_address
+    end
   end
 
   # POST /clients
@@ -79,6 +82,6 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:name, :birthdate, :email, :occupation, :indication, :credit, 
         phone_clients_attributes: [:id, :number, :_destroy], 
-        address_attributes: Address.attribute_names.map(&:to_sym).push(:_destroy))
+        address_attributes: [:id, :state, :city, :street])
     end
 end

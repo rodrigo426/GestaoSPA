@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   #root :to => redirect('/admin')
   root :to => "dashboard#index"
   #root :to => redirect('/dashboards')
-  mount Blazer::Engine, at: "blazer"
   
 
   get '/events', to: 'schedules#index'

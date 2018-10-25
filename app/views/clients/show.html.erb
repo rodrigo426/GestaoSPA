@@ -28,7 +28,11 @@
 
 <p>
   <strong>Telefones:</strong>
-  <%= @client.phone_clients if @client.phone_clients%>
+  <% unless @client.phone_clients.blank? %>
+  <% @client.phone_clients.each do |phone_client|%>
+    <%= phone_client.number%>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <% end %>
+<% end %>
 </p>
 
 <p>
