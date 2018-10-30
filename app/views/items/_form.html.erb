@@ -1,3 +1,4 @@
+<br>
 <%= form_with(model: item, local: true) do |form| %>
   <% if item.errors.any? %>
     <div id="error_explanation">
@@ -19,10 +20,12 @@
       <article class="card-body">
 
             <%= simple_fields_for :item do |item_form| %>
-              <div class='col form-group'>Cliente: <%= item_form.collection_select :client_id, Client.all, :id, :name, class: 'form-control' %></div>
-              <div class='col form-group'>Terapeuta: <%= item_form.collection_select :user_id, User.all, :id, :name, kind: 0, class: 'form-control' %></div>
-              <div class='col form-group'>Terapia: <%= item_form.collection_select :therapy_id, Therapy.all, :id, :name, class: 'form-control' %></div>
-              <div class='col form-group'>Terapia: <%= item_form.text_area :description, class: 'form-control' %></div>
+            <div class="form-row">
+              <div class='col form-group'>Cliente: <%= item_form.collection_select :client_id, Client.all, :id, :name, {}, class: "form-control" %></div>
+              <div class='col form-group'>Terapeuta: <%= item_form.collection_select :user_id, User.all, :id, :name, {}, class: "form-control" %></div>
+              <div class='col form-group'>Terapia: <%= item_form.collection_select :therapy_id, Therapy.all, :id, :name, {}, class: "form-control" %></div>
+            </div>
+              <div class='col form-group'>Descrição: <%= item_form.text_area :description, class: 'form-control' %></div>
 
               <div class="form-actions">
                 <%= item_form.button :submit %>

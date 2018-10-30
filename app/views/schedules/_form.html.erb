@@ -1,64 +1,67 @@
-<div id="example1" align="center"><br/>
-  <h1>Agenda</h1>
-<table style="width:50%;" align="center">
-  <tr><th>
-<%= form_with(model: schedule, local: true) do |form| %>
-  <% if schedule.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
+<div class="row justify-content-center">
+  <div class="col-md-15">
+    <div class="card">
+      <header class="card-header">
+        <h4 class="card-title mt-2 text-center">Novo Agendamento</h4>
+      </header>
+      <article class="card-body">
+        <%= form_with(model: schedule, local: true) do |form| %>
+          <% if schedule.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
 
-      <ul>
-      <% schedule.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+              <ul>
+              <% schedule.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-  <div class="div-select">
-    <%= form.label "Terapeuta", style:"padding-right: 10px;" %>
-    <%= form.collection_select :user_id, User.order(:name), :id, :name, include_blank: true%>
-  </div>
+            <div class="form-row">
+              <div class='col form-group'>
+                <%= form.label "Cliente", style:"padding-right: 15px;" %>
+                <%= form.collection_select :client_id, Client.order(:name), :id, :name, {}, class: "form-control" %>
+              </div>
+              <div class='col form-group'>
+                <%= form.label "Terapeuta", style:"padding-right: 10px;" %>
+                <%= form.collection_select :user_id, User.order(:name), :id, :name, {}, class: "form-control"%>
+              </div>
+            <div class='col form-group'>
+              <%= form.label "Terapia", style:"padding-right: 50px;" %>
+              <%= form.collection_select :therapy_id, Therapy.order(:name), :id, :name, {}, class: "form-control" %>
+            </div>
+          </div>
 
-  <div class="div-select">
-    <%= form.label "Cliente", style:"padding-right: 15px;" %>
-    <%= form.collection_select :client_id, Client.order(:name), :id, :name, include_blank: true %>
-  </div>
+          <div class="form-group">
+            <%= form.label :description %>
+            <%= form.text_area :description, class: 'form-control' %>
+          </div>
 
-  <div class="div-select">
-    <%= form.label "Terapia", style:"padding-right: 50px;" %>
-    <%= form.collection_select :therapy_id, Therapy.order(:name), :id, :name, include_blank: true %>
-  </div>
+          <div class="form-group">
+            <%= form.label "Data" %>
+            <%= form.datetime_select :start_time, as: :string, class: 'datepicker' %>
+          </div>
 
-  <div class="form-group">
-    <%= form.label :description %>
-    <%= form.text_area :description, class: 'form-control' %>
-  </div>
+          <div class="form-group">
+            <%= form.label "Data" %>
+            <%= form.datetime_select :end_time, class: 'datepicker' %>
+            <!--<div><input type="checkbox" name="billingtoo" onclick="FillBilling(this.form)"></div>
+          </div>
+          <script type="text/javascript">
+        function FillBilling(f) {
+          if(f.billingtoo.checked == true) {
+            f.schedule_end_time_date.value = f.schedule_start_time_date.value;
+          }
+        }
 
-  <div class="form-group">
-    <%= form.label "Data" %>
-    <%= form.datetime_select :start_time, as: :string, class: 'datepicker' %>
-  </div>
+          </script>-->
 
-  <div class="form-group">
-    <%= form.label "Data" %>
-    <%= form.datetime_select :end_time, class: 'datepicker' %>
-    <div><input type="checkbox" name="billingtoo" onclick="FillBilling(this.form)"></div>
-  </div>
-  <script type="text/javascript">
-function FillBilling(f) {
-  if(f.billingtoo.checked == true) {
-    f.schedule_end_time_date.value = f.schedule_start_time_date.value;
-  }
-}
-
-  </script>
-
-  <div class="actions">
-    <%= form.button "Agendar", class: "btn btn-primary" %>
-  </div>
-<% end %>
-</th></tr>
-</table>
-<br/>
-</div>
+          <div class="actions" align="center">
+            <%= form.button "Agendar", class: "btn btn-success" %>
+          </div>
+        <% end %>
+      </article> <!-- card-body end .// -->
+    </div> <!-- card.// -->
+  </div> <!-- col.//-->
+</div> <!-- row.//-->
