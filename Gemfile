@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
 
+gem 'dashing', :require => false
 gem 'jquery-minicolors-rails'
 gem 'rails-assets-datatables', source: 'https://rails-assets.org'
 gem 'cocoon'
