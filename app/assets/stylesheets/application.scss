@@ -11,13 +11,16 @@
  * It is generally better to create a new file per style scope.
  *
  */
+ @import "bootstrap/scss/bootstrap";
  @import "bootstrap/scss/functions";
  @import "bootstrap-color-yiq";
+ @import "bootstrap-toggle";
+ @import "jquery.minicolors";
  @import "variables";
- @import "bootstrap/scss/bootstrap";
  @import 'material-design-kit/src/style';
  @import 'material-icons';
  @import "fullcalendar";
+ @import "jquery-ui";
  @import "jquery-ui/datepicker";
  @import "bootstrap-datepicker3";
  @import 'layout';
@@ -36,7 +39,10 @@
 
 
 
-
+* {
+ color: #2E2400;
+ font-family: "Source Sans Pro", "Arial", sans-serif;
+}
 
 
 .div-select select{

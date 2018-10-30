@@ -1,95 +1,181 @@
+<body onload="myFunction()">
 <div class="row justify-content-center">
-<div class="col-md-6">
-<div class="card">
-<header class="card-header">
-  <h4 class="card-title mt-2 text-center">Cliente</h4>
-</header>
-<article class="card-body">
+  <div class="col-md-15">
+    <div class="card">
+      <header class="card-header">
+        <h4 class="card-title mt-2 text-center">Cliente</h4>
+      </header>
+      <article class="card-body">
+        <%= form_with(model: client, local: true) do |form| %>
+          <% if client.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
 
+              <ul>
+              <% client.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-<%= form_with(model: client, local: true) do |form| %>
-  <% if client.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+          <div class="form-row">
+            <div class='col form-group'>
+              <div class="field">
+                <%= form.label "Nome" %>
+                <%= form.text_field :name, class: 'form-control' %>
+              </div><br>
 
-      <ul>
-      <% client.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+              <div class="field">
+                <%= form.label "Data de Nascimento" %>
+                <%= form.date_select :birthdate, start_year: 1900, class: 'form-control' %>
+              </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: 'form-control' %>
-  </div>
+              <div class="field">
+                <%= form.label "E-mail" %>
+                <%= form.text_field :email, class: 'form-control' %>
+              </div>
 
-  <div class="field">
-    <%= form.label :birthdate %>
-    <%= form.date_select :birthdate, start_year: 1900, class: 'form-control' %>
-  </div>
+              <div class="form-row">
+                <div class="col form-group">
+                  <%= form.label "Ocupação" %>
+                  <%= form.text_field :occupation, class: 'form-control' %>
+                </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, class: 'form-control' %>
-  </div>
+                <div class="col form-group">
+                  <%= form.label "Indicação" %>
+                  <%= form.text_field :indication, class: 'form-control' %>
+                </div>
+              </div>
 
-<div class="form-row">
-  <div class="col form-group">
-    <%= form.label :occupation %>
-    <%= form.text_field :occupation, class: 'form-control' %>
-  </div>
-
-  <div class="col form-group">
-    <%= form.label :indication %>
-    <%= form.text_field :indication, class: 'form-control' %>
-  </div>
-</div>
-
-  <div class="field">
-    <%= form.label :credit %>
-    <%= form.text_field :credit, class: 'form-control' %>
-  </div><br/>
-
-<div class="card-body border">
-  <h5>Telefone(s) <%= link_to_add_association('+', form, :phone_clients) %></h5>
-  <div id="phone_clients">
-    
-    <%= form.fields_for :phone_clients do |phone_clients_fields| %>
-      <%= render partial: "phone_client_fields", locals: { f: phone_clients_fields } %>
-    <% end %>
-  </div>
-</div><br>
-
-
-
-<div class="card-body border">
-<h5>Endereço</h5>
-  <%= form.fields_for :address do |address_form| %>
-  <div class="form-row">
-    <div class='col form-group'>Endereco: <%= address_form.text_field :street, class: 'form-control' %></div>
-    <div class='col form-group'>Cidade: <%= address_form.text_field :city, class: 'form-control' %></div>
-    </div>
-    <div class='field'>Estado: <%= address_form.select :state, options_for_state(@client.address.state), class: 'form-control' %></div>
-
-  <% end %>
-</div><br>
-
-<div class="card-body border text-center">
-  <div class="actions">
-    <%= form.button "Confirmar", class: "btn btn-primary" %>
-    <%= link_to 'Voltar', clients_path, class: 'btn btn-warning' %>
-    
-  </div>
-</div>
-<% end %>
+              <div class="field">
+                <%= form.label "Credito" %>
+                <%= form.text_field :credit, class: 'form-control' %>
+              </div><br/>
+          </div>
+          <div class='col form-group'>
+            <div class="card-body border">
+              <h5>Telefone(s) <%= link_to_add_association('+', form, :phone_clients) %></h5>
+              <div id="phone_clients">
+                
+                <%= form.fields_for :phone_clients do |phone_clients_fields| %>
+                  <%= render partial: "phone_client_fields", locals: { f: phone_clients_fields } %>
+                <% end %>
+              </div>
+            </div><br>
 
 
 
+          <div class="card-body border">
+            <h5>Endereço</h5>
+            <%= form.fields_for :address do |address_form| %>
+            <div class="form-row">
+              <div class='col form-group'>Endereco: <%= address_form.text_field :street, class: 'form-control' %></div>
+              <div class='col form-group'>Cidade: <%= address_form.text_field :city, class: 'form-control' %></div>
+              </div>
+              <div class='field'>Estado: <%= address_form.select :state, options_for_state(@client.address.state), class: 'form-control' %></div>
 
-</article> <!-- card-body end .// -->
-</div> <!-- card.// -->
-</div> <!-- col.//-->
+            <% end %>
+          </div>
+          </div>
+          </div>
+          <br>
+          
+          <div class="card-body border text-center">
+            <div class="container">
+              <h3>Prontuário</h3>
+              <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Mostrar</button>
+              <div id="demo" class="collapse">
+                <%= form.fields_for :record do |record_form| %>
+                <br><div class="card-body border text-center"><div class="form-row">
+                    <div class='col form-group'>Alergia a Creme:<%= record_form.check_box :cream_allergy, class: 'form-control' %></div>
+                    <div class='col form-group'>Pressão Arterial<%= record_form.select :blood_pressure, Record.blood_pressures.map { |key, value| [key.humanize, key] }, class: 'form-control' %></div>
+                </div></div>
+                <div class="card-body border text-center"><div class="form-row">
+                    <div class='col form-group'>Marcapasso:<%= record_form.check_box :uses_pacemaker, class: 'form-control' %></div>
 
+                    <div class='col form-group'>Diabetes:<%= record_form.check_box :diabetes, class: 'form-control' %></div>
+
+                    <div class='col form-group'>Cirurgia:<%= record_form.check_box :surgery, class: 'form-control', id:"surgeryCheck", onclick:"myFunction()" %></div>
+
+                    <div class='col form-group' id="textSurgery" style="display:none">Local da Cirurgia:<%= record_form.text_field :surgery_where, class: 'form-control' %></div>
+                </div>
+              </div>
+
+                <div class="card-body border text-center"><div class="form-row">
+                    <div class='col form-group'>Acidente ou Fratura:<%= record_form.check_box :accident_fracture, class: 'form-control', id:"accidentCheck", onclick:"myFunction()" %></div>
+                  
+                  <div class='col form-group' id="textAccident" style="display:none">Local da Fratua:<%= record_form.text_field :accident_where, class: 'form-control' %></div>
+
+                  <div class='col form-group'>Doença Ossea:<%= record_form.check_box :bone_disease, class: 'form-control' %></div>
+
+                  <div class='col form-group'>Medicamentos:<%= record_form.check_box :medicine, class: 'form-control', id:"medicineCheck", onclick:"myFunction()" %></div>
+
+                  <div class='col form-group' id="textMedicine" style="display:none">Quais medicamentos:<%= record_form.text_field :medicine_which, class: 'form-control' %></div>
+                  </div></div>
+
+                  <div class="card-body border text-center"><div class="form-row">
+                    <div class='col form-group'>Desmaios ou Convulsões:<%= record_form.check_box :faint_seizure, class: 'form-control' %></div>
+
+                    <div class='col form-group'>Gravida:<%= record_form.check_box :woman_pregnant, class: 'form-control' %></div>
+
+                    <div class='col form-group'>Contraceptivo:<%= record_form.check_box :woman_contraceptive, class: 'form-control' %></div>
+                  </div></div>
+
+                  <div class="card-body border text-center"><div class="form-row">
+                    <div class='col form-group'>Dores:<%= record_form.text_area :pains, class: 'form-control' %></div>
+                  </div></div>
+                                  <script>
+                  function myFunction() {
+
+                      var checkBoxSurgery = document.getElementById("surgeryCheck");
+                      var textSurgery = document.getElementById("textSurgery");
+                      if (checkBoxSurgery.checked == true){
+                          textSurgery.style.display = "block";
+                      } else {
+                         textSurgery.style.display = "none";
+                      }
+
+                      var checkBoxAccident = document.getElementById("accidentCheck");
+                      var textAccident = document.getElementById("textAccident");
+                      if (checkBoxAccident.checked == true){
+                          textAccident.style.display = "block";
+                      } else {
+                         textAccident.style.display = "none";
+                      }
+
+                      var checkBoxMedicine = document.getElementById("medicineCheck");
+                      var textMedicine = document.getElementById("textMedicine");
+                      if (checkBoxMedicine.checked == true){
+                          textMedicine.style.display = "block";
+                      } else {
+                         textMedicine.style.display = "none";
+                      }
+                  }
+                </script>
+                
+                <% end %>
+
+
+
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="card-body border text-center">
+            <div class="actions">
+              <%= form.button "Confirmar", class: "btn btn-primary" %>
+              <%= link_to 'Voltar', clients_path, class: 'btn btn-warning' %>
+              
+            </div>
+          </div>
+
+
+        <% end %>
+      </article> <!-- card-body end .// -->
+    </div> <!-- card.// -->
+  </div> <!-- col.//-->
 </div> <!-- row.//-->
+
+</body>

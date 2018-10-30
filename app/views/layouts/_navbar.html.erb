@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark d-flex-none">
+<nav class="navbar navbar-expand-md navbar-dark d-flex-none" style="background-color: #B4A262;"><% if user_signed_in? %>
   <button class="btn btn-link text-white pl-0" type="button" data-toggle="sidebar">
     <i class="material-icons align-middle md-36">short_text</i>
   </button>
@@ -8,7 +8,7 @@
     <ul class="navbar-nav ml-auto align-items-center">
 
       <li class="nav-item nav-divider">
-    <% if user_signed_in? %>
+    
     <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %></a>
     <div class="dropdown-menu">
@@ -16,8 +16,6 @@
       <a class="dropdown-item" href="#">Another action</a>
     </div>
   </li>
-    <% else %>
-      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
     <% end %>
     </ul>
   </div>

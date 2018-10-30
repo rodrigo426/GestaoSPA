@@ -6,3 +6,5 @@ json.start schedule.start_time
 json.end schedule.end_time
 json.color '#' + schedule.user.color
 json.url schedule_url(schedule, format: :html)
+json.update_url schedule_path(schedule, method: :patch)
+

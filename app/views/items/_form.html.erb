@@ -1,0 +1,37 @@
+<%= form_with(model: item, local: true) do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row justify-content-center">
+  <div class="col-md-20">
+    <div class="card">
+      <header class="card-header">
+        <h3 class="card-title mt-2 text-center">Comanda</h3>
+      </header>
+      <article class="card-body">
+
+            <%= simple_fields_for :item do |item_form| %>
+              <div class='col form-group'>Cliente: <%= item_form.collection_select :client_id, Client.all, :id, :name, class: 'form-control' %></div>
+              <div class='col form-group'>Terapeuta: <%= item_form.collection_select :user_id, User.all, :id, :name, kind: 0, class: 'form-control' %></div>
+              <div class='col form-group'>Terapia: <%= item_form.collection_select :therapy_id, Therapy.all, :id, :name, class: 'form-control' %></div>
+              <div class='col form-group'>Terapia: <%= item_form.text_area :description, class: 'form-control' %></div>
+
+              <div class="form-actions">
+                <%= item_form.button :submit %>
+              </div>
+            <% end %>
+
+        </article> <!-- card-body end .// -->
+    </div> <!-- card.// -->
+  </div> <!-- col.//-->
+</div> <!-- row.//-->
+
+<% end %>

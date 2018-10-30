@@ -1,54 +1,132 @@
-<p id="notice"><%= notice %></p>
+<div class="row justify-content-center">
+  <div class="col-md-20">
+    <div class="card">
+      <header class="card-header">
+        <h3 class="card-title mt-2 text-center">Cliente</h3>
+      </header>
+      <article class="card-body">
+        <p id="notice"><%= notice %></p>
+
+        <p>
+          <strong>Nome:</strong>
+          <%= @client.name %>
+        </p>
+        <p>
+          <strong>Data de Nascimento:</strong>
+          <%= @client.birthdate %>
+        </p>
+
+        <p>
+          <strong>Ocupação:</strong>
+          <%= @client.occupation %>
+        </p>
+
+        <p>
+          <strong>Indicação:</strong>
+          <%= @client.indication %>
+        </p>
+
+        <div class="card-body border">
+          <header class="card-header">
+            <h4 class="card-title mt-2">Contato</h4>
+          </header>
+          <div class="form-row">
+            <div class='col form-group'>
+              <p>
+                <strong>Email:</strong>
+                <%= @client.email %>
+              </p>
+            </div>
+            <div class='col form-group'>
+              <p>
+                <strong>Telefones:</strong>
+                <% unless @client.phone_clients.blank? %>
+                <% @client.phone_clients.each do |phone_client|%>
+                  <%= phone_client.number%>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                <% end %>
+              <% end %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <br><div class="card-body border">
+          <header class="card-header">
+            <h4 class="card-title mt-2">Endereço</h4>
+          </header>
+          <div class="form-row">
+          <div class='col form-group'>
+            <p>
+              <strong>Cidade:</strong>
+              <%= @client.address.city if @client.address%>
+            </p>
+          </div>
+          <div class='col form-group'>
+            <p>
+              <strong>Estado:</strong>
+              <%= @client.address.state if @client.address%>
+            </p>
+          </div>
+
+          </div>
+            <p>
+              <strong>Endereco:</strong>
+              <%= @client.address.street if @client.address%>
+            </p>
+        </div>
 
 
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
 
-<p>
-  <strong>Birthdate:</strong>
-  <%= @client.birthdate %>
-</p>
+        <br><div class="card-body border">
+          <header class="card-header">
+            <h4 class="card-title mt-2">Prontuário</h4>
+          </header>
+          <p>
+            <%= "- Tem Alergia a Creme;" if @client.record && @client.record.cream_allergy == true%>
+          </p>
+          <p>
+            <%= "- Pressão arterial alta;" if @client.record && @client.record.blood_pressure == "alta"%>
+            <%= "- Pressão arterial normal;" if @client.record && @client.record.blood_pressure == "normal"%>
+            <%= "- Pressão arterial baixa;" if @client.record && @client.record.blood_pressure == "baixa"%>
+          </p>
+          <p>
+            <%= "- Usa Marcapasso;" if @client.record && @client.record.uses_pacemaker == true%>
+          </p>
+          <p>
+            <%= "- Tem Diabetes;" if @client.record && @client.record.diabetes == true%>
+          </p>
+          <p>
+            <%= "- Fez cirurgia, local: " + @client.record.surgery_where + ";" if @client.record && @client.record.surgery == true%>
+          </p>
+          <p>
+            <%= "- Teve acidente ou fratura, local: " + @client.record.accident_where + ";" if @client.record && @client.record.accident_fracture == true%>
+          </p>
+          <p>
+            <%= "- Tem doença ossea;" if @client.record && @client.record.bone_disease == true%>
+          </p>
+          <p>
+            <%= "- Usa o(s) seguinte(s) medicamento(s): " + @client.record.medicine_which + ";" if @client.record && @client.record.medicine == true%>
+          </p>
+          <p>
+            <%= "- Teve desmaio ou convulção;" if @client.record && @client.record.faint_seizure == true%>
+          </p>
+          <p>
+            <%= "- Está gravida;" if @client.record && @client.record.woman_pregnant == true%>
+          </p>
+          <p>
+            <%= "- Usa contraceptivos;" if @client.record && @client.record.woman_contraceptive == true%>
+          </p>
+          <p>
+            <%= "- Dores: " + @client.record.pains + ";" if @client.record && @client.record.pains.present?%>
+          </p>
+        </div>
+        <div align="center">
+          <%= link_to 'Edit', edit_client_path(@client), class: "btn btn-primary" %>
+          <%= link_to 'Back', clients_path, class: "btn btn-secondary" %>
+        </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
 
-<p>
-  <strong>Occupation:</strong>
-  <%= @client.occupation %>
-</p>
-
-<p>
-  <strong>Indication:</strong>
-  <%= @client.indication %>
-</p>
-
-<p>
-  <strong>Telefones:</strong>
-  <% unless @client.phone_clients.blank? %>
-  <% @client.phone_clients.each do |phone_client|%>
-    <%= phone_client.number%>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <% end %>
-<% end %>
-</p>
-
-<p>
-  <strong>Endereco:</strong>
-  <%= @client.address.street if @client.address%>
-</p>
-
-<p>
-  <strong>Cidade:</strong>
-  <%= @client.address.city if @client.address%>
-</p>
-
-<p>
-  <strong>Estado:</strong>
-  <%= @client.address.state if @client.address%>
-</p>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+      </article> <!-- card-body end .// -->
+    </div> <!-- card.// -->
+  </div> <!-- col.//-->
+</div> <!-- row.//-->

@@ -10,17 +10,24 @@ class ClientsController < ApplicationController
     end    
   end
 
-
-
   # GET /clients/1
   # GET /clients/1.json
   def show
   end
 
+
+  def autocomplete
+    render json: Autocomplete::Clients.new(view_context)
+  end
+
+
+
+
   # GET /clients/new
   def new
     @client = Client.new
     @client.build_address
+    @client.build_record
   end
 
   # GET /clients/1/edit
@@ -29,6 +36,9 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     if @client.address.blank?
       @client.build_address
+    end
+    if @client.record.blank?
+      @client.build_record
     end
   end
 
@@ -82,6 +92,7 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:name, :birthdate, :email, :occupation, :indication, :credit, 
         phone_clients_attributes: [:id, :number, :_destroy], 
-        address_attributes: [:id, :state, :city, :street])
+        address_attributes: [:id, :state, :city, :street],
+        record_attributes: [:id, :cream_allergy, :blood_pressure, :uses_pacemaker, :diabetes, :surgery, :surgery_where, :accident_fracture, :accident_where, :bone_disease, :medicine, :medicine_which, :faint_seizure, :woman_pregnant, :woman_contraceptive, :pains])
     end
 end

@@ -12,6 +12,8 @@ class CashiersController < ApplicationController
     #@user = User.all
     @therapy = Therapy.all
     @client = Client.all
+    @cashier.item.build
+    @item = Item.new
   end
 
   # GET /cashiers/1
@@ -78,7 +80,7 @@ class CashiersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cashier_params
-      cp = params.require(:cashier).permit(:price, :paymment, :paid_value, :paid)
+      cp = params.require(:cashier).permit(:price, :paymment, :paid_value, :paid, items_attributes: [:id, :client, :user, :therapy, :description, :_destroy])
       cp[:paymment] = params[:cashier][:paymment].to_i
       cp[:paid] = params[:cashier][:paid].to_i
       return cp

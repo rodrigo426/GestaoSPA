@@ -12,11 +12,15 @@
 //
 //= require jquery/dist/jquery.min.js
 //= require jquery-ujs
+//= require jquery-ui
+//= require jquery.minicolors
+//= require jquery.minicolors.simple_form
 //= require popper.js/dist/umd/popper.js
 //= require bootstrap/dist/js/bootstrap.min.js
 //= require dom-factory/dist/dom-factory.js
 //= require material-design-kit/dist/material-design-kit.js
 //= require bootstrap-datepicker
+//= require bootstrap-toggle
 //= require activestorage
 //= require Chart.bundle
 //= require chartkick
@@ -27,6 +31,10 @@
 //= require cocoon
 //= require datatables
 //= require_tree .
+
+
+
+
 
 //template dashboard
 $('.dropdown.notifications ul a.nav-link').click(function (e) {
@@ -76,11 +84,11 @@ $(document).ready(function() {
       },
       selectable: true,
       selectHelper: true,
-      editable: true,
+      editable: false,
       eventLimit: true,
       eventSources: [{
         url: '/events.json'
-    }]
+    }],
 
     });
   })
@@ -105,12 +113,6 @@ $(document).on('turbolinks:load', function() {
     $('.fields').append($(this).data('fields').replace(regexp, time));
     return event.preventDefault();
   });
-
-
-
-
-
-
 
     $("table[role='datatable']").each(function(){
     $(this).DataTable({

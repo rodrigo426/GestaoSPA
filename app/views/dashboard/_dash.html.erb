@@ -1,0 +1,4 @@
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+
+<h3 align="center">Vendas por dia da semana</h3>
+<%= column_chart Cashier.group_by_day_of_week(:created_at, format: "%a").count %>

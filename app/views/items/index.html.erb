@@ -1,0 +1,25 @@
+<body>
+  <div id="example1" align="center">
+    <p id="notice"><%= notice %></p>
+
+    <div class="table-responsive">
+      <br/>
+      <h1>Histórico de vendas</h1>
+        <%= content_tag :table, role: :datatable, data: { url: items_path(format: :json)} do %>
+  <thead class="table">
+    <tr>
+      <th>Cliente</th>
+      <th>Terapeuta</th>
+      <th>Terapia</th>
+      <th>Descrição</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody class="table">
+  </tbody>
+  <% end %>
+
+    </div>
+  </div>
+</body>

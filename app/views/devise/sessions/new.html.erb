@@ -1,31 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-<h2>Log in</h2>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="estilo_Login.css" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="wrap">
+                <p class="form-title" align="center">
+                    <img src="http://julyoganiko.hospedagemdesites.ws/wp-content/uploads/2018/03/logo-julio-ganiko-principal.png" alt="Julyo Ganiko" width="150" height="110"></p>
+                <form class="login">
+                  <%= f.input :email, placeholder:"Email",
+                              required: false,
+                              label: false,
+                              autofocus: true,
+                              input_html: { autocomplete: "email" } %>
+                  <%= f.input :password, placeholder:"Senha",
+                              label: false,
+                              required: false,
+                              input_html: { autocomplete: "current-password" } %>
+                </form>
+            
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+              <div class="form-actions" align="center">
+                <%= f.button :submit, "Log in" %>
+              </div>
+            <% end %>
 
-<%= render "devise/shared/links" %>
-
-
-
-</body>
-</html>
+            <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>

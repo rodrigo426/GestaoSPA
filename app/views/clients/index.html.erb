@@ -1,12 +1,13 @@
-<body style="background-color:#f4f4f4;">
+<body>
   <div id="example1" align="center">
     <p id="notice"><%= notice %></p>
 
     <div class="table-responsive">
       <br/>
       <h1>Clientes</h1>
-      <%= link_to 'Cadastrar novo Cliente', new_client_path, class: 'btn btn-success' %><br/>
-      
+      <div class="row justify-content-center">
+      <%= link_to 'Cadastrar novo Cliente', new_client_path, class: 'btn btn-success' %>
+      </div>
         <%= content_tag :table, role: :datatable, data: { url: clients_path(format: :json)} do %>
         <thead class="table">
           <tr>

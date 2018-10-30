@@ -2,7 +2,7 @@
 
 #User.create name: 'Julio', status: :active, kind: :manager, email: 'julio@teste.com', password: 123456
 #User.create name: 'Manuel', status: :active, kind: :therapist, email: 'manuel@teste.com', password: 123456
-#User.create name: 'Marcos', status: :active, kind: :therapist, email: 'marcos@teste.com', password: 123456
+User.create name: 'Marcos', status: :active, kind: :therapist, email: 'marcos@teste.com', password: 123456
 
 
 
@@ -18,12 +18,12 @@
 
 
 
-PhoneClient.create number:'22331122', client_id: '1'
-PhoneClient.create number:'22331122', client_id: '1'
-PhoneClient.create number:'22331122', client_id: '1'
-PhoneClient.create number:'22331122', client_id: '2'
-PhoneClient.create number:'22331122', client_id: '3'
-PhoneClient.create number:'22331122', client_id: '4'
-PhoneClient.create number:'22331122', client_id: '5'
-PhoneClient.create number:'22331122', client_id: '6'
-PhoneClient.create number:'22331122', client_id: '7'
+#PhoneClient.create number:'22331122', client_id: '1'
+#PhoneClient.create number:'22331122', client_id: '1'
+#PhoneClient.create number:'22331122', client_id: '1'
+#PhoneClient.create number:'22331122', client_id: '2'
+#PhoneClient.create number:'22331122', client_id: '3'
+#PhoneClient.create number:'22331122', client_id: '4'
+#PhoneClient.create number:'22331122', client_id: '5'
+#PhoneClient.create number:'22331122', client_id: '6'
+#PhoneClient.create number:'22331122', client_id: '7'
