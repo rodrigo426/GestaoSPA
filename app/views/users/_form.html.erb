@@ -1,20 +1,57 @@
+<div class="row justify-content-center">
+  <div class="col-md-15">
+    <div class="card">
+      <header class="card-header">
+        <h4 class="card-title mt-2 text-center">Funcionário</h4>
+      </header>
+      <article class="card-body">
+        <%= form_with(model: user, local: true) do |form| %>
+          <% if user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
 
-<%= simple_form_for(@user) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+              <ul>
+              <% client.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :email %>
-    <%= f.input :kind %>
-    <%= f.input :status %>
-    <%= f.input :notes %>
-    <%= f.input :color, as: :minicolors %>
-    <%= f.input :password %>
-    <%= f.input :password_confirmation %>
-  </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <%= form.label "Nome" %>
+                <%= form.text_field :name, class: 'form-control' %>
+              </div>
+              <div class="col form-group">
+                <%= form.label "Email" %>
+                <%= form.text_field :email, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <%= form.label "Tipo" %>
+                <%= form.select :kinds, options_for_select(User.kinds.map {|k,v| [k,v]}), {}, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <%= form.label "Notas" %>
+                <%= form.text_area :notes, class: 'form-control' %>
+              </div>
+            </div>
+            <%= f.input :status %>
+            <%= f.input :notes %>
+            <%= f.input :color, as: :minicolors %>
+            <%= f.input :password %>
+            <%= f.input :password_confirmation %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+          <div class="form-actions">
+            <%= f.button :submit %>
+          </div>
+      
+        <% end %>
+      </article> <!-- card-body end .// -->
+    </div> <!-- card.// -->
+  </div> <!-- col.//-->
+</div> <!-- row.//-->

@@ -14,6 +14,11 @@ class CashiersController < ApplicationController
     @client = Client.all
     @cashier.item.build
     @item = Item.new
+
+    respond_to do |format|
+      format.html
+      format.json { render json: CashiersDatatable.new(view_context) }
+    end 
   end
 
   # GET /cashiers/1

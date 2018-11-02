@@ -1,70 +1,52 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+
 <br />
 <div class="container">
 	<div class="row">
-		<div class="col-sm-3">
-    	    <div class="hero-widget well well-sm">
+		<div class="col-sm-4">
+    	    <div class="widget-grey">
                 <div class="icon">
-                     <i class="glyphicon glyphicon-user"></i>
+                     <i class="material-icons" style="color: #6C757D;">account_circle</i>
                 </div>
                 <div class="text">
-                    <var><%= Client.count %></var>
+                    <var style="color: #6C757D;"><%= Client.count %></var>
                     <label class="text-muted">clientes cadastrados</label>
+                </div>
+                <div class="options">
+                    <a href="/clients/new" class="btn btn-secondary btn-lg"><i class="glyphicon glyphicon-plus"></i>+ 1 Cliente</a>
+                </div>
+            </div>
+		</div>
+        <div class="col-sm-4">
+    	    <div class="widget-green">
+                <div class="icon">
+                     <i class="material-icons" style="color: #28A745;">shopping_cart</i>
+                </div>
+                <div class="text">
+                    <var style="color: #28A745;"><%= Item.count %></var>
+                    <label class="text-muted">vendas realizadas</label>
+                </div>
+                <div class="options">
+                    <a href="/cashiers" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-plus"></i>+ 1 Venda</a>
+                </div>
+            </div>
+		</div>
+        <div class="col-sm-4">
+    	    <div class="widget-blue">
+                <div class="icon">
+                     <i class="material-icons" style="color: #007BFF;">account_circle</i>
+                </div>
+                <div class="text">
+                    <var style="color: #007BFF;"><%= Schedule.where('start_time >= ?', DateTime.now ).count %></var>
+                    <label class="text-muted">agendamentos hoje</label>
                 </div>
                 <div class="options">
                     <a href="/clients/new" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> 1 Cliente</a>
                 </div>
             </div>
-		</div>
-        <div class="col-sm-3">
-            <div class="hero-widget well well-sm">
-                <div class="icon">
-                     <i class="glyphicon glyphicon-star"></i>
-                </div>
-                <div class="text">
-                    <var>614</var>
-                    <label class="text-muted">page likes</label>
-                </div>
-                <div class="options">
-                    <a href="javascript:;" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-search"></i> View traffic</a>
-                </div>
-            </div>
-		</div>
-        <div class="col-sm-3">
-            <div class="hero-widget well well-sm">
-                <div class="icon">
-                     <i class="glyphicon glyphicon-tags"></i>
-                </div>
-                <div class="text">
-                    <var>73</var>
-                    <label class="text-muted">total orders</label>
-                </div>
-                <div class="options">
-                    <a href="javascript:;" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-search"></i> View orders</a>
-                </div>
-            </div>
     	</div>
-        <div class="col-sm-3">
-            <div class="hero-widget well well-sm">
-                <div class="icon">
-                     <i class="glyphicon glyphicon-cog"></i>
-                </div>
-                <div class="text">
-                    <var>75%</var>
-                    <label class="text-muted">profile complete</label>
-                </div>
-                <div class="options">
-                    <a href="javascript:;" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-wrench"></i> Edit profile</a>
-                </div>
-            </div>
-		</div>
 	</div>
 </div>
-
-
+<br>
 
 <h3 align="center">Vendas por dia da semana</h3>
 <%= column_chart Cashier.group_by_day_of_week(:created_at, format: "%a").count %>

@@ -1,34 +1,47 @@
 <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
+<div class="row justify-content-center">
+  <div class="col-md-20">
+    <div class="card">
+      <header class="card-header">
+        <h3 class="card-title mt-2 text-center">Detalhes do Agendamento</h3>
+      </header>
+      <p>
+        <strong>Cliente:</strong>
+        <%= @schedule.client.name %>
+      </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @schedule.user.name %>
-</p>
+      <p>
+        <strong>Terapeuta:</strong>
+        <%= @schedule.user.name %>
+      </p>
 
-<p>
-  <strong>Client:</strong>
-  <%= @schedule.client.name %>
-</p>
+      <p>
+        <strong>Terapia:</strong>
+        <%= @schedule.therapy.name %>
+      </p>
 
-<p>
-  <strong>Therapy:</strong>
-  <%= @schedule.therapy.name %>
-</p>
+      <p>
+        <strong>Descrição:</strong>
+        <%= @schedule.description %>
+      </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @schedule.description %>
-</p>
+      <p>
+        <strong>Horário de inicio:</strong>
+        <%= @schedule.start_time.to_formatted_s(:long) %>
+      </p>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @schedule.start_time %>
-</p>
+      <p>
+        <strong>Horário de término:</strong>
+        <%= @schedule.end_time.to_formatted_s(:long) %>
+      </p>
 
-<p>
-  <strong>End time:</strong>
-  <%= @schedule.end_time %>
-</p>
+      <div class="form-row">
+        <div class="col form-group" align="center"><%= link_to 'Editar', edit_schedule_path(@schedule), class: 'btn btn-info' %></div>
+        <div class="col form-group" align="center"><%= link_to 'Sair', schedules_path, class: 'btn btn-warning' %></div>
+      </div>
 
-<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
-<%= link_to 'Back', schedules_path %>
+      </article> <!-- card-body end .// -->
+    </div> <!-- card.// -->
+  </div> <!-- col.//-->
+</div> <!-- row.//-->

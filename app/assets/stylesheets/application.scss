@@ -14,7 +14,6 @@
  @import "bootstrap/scss/bootstrap";
  @import "bootstrap/scss/functions";
  @import "bootstrap-color-yiq";
- @import "bootstrap-toggle";
  @import "jquery.minicolors";
  @import "variables";
  @import 'material-design-kit/src/style';
@@ -23,6 +22,9 @@
  @import "jquery-ui";
  @import "jquery-ui/datepicker";
  @import "bootstrap-datepicker3";
+ @import 'jquery-ui/core';
+ @import 'jquery-ui/theme';
+ @import 'datatables/jquery.dataTables';
  @import 'layout';
  @import 'drawer';
  @import "navbar";
@@ -36,6 +38,42 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+
+.widget-grey {
+  width: 90%;
+  padding: 10px 10px 10px 10px;
+  margin:0 auto;
+  background-color:#f2f2f2;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #bfbfbf;
+  border-radius: 3px;
+    box-shadow: inset 0px 0px 12px -1px rgba(191,191,191,0.76);
+}
+
+.widget-green {
+  width: 90%;
+  padding: 10px 10px 10px 10px;
+  margin:0 auto;
+  background-color:#c8ebc9;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #90d192;
+  border-radius: 3px;
+    box-shadow: inset 0px 0px 12px -1px rgba(144,209,146,1);
+}
+
+.widget-blue {
+  width: 90%;
+  padding: 10px 10px 10px 10px;
+  margin:0 auto;
+  background-color:#dadaf0;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #a6a6e0;
+  border-radius: 3px;
+    box-shadow: inset 0px 0px 12px -1px rgba(166,166,224,1);
+}
 
 
 

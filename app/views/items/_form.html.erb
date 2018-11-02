@@ -27,8 +27,8 @@
             </div>
               <div class='col form-group'>Descrição: <%= item_form.text_area :description, class: 'form-control' %></div>
 
-              <div class="form-actions">
-                <%= item_form.button :submit %>
+              <div class="form-actions" align="center">
+                <%= item_form.submit 'Confirmar', class: "btn btn-success"%>
               </div>
             <% end %>
 

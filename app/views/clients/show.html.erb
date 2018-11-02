@@ -1,19 +1,15 @@
+<br>
 <div class="row justify-content-center">
   <div class="col-md-20">
     <div class="card">
       <header class="card-header">
-        <h3 class="card-title mt-2 text-center">Cliente</h3>
+        <h3 class="card-title mt-2 text-center"><%= @client.name %></h3>
       </header>
       <article class="card-body">
         <p id="notice"><%= notice %></p>
-
-        <p>
-          <strong>Nome:</strong>
-          <%= @client.name %>
-        </p>
         <p>
           <strong>Data de Nascimento:</strong>
-          <%= @client.birthdate %>
+          <%= @client.birthdate.to_formatted_s(:long) %>
         </p>
 
         <p>
@@ -119,10 +115,10 @@
           <p>
             <%= "- Dores: " + @client.record.pains + ";" if @client.record && @client.record.pains.present?%>
           </p>
-        </div>
-        <div align="center">
-          <%= link_to 'Edit', edit_client_path(@client), class: "btn btn-primary" %>
-          <%= link_to 'Back', clients_path, class: "btn btn-secondary" %>
+        </div><br>
+        <div class="form-row">
+          <div class="col form-group" align="center"><%= link_to 'Editar', edit_client_path(@client), class: "btn btn-primary" %></div>
+          <div class="col form-group" align="center"><%= link_to 'Sair', clients_path, class: "btn btn-secondary" %></div>
         </div>
 
 

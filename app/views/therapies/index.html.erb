@@ -6,20 +6,21 @@
       <br/>
       <h1>Terapias</h1>
       <div class="row justify-content-center">
-      <%= link_to 'Cadastrar novo Funcionário', new_therapy_path, class: 'btn btn-success' %>
+      <%= link_to 'Cadastrar nova Terapia', new_therapy_path, class: 'btn btn-success' %>
       </div>
-
+      <div style="width:95%">
         <%= content_tag :table, role: :datatable, data: { url: therapies_path(format: :json)} do %>
-          <thead class="table">
+          <thead class="table table-striped table-bordered">
             <tr>
-              <th>Name</th>
+              <th>Nome</th>
               <th></th>
             </tr>
           </thead>
 
-          <tbody class="table">
+          <tbody class="table table-striped table-bordered">
           </tbody>
         <% end %>
+      </div>
     </div>
   </div>
 </body>

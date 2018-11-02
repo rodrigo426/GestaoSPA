@@ -8,8 +8,10 @@
       <div class="row justify-content-center">
       <%= link_to 'Cadastrar novo Cliente', new_client_path, class: 'btn btn-success' %>
       </div>
+      <div style="width:95%">
         <%= content_tag :table, role: :datatable, data: { url: clients_path(format: :json)} do %>
-        <thead class="table">
+        
+        <thead class="table table-striped table-bordered">
           <tr>
             <th>Nome</th>
             <th>Email</th>
@@ -19,10 +21,11 @@
           </tr>
         </thead>
 
-        <tbody class="table">
+        <tbody class="table table-striped table-bordered">
 
         </tbody>
         <% end %>
+        </div>
       
       
     </div>

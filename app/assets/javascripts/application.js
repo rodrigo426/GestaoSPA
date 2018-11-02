@@ -20,7 +20,6 @@
 //= require dom-factory/dist/dom-factory.js
 //= require material-design-kit/dist/material-design-kit.js
 //= require bootstrap-datepicker
-//= require bootstrap-toggle
 //= require activestorage
 //= require Chart.bundle
 //= require chartkick

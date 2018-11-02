@@ -4,10 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    respond_to do |format|
-      format.html
-      format.json { render json: ItemsDatatable.new(view_context) }
-    end    
+    @items = Item.all
   end
 
   # GET /items/1

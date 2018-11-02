@@ -73,7 +73,7 @@
               <div class='col form-group'>Endereco: <%= address_form.text_field :street, class: 'form-control' %></div>
               <div class='col form-group'>Cidade: <%= address_form.text_field :city, class: 'form-control' %></div>
               </div>
-              <div class='field'>Estado: <%= address_form.select :state, options_for_state(@client.address.state), class: 'form-control' %></div>
+              <div class='field'>Estado: <%= address_form.select :state, options_for_state(@client.address.state), {}, class: "form-control" %></div>
 
             <% end %>
           </div>
@@ -89,7 +89,7 @@
                 <%= form.fields_for :record do |record_form| %>
                 <br><div class="card-body border text-center"><div class="form-row">
                     <div class='col form-group'>Alergia a Creme:<%= record_form.check_box :cream_allergy, class: 'form-control' %></div>
-                    <div class='col form-group'>Pressão Arterial<%= record_form.select :blood_pressure, Record.blood_pressures.map { |key, value| [key.humanize, key] }, class: 'form-control' %></div>
+                    <div class='col form-group'>Pressão Arterial<%= record_form.select :blood_pressure, Record.blood_pressures.map { |key, value| [key.humanize, key] }, {}, class: "form-control" %></div>
                 </div></div>
                 <div class="card-body border text-center"><div class="form-row">
                     <div class='col form-group'>Marcapasso:<%= record_form.check_box :uses_pacemaker, class: 'form-control' %></div>
@@ -163,10 +163,10 @@
           </div>
           <br>
 
-          <div class="card-body border text-center">
-            <div class="actions">
-              <%= form.button "Confirmar", class: "btn btn-primary" %>
-              <%= link_to 'Voltar', clients_path, class: 'btn btn-warning' %>
+          <div class="card-body border">
+            <div class="form-row">
+              <div class="col form-group" align="left"><%= form.button "Confirmar", class: "btn btn-success" %></div>
+              <div class="col form-group" align="right"><%= link_to 'Sair', clients_path, class: 'btn btn-warning' %></div>
               
             </div>
           </div>

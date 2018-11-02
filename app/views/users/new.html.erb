@@ -1,5 +1,69 @@
-<h1>New User</h1>
+<br>
+<h2 align="center">Cadastrar</h2>
+<div class="row justify-content-center">
+  <div class="col-md-15">
+    <div class="card">
+      <header class="card-header">
+        <h4 class="card-title mt-2 text-center">Funcionário</h4>
+      </header>
+      <article class="card-body">
+        <%= form_with(model: @user, local: true) do |form| %>
+          <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<%= render 'form', user: @user %>
+              <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-<%= link_to 'Back', users_path %>
+            <div class="form-row">
+              <div class="col form-group">
+                <%= form.label "Nome" %>
+                <%= form.text_field :name, class: 'form-control' %>
+              </div>
+              <div class="col form-group">
+                <%= form.label "Email" %>
+                <%= form.text_field :email, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <%= form.label "Tipo" %>
+                <%= form.select :kinds, options_for_select(User.kinds.map {|k,v| [k,v]}), {}, class: 'form-control' %>
+              </div>
+              <div class="col form-group">
+                <%= form.label "Cor da agenda" %>
+                <%= form.text_field :color, as: :minicolors, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <%= form.label "Notas" %>
+                <%= form.text_area :notes, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <%= form.label "Senha" %>
+                <%= form.password_field :password, class: 'form-control' %>
+              </div>
+              <div class="col form-group">
+                <%= form.label "Confirmar Senha" %>
+                <%= form.password_field :password_confirmation, class: 'form-control' %>
+              </div>
+            </div>
+
+          <div class="form-row">
+            <div class="col form-group" align="center"><%= form.button "Confirmar", class: 'btn btn-success' %></div>
+            <div class="col form-group" align="center"><%= link_to 'Sair', users_path, class: 'btn btn-warning' %></div>
+          </div>
+      
+        <% end %>
+      </article> <!-- card-body end .// -->
+    </div> <!-- card.// -->
+  </div> <!-- col.//-->
+</div> <!-- row.//-->
