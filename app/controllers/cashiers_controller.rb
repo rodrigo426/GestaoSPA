@@ -37,6 +37,9 @@ class CashiersController < ApplicationController
     @client = Client.all
   end
 
+  def historico
+  end
+
   # POST /cashiers
   # POST /cashiers.json
   def create

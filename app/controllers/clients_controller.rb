@@ -1,17 +1,14 @@
  class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
-  after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
+  #after_action :verify_authorized, except: :index
+  #after_action :verify_policy_scoped, only: :index
 
   # GET /clients
   # GET /clients.json
   def index
-    @clients = policy_scope(Client).reverse
-    respond_to do |format|
-      format.html
-      format.json { render json: ClientsDatatable.new(view_context) }
-    end    
+    #@clients = policy_scope(Client).reverse
+    @clients = Client.all
   end
 
   # GET /clients/1
@@ -32,7 +29,7 @@
     @client = Client.new
     @client.build_address
     @client.build_record
-    authorize @client
+    #authorize @client
   end
 
   # GET /clients/1/edit
@@ -91,7 +88,7 @@
     # Use callbacks to share common setup or constraints between actions.
     def set_client
       @client = Client.find(params[:id])
-      authorize @client
+      #authorize @client
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

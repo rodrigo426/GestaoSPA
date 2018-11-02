@@ -18,7 +18,7 @@ class ClientPolicy < ApplicationPolicy
   private
 
   def user_is_owner_of_record?
-    @user == @record.user
+    #@user == @record.user
   end
 
 end

@@ -9,7 +9,7 @@ class UsersDatatable < ApplicationDatatable
         column << user.name
         #column << client.birthdate
         column << user.email
-        column << user.status
+        column << user.kind
 
         links = []
         links << link_to('Detalhes', user, class: 'btn btn-info')

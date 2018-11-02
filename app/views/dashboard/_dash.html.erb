@@ -48,5 +48,8 @@
 </div>
 <br>
 
-<h3 align="center">Vendas por dia da semana</h3>
-<%= column_chart Cashier.group_by_day_of_week(:created_at, format: "%a").count %>
+<h3 align="center">Vendas nesta semana</h3>
+<%= column_chart Cashier.group_by_day_of_week(:created_at, format: "%a").where('created_at >= ?', 1.week.ago).count %>
+<br>
+<h3 align="center">Terapias mais vendidas nesta semana</h3>
+<%= pie_chart Cashier.joins(:therapy).group(:name).where('cashiers.created_at >= ?', 1.week.ago).count %>

@@ -31,24 +31,5 @@
           <% end %>
         </tbody>
       </table>
-
-
-
-      <div style="width:95%">
-        <%= content_tag :table, role: :datatable, data: { url: cashiers_path(format: :json)} do %>
-          <thead class="table table-striped table-bordered">
-            <tr>
-              <th>Cliente</th>
-              <th>Terapeuta</th>
-              <th>Terapia</th>
-              <th>Valor</th>
-              <th></th>
-            </tr>
-          </thead>
-
-          <tbody class="table table-striped table-bordered">
-          </tbody>
-        <% end %>
-      </div>
     </div>
   </div>

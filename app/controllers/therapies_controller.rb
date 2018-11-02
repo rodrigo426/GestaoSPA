@@ -4,10 +4,7 @@ class TherapiesController < ApplicationController
   # GET /therapies
   # GET /therapies.json
   def index
-    respond_to do |format|
-      format.html
-      format.json { render json: TherapiesDatatable.new(view_context) }
-    end
+    @therapies = Therapy.all
   end
 
   # GET /therapies/1

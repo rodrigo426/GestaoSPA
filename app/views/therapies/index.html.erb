@@ -9,17 +9,26 @@
       <%= link_to 'Cadastrar nova Terapia', new_therapy_path, class: 'btn btn-success' %>
       </div>
       <div style="width:95%">
-        <%= content_tag :table, role: :datatable, data: { url: therapies_path(format: :json)} do %>
-          <thead class="table table-striped table-bordered">
+        <table id='therapies' class='table table-striped table-bordered'>
+          <thead>
             <tr>
               <th>Nome</th>
+              <th>Valor</th>
               <th></th>
             </tr>
           </thead>
 
-          <tbody class="table table-striped table-bordered">
+          <tbody>
+            <% @therapies.each do |therapy| %>
+              <tr>
+                <td><%= link_to(therapy.name, therapy) %></td>
+                <td><%= therapy.price %></td>
+                <td><%= link_to('Editar', edit_therapy_path(therapy), class: 'btn btn-info') %>
+                </td>
+              </tr>
+            <% end %>
           </tbody>
-        <% end %>
+        </table>
       </div>
     </div>
   </div>

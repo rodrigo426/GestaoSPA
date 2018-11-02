@@ -1,7 +1,8 @@
-require 'client.rb'
 class DashboardController < ApplicationController
 	def index
-		@clients = Client.all
-		@cashiers = Cashier.all
 	end
+	def sell_week
+		render json: Cashier.group_by_day_of_week(:created_at, format: "%a").count
+	end
+	
 end

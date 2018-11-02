@@ -11,73 +11,108 @@
 
   <% if user_signed_in? %>
     <div style="padding-left: 10px">
-      <div style="color: #4E400E">
-        <b><%= current_user.email %></b>
-      </div>
+        <a onclick="toogleUser()" href="javascript:void(0);" style="color: #4E400E"><%= current_user.email %></a>
+      <div id="divUser" style="display: none">
       <%= link_to "Minha conta", user_path(current_user.id), :style => "color: #8E7C3E" %><br>
       <%= link_to "Logout", destroy_user_session_path, :method => :delete, :style => "color: #8E7C3E"  %>
     </div>
+    </div>
   <% end %>
 
-
-
   <!-- HEADING -->
-  <div class="py-2 drawer-heading" style="color: #4E400E">
-    Home
-  </div>
+    <br><a onclick="toogleHome()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #4E400E">Home</a>
 
   <!-- MENU -->
   <ul class="drawer-menu" id="mainMenu" data-children=".drawer-submenu">
-    <li class="drawer-menu-item">
-      <a href="/">
-        <i class="material-icons" style="color: #8E7C3E">home</i>
-        <span class="drawer-menu-text" style="color: #8E7C3E">Dashboard</span>
-      </a>
-    </li>
-    <div class="py-2 drawer-heading" style="color: #4E400E">
-      Recepção
+    <div id="divHome">
+      <li class="drawer-menu-item">
+        <a href="/">
+          <i class="material-icons" style="color: #8E7C3E">home</i>
+          <span class="drawer-menu-text" style="color: #8E7C3E">Dashboard</span>
+        </a>
+      </li>
     </div>
-    <li class="drawer-menu-item">
-      <a href="/schedules">
-        <i class="material-icons" style="color: #8E7C3E">perm_contact_calendar</i>
-        <span class="drawer-menu-text" style="color: #8E7C3E">Agenda</span>
-      </a>
-    </li>
-    <li class="drawer-menu-item">
-      <a href="/cashiers">
-        <i class="material-icons" style="color: #8E7C3E">shopping_cart</i>
-        <span class="drawer-menu-text" style="color: #8E7C3E">Frente de Caixa</span>
-      </a>
-    </li>
-    <li class="drawer-menu-item">
-      <a href="/items">
-        <i class="material-icons" style="color: #8E7C3E">list_alt</i>
-        <span class="drawer-menu-text" style="color: #8E7C3E">Histórico</span>
-      </a>
-    </li>
-    <div class="py-2 drawer-heading" style="color: #4E400E">
-      Cadastros
+    <br><a onclick="toogleRecepcao()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #4E400E">Recepção</a>
+    <div id="divRecepcao">
+      <li class="drawer-menu-item">
+        <a href="/schedules">
+          <i class="material-icons" style="color: #8E7C3E">perm_contact_calendar</i>
+          <span class="drawer-menu-text" style="color: #8E7C3E">Agenda</span>
+        </a>
+      </li>
+      <li class="drawer-menu-item">
+        <a href="/cashiers">
+          <i class="material-icons" style="color: #8E7C3E">shopping_cart</i>
+          <span class="drawer-menu-text" style="color: #8E7C3E">Frente de Caixa</span>
+        </a>
+      </li>
+      <li class="drawer-menu-item">
+        <a href="/items">
+          <i class="material-icons" style="color: #8E7C3E">list_alt</i>
+          <span class="drawer-menu-text" style="color: #8E7C3E">Histórico</span>
+        </a>
+      </li>
     </div>
-    <li class="drawer-menu-item">
-      <a href="/clients">
-        <i class="material-icons" style="color: #8E7C3E">account_circle</i>
-        <span class="drawer-menu-text" style="color: #8E7C3E">Clientes</span>
-      </a>
-    </li>
+    <br><a onclick="toogleCadastros()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #4E400E">Cadastros</a>
+    <div id="divCadastros">
+      <li class="drawer-menu-item">
+        <a href="/clients">
+          <i class="material-icons" style="color: #8E7C3E">account_circle</i>
+          <span class="drawer-menu-text" style="color: #8E7C3E">Clientes</span>
+        </a>
+      </li>
 
-    <li class="drawer-menu-item">
-      <a href="/users">
-        <i class="material-icons" style="color: #8E7C3E">face</i>
-        <span class="drawer-menu-text" style="color: #8E7C3E">Funcionários</span>
-      </a>
-    </li>
+      <li class="drawer-menu-item">
+        <a href="/users">
+          <i class="material-icons" style="color: #8E7C3E">face</i>
+          <span class="drawer-menu-text" style="color: #8E7C3E">Funcionários</span>
+        </a>
+      </li>
 
-    <li class="drawer-menu-item">
-      <a href="/therapies">
-        <i class="material-icons" style="color: #8E7C3E">sentiment_satisfied_alt
-</i>
-        <span class="drawer-menu-text" style="color: #8E7C3E">Terapias</span>
-      </a>
-    </li>
+      <li class="drawer-menu-item">
+        <a href="/therapies">
+          <i class="material-icons" style="color: #8E7C3E">sentiment_satisfied_alt
+  </i>
+          <span class="drawer-menu-text" style="color: #8E7C3E">Terapias</span>
+        </a>
+      </li>
+    </div>
   </ul>
 </nav>
+
+<script>
+function toogleUser() {
+    var x = document.getElementById("divUser");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+function toogleHome() {
+    var x = document.getElementById("divHome");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+function toogleRecepcao() {
+    var x = document.getElementById("divRecepcao");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+function toogleCadastros() {
+    var x = document.getElementById("divCadastros");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>

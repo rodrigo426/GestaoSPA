@@ -21,15 +21,15 @@
             <div class="form-row">
               <div class='col form-group'>
                 <%= form.label "Cliente", style:"padding-right: 15px;" %>
-                <%= form.collection_select :client_id, Client.order(:name), :id, :name, {}, class: "form-control" %>
+                <%= form.collection_select :client_id, Client.order(:name), :id, :name, { include_blank: true }, class: "form-control" %>
               </div>
               <div class='col form-group'>
                 <%= form.label "Terapeuta", style:"padding-right: 10px;" %>
-                <%= form.collection_select :user_id, User.order(:name), :id, :name, {}, class: "form-control"%>
+                <%= form.collection_select :user_id, User.where(kind: [:terapeuta, :gerente]), :id, :name, { include_blank: true }, class: "form-control"%>
               </div>
             <div class='col form-group'>
               <%= form.label "Terapia", style:"padding-right: 50px;" %>
-              <%= form.collection_select :therapy_id, Therapy.order(:name), :id, :name, {}, class: "form-control" %>
+              <%= form.collection_select :therapy_id, Therapy.order(:name), :id, :name, { include_blank: true }, class: "form-control" %>
             </div>
           </div>
 

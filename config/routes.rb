@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/index'
   resources :therapies
   resources :items
   resources :cashiers
@@ -10,4 +11,5 @@ Rails.application.routes.draw do
   root :to => "dashboard#index"
   #root :to => redirect('/dashboards')
   get '/events', to: 'schedules#index'
+  #get 'cashiers/historico'
 end

@@ -21,14 +21,14 @@
 //= require material-design-kit/dist/material-design-kit.js
 //= require bootstrap-datepicker
 //= require activestorage
-//= require Chart.bundle
-//= require chartkick
 //= require turbolinks
 //= require moment 
 //= require fullcalendar
 //= require daterangepicker
 //= require cocoon
 //= require datatables
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
 
 
@@ -119,6 +119,10 @@ $(document).on('turbolinks:load', function() {
       serverSide: true,
       ajax: $(this).data('url')
     });
+  });
+
+  Chartkick.eachChart( function(chart) {
+    chart.redraw();
   });
   
 });
