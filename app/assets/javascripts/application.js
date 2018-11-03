@@ -16,6 +16,7 @@
 //= require jquery.minicolors
 //= require jquery.minicolors.simple_form
 //= require popper.js/dist/umd/popper.js
+//= require datatables/jquery.dataTables
 //= require bootstrap/dist/js/bootstrap.min.js
 //= require dom-factory/dist/dom-factory.js
 //= require material-design-kit/dist/material-design-kit.js
@@ -27,10 +28,9 @@
 //= require fullcalendar/locale-all
 //= require daterangepicker
 //= require cocoon
-//= require datatables
 //= require Chart.bundle
 //= require chartkick
-// require_tree .
+//= require_tree .
 
 
 
