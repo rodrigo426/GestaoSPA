@@ -30,7 +30,7 @@
 //= require datatables
 //= require Chart.bundle
 //= require chartkick
-//= require_tree .
+// require_tree .
 
 
 
