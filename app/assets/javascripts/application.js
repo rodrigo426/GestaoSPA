@@ -24,6 +24,7 @@
 //= require turbolinks
 //= require moment 
 //= require fullcalendar
+//= require fullcalendar/locale-all
 //= require daterangepicker
 //= require cocoon
 //= require datatables
@@ -81,6 +82,7 @@ $(document).ready(function() {
         center: 'title',
         right: 'month,agendaWeek,agendaDay',
       },
+      locale: 'pt-br',
       selectable: true,
       selectHelper: true,
       editable: false,

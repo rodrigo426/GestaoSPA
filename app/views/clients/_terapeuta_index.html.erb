@@ -1,0 +1,28 @@
+<div class="table-responsive">
+  <br/>
+  <h1>Clientes</h1>
+  <div style="width:95%">
+    <table id='clients' class='table table-striped table-bordered'>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Ocupacao</th>
+          <th></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <% @clients.each do |client| %>
+          <tr>
+            <td><%= link_to(client.name, client) %></td>
+            <td><%= client.email %></td>
+            <td><%= client.occupation %></td>
+            <td><%= link_to('Editar', edit_client_path(client), class: 'btn btn-info') %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

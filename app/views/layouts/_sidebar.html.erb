@@ -1,79 +1,79 @@
-<nav class="drawer drawer--dark" style="background-color: #d6c792">
+<nav class="drawer drawer--dark" style="background-color: #B4A262">
   <div class="drawer-spacer">
     <div class="media align-items-center">
       <a href="index.html" class="drawer-brand-circle mr-2" style="background-color: aliceblue;"><img src="http://julyoganiko.hospedagemdesites.ws/wp-content/uploads/2018/03/logo-julio-ganiko-principal.png" style="width:78%;height:78%;">
 </a>
       <div class="media-body">
-        <a href="/" class="h7 m-0 text-link" style="color: #4E400E">Spa Urbano Julio Ganiko</a>
+        <a href="/" class="h7 m-0 text-link" style="color: #271E00">Spa Urbano Julio Ganiko</a>
       </div>
     </div>
   </div>
 
   <% if user_signed_in? %>
     <div style="padding-left: 10px">
-        <a onclick="toogleUser()" href="javascript:void(0);" style="color: #4E400E"><%= current_user.email %></a>
+        <a onclick="toogleUser()" href="javascript:void(0);" style="color: #271E00"><%= current_user.email %></a>
       <div id="divUser" style="display: none">
-      <%= link_to "Minha conta", user_path(current_user.id), :style => "color: #8E7C3E" %><br>
-      <%= link_to "Logout", destroy_user_session_path, :method => :delete, :style => "color: #8E7C3E"  %>
+      <%= link_to "Minha conta", user_path(current_user.id), :style => "color: #5E4E14" %><br>
+      <%= link_to "Logout", destroy_user_session_path, :method => :delete, :style => "color: #5E4E14"  %>
     </div>
     </div>
   <% end %>
 
   <!-- HEADING -->
-    <br><a onclick="toogleHome()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #4E400E">Home</a>
+    <br><a onclick="toogleHome()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #271E00">Home</a>
 
   <!-- MENU -->
   <ul class="drawer-menu" id="mainMenu" data-children=".drawer-submenu">
     <div id="divHome">
       <li class="drawer-menu-item">
         <a href="/">
-          <i class="material-icons" style="color: #8E7C3E">home</i>
-          <span class="drawer-menu-text" style="color: #8E7C3E">Dashboard</span>
+          <i class="material-icons" style="color: #5E4E14">home</i>
+          <span class="drawer-menu-text" style="color: #5E4E14">Dashboard</span>
         </a>
       </li>
     </div>
-    <br><a onclick="toogleRecepcao()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #4E400E">Recepção</a>
+    <br><a onclick="toogleRecepcao()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #271E00">Recepção</a>
     <div id="divRecepcao">
       <li class="drawer-menu-item">
         <a href="/schedules">
-          <i class="material-icons" style="color: #8E7C3E">perm_contact_calendar</i>
-          <span class="drawer-menu-text" style="color: #8E7C3E">Agenda</span>
+          <i class="material-icons" style="color: #5E4E14">perm_contact_calendar</i>
+          <span class="drawer-menu-text" style="color: #5E4E14">Agenda</span>
         </a>
       </li>
       <li class="drawer-menu-item">
         <a href="/cashiers">
-          <i class="material-icons" style="color: #8E7C3E">shopping_cart</i>
-          <span class="drawer-menu-text" style="color: #8E7C3E">Frente de Caixa</span>
+          <i class="material-icons" style="color: #5E4E14">shopping_cart</i>
+          <span class="drawer-menu-text" style="color: #5E4E14">Frente de Caixa</span>
         </a>
       </li>
       <li class="drawer-menu-item">
         <a href="/items">
-          <i class="material-icons" style="color: #8E7C3E">list_alt</i>
-          <span class="drawer-menu-text" style="color: #8E7C3E">Histórico</span>
+          <i class="material-icons" style="color: #5E4E14">list_alt</i>
+          <span class="drawer-menu-text" style="color: #5E4E14">Histórico</span>
         </a>
       </li>
     </div>
-    <br><a onclick="toogleCadastros()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #4E400E">Cadastros</a>
+    <br><a onclick="toogleCadastros()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #271E00">Cadastros</a>
     <div id="divCadastros">
       <li class="drawer-menu-item">
         <a href="/clients">
-          <i class="material-icons" style="color: #8E7C3E">account_circle</i>
-          <span class="drawer-menu-text" style="color: #8E7C3E">Clientes</span>
+          <i class="material-icons" style="color: #5E4E14">account_circle</i>
+          <span class="drawer-menu-text" style="color: #5E4E14">Clientes</span>
         </a>
       </li>
 
       <li class="drawer-menu-item">
         <a href="/users">
-          <i class="material-icons" style="color: #8E7C3E">face</i>
-          <span class="drawer-menu-text" style="color: #8E7C3E">Funcionários</span>
+          <i class="material-icons" style="color: #5E4E14">face</i>
+          <span class="drawer-menu-text" style="color: #5E4E14">Funcionários</span>
         </a>
       </li>
 
       <li class="drawer-menu-item">
         <a href="/therapies">
-          <i class="material-icons" style="color: #8E7C3E">sentiment_satisfied_alt
+          <i class="material-icons" style="color: #5E4E14">sentiment_satisfied_alt
   </i>
-          <span class="drawer-menu-text" style="color: #8E7C3E">Terapias</span>
+          <span class="drawer-menu-text" style="color: #5E4E14">Terapias</span>
         </a>
       </li>
     </div>
