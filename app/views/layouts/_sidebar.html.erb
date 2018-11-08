@@ -1,84 +1,92 @@
-<nav class="drawer drawer--dark" style="background-color: #B4A262">
-  <div class="drawer-spacer">
+<div id="color-overlay"></div>
+<nav class="drawer drawer--dark" style="background-image: url(https://wallpapershome.com/images/pages/pic_v/2922.jpg);">
+  <div class="drawer-spacer" style="position: relative;">
     <div class="media align-items-center">
       <a href="index.html" class="drawer-brand-circle mr-2" style="background-color: aliceblue;"><img src="http://julyoganiko.hospedagemdesites.ws/wp-content/uploads/2018/03/logo-julio-ganiko-principal.png" style="width:78%;height:78%;">
 </a>
       <div class="media-body">
-        <a href="/" class="h7 m-0 text-link" style="color: #271E00">Spa Urbano Julio Ganiko</a>
+        <strong><a href="/" class="h7 m-0 text-link" style="color: #e0e0e0; font-size: 20px; font-family: ">Spa Urbano Julio Ganiko</a></strong>
       </div>
     </div>
   </div>
-
+  <div style="position: relative;">
   <% if user_signed_in? %>
     <div style="padding-left: 10px">
-        <a onclick="toogleUser()" href="javascript:void(0);" style="color: #271E00"><%= current_user.email %></a>
+        <a onclick="toogleUser()" href="javascript:void(0);" style="color: #e0e0e0"><%= current_user.email %></a>
       <div id="divUser" style="display: none">
-      <%= link_to "Minha conta", user_path(current_user.id), :style => "color: #5E4E14" %><br>
-      <%= link_to "Logout", destroy_user_session_path, :method => :delete, :style => "color: #5E4E14"  %>
+      <%= link_to "Logout", destroy_user_session_path, :method => :delete, :style => "color: #e0e0e0"  %>
     </div>
     </div>
   <% end %>
+  </div>
 
   <!-- HEADING -->
-    <br><a onclick="toogleHome()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #271E00">Home</a>
+  <div style="position: relative;">
+    <br><a onclick="toogleHome()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #e0e0e0">Home</a>
+
 
   <!-- MENU -->
   <ul class="drawer-menu" id="mainMenu" data-children=".drawer-submenu">
     <div id="divHome">
       <li class="drawer-menu-item">
         <a href="/">
-          <i class="material-icons" style="color: #5E4E14">home</i>
-          <span class="drawer-menu-text" style="color: #5E4E14">Dashboard</span>
+          <i class="material-icons" style="color: #e0e0e0">home</i>
+          <span class="drawer-menu-text" style="color: #e0e0e0">Dashboard</span>
         </a>
       </li>
     </div>
-    <br><a onclick="toogleRecepcao()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #271E00">Recepção</a>
+    <br><a onclick="toogleRecepcao()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #e0e0e0">Recepção</a>
     <div id="divRecepcao">
       <li class="drawer-menu-item">
         <a href="/schedules">
-          <i class="material-icons" style="color: #5E4E14">perm_contact_calendar</i>
-          <span class="drawer-menu-text" style="color: #5E4E14">Agenda</span>
+          <i class="material-icons" style="color: #e0e0e0">perm_contact_calendar</i>
+          <span class="drawer-menu-text" style="color: #e0e0e0">Agenda</span>
         </a>
       </li>
-      <li class="drawer-menu-item">
-        <a href="/cashiers">
-          <i class="material-icons" style="color: #5E4E14">shopping_cart</i>
-          <span class="drawer-menu-text" style="color: #5E4E14">Frente de Caixa</span>
-        </a>
-      </li>
+      <% if current_user.gerente? || current_user.recepcionista? %>
+        <li class="drawer-menu-item">
+          <a href="/cashiers">
+            <i class="material-icons" style="color: #e0e0e0">shopping_cart</i>
+            <span class="drawer-menu-text" style="color: #e0e0e0">Frente de Caixa</span>
+          </a>
+        </li>
+      <% end %>
       <li class="drawer-menu-item">
         <a href="/items">
-          <i class="material-icons" style="color: #5E4E14">list_alt</i>
-          <span class="drawer-menu-text" style="color: #5E4E14">Histórico</span>
+          <i class="material-icons" style="color: #e0e0e0">list_alt</i>
+          <span class="drawer-menu-text" style="color: #e0e0e0">Histórico</span>
         </a>
       </li>
-    </div>
-    <br><a onclick="toogleCadastros()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #271E00">Cadastros</a>
+    </div><br>
+    <br><a onclick="toogleCadastros()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #e0e0e0">Cadastros</a>
     <div id="divCadastros">
       <li class="drawer-menu-item">
         <a href="/clients">
-          <i class="material-icons" style="color: #5E4E14">account_circle</i>
-          <span class="drawer-menu-text" style="color: #5E4E14">Clientes</span>
+          <i class="material-icons" style="color: #e0e0e0">account_circle</i>
+          <span class="drawer-menu-text" style="color: #e0e0e0">Clientes</span>
         </a>
       </li>
-
-      <li class="drawer-menu-item">
-        <a href="/users">
-          <i class="material-icons" style="color: #5E4E14">face</i>
-          <span class="drawer-menu-text" style="color: #5E4E14">Funcionários</span>
-        </a>
-      </li>
-
-      <li class="drawer-menu-item">
-        <a href="/therapies">
-          <i class="material-icons" style="color: #5E4E14">sentiment_satisfied_alt
-  </i>
-          <span class="drawer-menu-text" style="color: #5E4E14">Terapias</span>
-        </a>
-      </li>
+      <% if current_user.gerente? || current_user.recepcionista? %>
+        <li class="drawer-menu-item">
+          <a href="/users">
+            <i class="material-icons" style="color: #e0e0e0">face</i>
+            <span class="drawer-menu-text" style="color: #e0e0e0">Funcionários</span>
+          </a>
+        </li>
+      
+        <li class="drawer-menu-item">
+          <a href="/therapies">
+            <i class="material-icons" style="color: #e0e0e0">sentiment_satisfied_alt
+    </i>
+            <span class="drawer-menu-text" style="color: #e0e0e0">Terapias</span>
+          </a>
+        </li>
+      <% end %>
     </div>
   </ul>
+  </div>
 </nav>
+
 
 <script>
 function toogleUser() {

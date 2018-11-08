@@ -9,11 +9,12 @@ class CashiersController < ApplicationController
   def index
     @cashiers = Cashier.all
     @cashier = Cashier.new
-    #@user = User.all
     @therapy = Therapy.all
     @client = Client.all
     @cashier.item.build
     @item = Item.new
+    @users = User.all
+    authorize @users
 
     respond_to do |format|
       format.html
@@ -24,17 +25,22 @@ class CashiersController < ApplicationController
   # GET /cashiers/1
   # GET /cashiers/1.json
   def show
+    @users = User.all
+    authorize @users
   end
 
   # GET /cashiers/new
   def new
     @cashier = Cashier.new
     @client = Client.all
+    @users = User.all
+    authorize @users
   end
 
   # GET /cashiers/1/edit
   def edit
-    @client = Client.all
+    @users = User.all
+    authorize @users
   end
 
   def historico
@@ -44,6 +50,8 @@ class CashiersController < ApplicationController
   # POST /cashiers.json
   def create
     @cashier = Cashier.new(cashier_params)
+    @users = User.all
+    authorize @users
 
     respond_to do |format|
       if @cashier.save
@@ -73,6 +81,8 @@ class CashiersController < ApplicationController
   # DELETE /cashiers/1
   # DELETE /cashiers/1.json
   def destroy
+    @users = User.all
+    authorize @users
     @cashier.destroy
     respond_to do |format|
       format.html { redirect_to cashiers_url, notice: 'Cashier was successfully destroyed.' }

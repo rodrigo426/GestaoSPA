@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
-
-<%= render 'form', schedule: @schedule %><br>
+<% if policy(@schedules).index? %>
+	<%= render 'form', schedule: @schedule %><br>
+<% end %>
 <div id="example1" align="center"><br/>
 <table style="width:90%;" align="center">
   <tr><th>

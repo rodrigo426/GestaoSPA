@@ -15,10 +15,14 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @users = User.all
+    authorize @users
   end
 
   # GET /items/1/edit
   def edit
+    @users = User.all
+    authorize @users
   end
 
   # POST /items
@@ -28,7 +32,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to '/cashiers', notice: 'Comanda Cadastrada!' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -42,7 +46,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to @item, notice: 'Comanda Atualizada!' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -56,7 +60,7 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to items_url, notice: 'Comanda Deletada!' }
       format.json { head :no_content }
     end
   end

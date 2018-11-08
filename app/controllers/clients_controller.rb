@@ -29,7 +29,8 @@
     @client = Client.new
     @client.build_address
     @client.build_record
-    #authorize @client
+    @users = User.all
+    authorize @users
   end
 
   # GET /clients/1/edit

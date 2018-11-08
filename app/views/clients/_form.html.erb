@@ -18,8 +18,8 @@
               </ul>
             </div>
           <% end %>
-
           <div class="form-row">
+            <div class="card-body border">
             <div class='col form-group'>
               <div class="field">
                 <%= form.label "Nome" %>
@@ -46,12 +46,8 @@
                   <%= form.label "Indicação" %>
                   <%= form.text_field :indication, class: 'form-control' %>
                 </div>
-              </div>
-
-              <div class="field">
-                <%= form.label "Credito" %>
-                <%= form.text_field :credit, class: 'form-control' %>
               </div><br/>
+          </div>
           </div>
           <div class='col form-group'>
             <div class="card-body border">
@@ -84,12 +80,12 @@
           <div class="card-body border text-center">
             <div class="container">
               <h3>Prontuário</h3>
-              <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Mostrar</button>
-              <div id="demo" class="collapse">
+              <a onclick="toogleRecord()" href="javascript:void(0);" class="btn btn-info">Mostrar</a>
+              <div id="divRecord" style="display: none">
                 <%= form.fields_for :record do |record_form| %>
                 <br><div class="card-body border text-center"><div class="form-row">
-                    <div class='col form-group'>Alergia a Creme:<%= record_form.check_box :cream_allergy, class: 'form-control' %></div>
-                    <div class='col form-group'>Pressão Arterial<%= record_form.select :blood_pressure, Record.blood_pressures.map { |key, value| [key.humanize, key] }, {}, class: "form-control" %></div>
+                    <div class='col form-group' style="padding-left: 70px">Alergia a Creme:<%= record_form.check_box :cream_allergy, class: 'form-control' %></div>
+                    <div class='col form-group' style="padding-left: 400px; margin-right: 63px">Pressão Arterial<%= record_form.select :blood_pressure, Record.blood_pressures.map { |key, value| [key.humanize, key] }, {}, class: "form-control" %></div>
                 </div></div>
                 <div class="card-body border text-center"><div class="form-row">
                     <div class='col form-group'>Marcapasso:<%= record_form.check_box :uses_pacemaker, class: 'form-control' %></div>
@@ -125,34 +121,45 @@
                   <div class="card-body border text-center"><div class="form-row">
                     <div class='col form-group'>Dores:<%= record_form.text_area :pains, class: 'form-control' %></div>
                   </div></div>
-                                  <script>
-                  function myFunction() {
+                  <script>
+                    function myFunction() {
 
-                      var checkBoxSurgery = document.getElementById("surgeryCheck");
-                      var textSurgery = document.getElementById("textSurgery");
-                      if (checkBoxSurgery.checked == true){
-                          textSurgery.style.display = "block";
-                      } else {
-                         textSurgery.style.display = "none";
-                      }
+                        var checkBoxSurgery = document.getElementById("surgeryCheck");
+                        var textSurgery = document.getElementById("textSurgery");
+                        if (checkBoxSurgery.checked == true){
+                            textSurgery.style.display = "block";
+                        } else {
+                           textSurgery.style.display = "none";
+                        }
 
-                      var checkBoxAccident = document.getElementById("accidentCheck");
-                      var textAccident = document.getElementById("textAccident");
-                      if (checkBoxAccident.checked == true){
-                          textAccident.style.display = "block";
-                      } else {
-                         textAccident.style.display = "none";
-                      }
+                        var checkBoxAccident = document.getElementById("accidentCheck");
+                        var textAccident = document.getElementById("textAccident");
+                        if (checkBoxAccident.checked == true){
+                            textAccident.style.display = "block";
+                        } else {
+                           textAccident.style.display = "none";
+                        }
 
-                      var checkBoxMedicine = document.getElementById("medicineCheck");
-                      var textMedicine = document.getElementById("textMedicine");
-                      if (checkBoxMedicine.checked == true){
-                          textMedicine.style.display = "block";
-                      } else {
-                         textMedicine.style.display = "none";
+                        var checkBoxMedicine = document.getElementById("medicineCheck");
+                        var textMedicine = document.getElementById("textMedicine");
+                        if (checkBoxMedicine.checked == true){
+                            textMedicine.style.display = "block";
+                        } else {
+                           textMedicine.style.display = "none";
+                        }
+                    }
+
+
+
+                    function toogleRecord() {
+                        var x = document.getElementById("divRecord");
+                        if (x.style.display === "none") {
+                            x.style.display = "block";
+                        } else {
+                            x.style.display = "none";
+                        }
                       }
-                  }
-                </script>
+                  </script>
                 
                 <% end %>
 

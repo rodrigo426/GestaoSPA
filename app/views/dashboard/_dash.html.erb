@@ -1,55 +1,162 @@
 <p id="notice"><%= notice %>
 <br />
-<div class="container">
-	<div class="row">
-		<div class="col-sm-4">
-    	    <div class="widget-grey">
-                <div class="icon">
-                     <i class="material-icons" style="color: #6C757D;">account_circle</i>
+<% if current_user.gerente? || current_user.recepcionista? %>
+<h3 align="center">Olá <%= current_user.name %>!</h3><br>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-sm-4">
+        	    <div class="widget-grey">
+                    <div class="icon">
+                         <i class="material-icons" style="color: #6C757D;">account_circle</i>
+                    </div>
+                    <div class="text">
+                        <var style="color: #6C757D;"><%= Client.count %></var>
+                        <label class="text-muted">clientes cadastrados</label>
+                    </div>
+                    <div class="options">
+                        <a href="/clients/new" class="btn btn-secondary btn-lg"><i class="glyphicon glyphicon-plus"></i>+ 1 Cliente</a>
+                    </div>
                 </div>
-                <div class="text">
-                    <var style="color: #6C757D;"><%= Client.count %></var>
-                    <label class="text-muted">clientes cadastrados</label>
+    		</div>
+            <div class="col-sm-4">
+        	    <div class="widget-green">
+                    <div class="icon">
+                         <i class="material-icons" style="color: #28A745;">shopping_cart</i>
+                    </div>
+                    <div class="text">
+                        <var style="color: #28A745;"><%= Item.count %></var>
+                        <label class="text-muted">vendas realizadas</label>
+                    </div>
+                    <div class="options">
+                        <a href="/cashiers" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-plus"></i>+ 1 Venda</a>
+                    </div>
                 </div>
-                <div class="options">
-                    <a href="/clients/new" class="btn btn-secondary btn-lg"><i class="glyphicon glyphicon-plus"></i>+ 1 Cliente</a>
+    		</div>
+            <div class="col-sm-4">
+        	    <div class="widget-blue">
+                    <div class="icon">
+                         <i class="material-icons" style="color: #007BFF;">perm_contact_calendar</i>
+                    </div>
+                    <div class="text">
+                        <var style="color: #007BFF;"><%= Schedule.where('start_time >= ?', Date.today ).count %></var>
+                        <label class="text-muted">agendamentos para hoje</label>
+                    </div>
+                    <div class="options">
+                        <a href="/schedules" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i>+ 1 Agendamento</a>
+                    </div>
                 </div>
-            </div>
-		</div>
-        <div class="col-sm-4">
-    	    <div class="widget-green">
-                <div class="icon">
-                     <i class="material-icons" style="color: #28A745;">shopping_cart</i>
-                </div>
-                <div class="text">
-                    <var style="color: #28A745;"><%= Item.count %></var>
-                    <label class="text-muted">vendas realizadas</label>
-                </div>
-                <div class="options">
-                    <a href="/cashiers" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-plus"></i>+ 1 Venda</a>
-                </div>
-            </div>
-		</div>
-        <div class="col-sm-4">
-    	    <div class="widget-blue">
-                <div class="icon">
-                     <i class="material-icons" style="color: #007BFF;">account_circle</i>
-                </div>
-                <div class="text">
-                    <var style="color: #007BFF;"><%= Schedule.where('start_time >= ?', DateTime.now ).count %></var>
-                    <label class="text-muted">agendamentos hoje</label>
-                </div>
-                <div class="options">
-                    <a href="/clients/new" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> 1 Cliente</a>
-                </div>
-            </div>
+        	</div>
     	</div>
-	</div>
-</div>
-<br>
+    </div>
+    <br>
+    <% if current_user.gerente? %>
+        <div class="table-responsive">
+          <br/>
+          <h3 align="center">Seus agendamentos de hoje</h3>
+          <table class="table" style="width: 90%;" align="center">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Terapia</th>
+                <th>Horário Marcado</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
 
-<h3 align="center">Vendas nesta semana</h3>
-<%= column_chart Cashier.group_by_day_of_week(:created_at, format: "%a").where('created_at >= ?', 1.week.ago).count %>
-<br>
-<h3 align="center">Terapias mais vendidas nesta semana</h3>
-<%= pie_chart Cashier.joins(:therapy).group(:name).where('cashiers.created_at >= ?', 1.week.ago).count %>
+            <tbody>
+              <% @schedules.each do |schedule| %>
+
+                <% if schedule.user == current_user && schedule&.start_time&.strftime("%d/%m/%Y") == Date.today.strftime("%d/%m/%Y") %>
+                    <tr style="background-color: #CBBA7F">
+                      <td><%= schedule.client.name if schedule.client%></td>
+                      <td><%= schedule.therapy.name if schedule.therapy%></td>
+                      <td><%= schedule.start_time.strftime("%H:%M") %></td>
+                    </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+    <% end %>
+    <br>
+
+    <h3 align="center">Valor total de vendas por dia nesta semana</h3>
+    <%= column_chart Cashier.group_by_day_of_week(:created_at, format: "%a").where('created_at >= ?', Date.current.beginning_of_week).sum(:price), xtitle: "Dia da semana", ytitle: "Total em R$" %>
+    <br>
+    <h3 align="center">Terapias mais vendidas neste mês</h3>
+    <%= pie_chart Cashier.joins(:therapy).group(:name).where('cashiers.created_at >= ?', Date.current.beginning_of_month).count %>
+
+
+
+
+    <div class="table-responsive">
+      <br/>
+      <h3 align="center">Aniversariantes do mês</h3>
+      <table class="table" style="width: 90%;" align="center">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @clients.each do |client| %>
+            <% if client.birthdate.strftime("%m") == Date.today.strftime("%m") %>
+              <% if client.birthdate.strftime("%d/%m") == Date.today.strftime("%d/%m") %>
+                <tr style="background-color: #FF7076">
+                  <td><%= link_to(client.name, client, class: 'link-to-text-color') %></td>
+                  <td><%= client.birthdate.strftime("%d/%m/%Y") %> - É hoje!</td>
+                  <td></td>
+                </tr>
+              <% else %>
+                <tr style="background-color: #CBBA7F">
+                  <td><%= link_to(client.name, client, class: 'link-to-text-color') %></td>
+                  <td><%= client.birthdate.strftime("%d/%m/%Y") %></td>
+                  <td></td>
+                </tr>
+              <% end %>
+            <% end %>
+
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+
+<% else %>
+
+    <div class="table-responsive">
+      <br/>
+      <h3 align="center">Olá <%= current_user.name %>!</h3><br>
+      <h3 align="center">Seus agendamentos de hoje</h3>
+      <table class="table" style="width: 90%;" align="center">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Terapia</th>
+            <th>Horário Marcado</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @schedules.each do |schedule| %>
+
+            <% if schedule.user == current_user && schedule&.start_time&.strftime("%d/%m/%Y") == Date.today.strftime("%d/%m/%Y") %>
+                <tr style="background-color: #CBBA7F">
+                  <td><%= schedule.client.name if schedule.client%></td>
+                  <td><%= schedule.therapy.name if schedule.therapy%></td>
+                  <td><%= schedule.start_time.strftime("%H:%M") %></td>
+                </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+
+<% end %>

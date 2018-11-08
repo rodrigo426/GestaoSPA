@@ -19,10 +19,14 @@ class SchedulesController < ApplicationController
   # GET /schedules/new
   def new
     @schedule = Schedule.new
+    @users = User.all
+    authorize @users
   end
 
   # GET /schedules/1/edit
   def edit
+    @users = User.all
+    authorize @users
   end
 
   # POST /schedules

@@ -1,38 +1,38 @@
-<p id="notice"><%= notice %></p>
+<br>
 <div class="row justify-content-center">
   <div class="col-md-20">
     <div class="card">
       <header class="card-header">
         <h3 class="card-title mt-2 text-center"><%= @user.name %></h3>
       </header>
-
-
-      <p>
-        <strong>Email:</strong>
-        <%= @user.email %>
-      </p>
-      <p>
-        <strong>Tipo:</strong>
-        <%= @user.kind %>
-      </p>
-
-      <p>
-        <strong>Status:</strong>
-        <%= @user.status %>
-      </p>
-      <% if @user.notes.present? %>
+      <div style="margin: 30px">
         <p>
-          <strong>Notes:</strong>
-          <%= @user.notes %>
+          <strong>Email:</strong>
+          <%= @user.email %>
         </p>
-      <% end %>
+        <p>
+          <strong>Tipo:</strong>
+          <%= @user.kind %>
+        </p>
 
-      <div class="form-row">
-        <div class="col form-group" align="center"><%= link_to 'Editar', edit_user_path(@user), class: 'btn btn-info' %></div>
-        <div class="col form-group" align="center"><%= link_to 'Sair', users_path, class: 'btn btn-warning' %></div>
+        <p>
+          <strong>Status:</strong>
+          <%= @user.status %>
+        </p>
+        <% if @user.notes.present? %>
+          <p>
+            <strong>Notes:</strong>
+            <%= @user.notes %>
+          </p>
+        <% end %>
+
+        <div class="form-row">
+          <div class="col form-group" align="center"><%= link_to 'Editar', edit_user_path(@user), class: 'btn btn-info' %></div>
+          <div class="col form-group" align="center"><%= link_to 'Sair', users_path, class: 'btn btn-warning' %></div>
+        </div>
       </div>
-      
       </article> <!-- card-body end .// -->
     </div> <!-- card.// -->
   </div> <!-- col.//-->
 </div> <!-- row.//-->
+<h5 id="notice" style="color: red" align="center" style="margin: 20px"><%= notice %></h5>

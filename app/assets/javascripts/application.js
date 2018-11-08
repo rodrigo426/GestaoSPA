@@ -117,9 +117,12 @@ $(document).on('turbolinks:load', function() {
 
     $("table[role='datatable']").each(function(){
     $(this).DataTable({
+      "language": {
+                "url": "dataTables.Portuguese-Brasil.lang"
+            },
       processing: true,
       serverSide: true,
-      ajax: $(this).data('url')
+      ajax: $(this).data('url'),
     });
   });
 

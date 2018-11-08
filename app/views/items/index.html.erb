@@ -13,8 +13,11 @@
               <th>Terapeuta</th>
               <th>Terapia</th>
               <th>Descrição</th>
+              <th>Data</th>
               <th></th>
-              <th></th>
+              <% if current_user.gerente? || current_user.terapeuta? %>
+                <th></th>
+              <% end %>
             </tr>
           </thead>
           <tbody>
@@ -24,8 +27,11 @@
                 <td><%= item.user.name %></td>
                 <td><%= item.therapy.name %></td>
                 <td><%= item.description %></td>
+                <td><%= item.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
                 <td><%= link_to('Detalhes', item, class: 'btn btn-info') %></td>
-                <td><%= link_to('Editar', edit_item_path(item), class: 'btn btn-info') %></td>
+                <% if current_user.gerente? || current_user.terapeuta? %>
+                  <td><%= link_to('Editar', edit_item_path(item), class: 'btn btn-info') %></td>
+                <% end %>
               </tr>
             <% end %>
           </tbody>

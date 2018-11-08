@@ -1,0 +1,1 @@
+$ -> $('input#color').minicolors theme: 'bootstrap'

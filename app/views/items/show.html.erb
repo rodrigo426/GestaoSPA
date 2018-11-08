@@ -1,29 +1,37 @@
-<p id="notice"><%= notice %></p>
+<br>
+<div class="row justify-content-center">
+  <div class="col-md-20">
+    <div class="card">
+      <header class="card-header">
+        <h3 class="card-title mt-2 text-center">Histórico</h3>
+      </header>
+      <article class="card-body">
+        <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Client:</strong>
-  <%= @item.client %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @item.user %>
-</p>
+        <p>
+          <strong>Cliente:</strong>
+          <%= @item.client.name %>
+        </p>
 
-<p>
-  <strong>Therapy:</strong>
-  <%= @item.therapy %>
-</p>
+        <p>
+          <strong>Terapeuta:</strong>
+          <%= @item.user.name %>
+        </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
+        <p>
+          <strong>Terapia:</strong>
+          <%= @item.therapy.name %>
+        </p>
 
-<p>
-  <strong>Cashier:</strong>
-  <%= @item.cashier %>
-</p>
+        <p>
+          <strong>Descrição:</strong>
+          <%= @item.description %>
+        </p>
+        <div class="col form-group" align="center"><%= link_to 'Editar', edit_item_path(@item), class: "btn btn-primary" %>
+        <%= link_to 'Sair', items_path, class: "btn btn-warning" %></div>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+      </article> <!-- card-body end .// -->
+    </div> <!-- card.// -->
+  </div> <!-- col.//-->
+</div> <!-- row.//-->

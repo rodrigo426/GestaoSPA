@@ -11,5 +11,4 @@ Rails.application.routes.draw do
   root :to => "dashboard#index"
   #root :to => redirect('/dashboards')
   get '/events', to: 'schedules#index'
-  #get 'cashiers/historico'
 end
