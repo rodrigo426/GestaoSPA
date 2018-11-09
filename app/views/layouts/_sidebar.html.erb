@@ -1,24 +1,25 @@
 <div id="color-overlay"></div>
 <nav class="drawer drawer--dark" style="background-image: url(https://wallpapershome.com/images/pages/pic_v/2922.jpg);">
   <div class="drawer-spacer" style="position: relative;">
-    <div class="media align-items-center">
-      <a href="index.html" class="drawer-brand-circle mr-2" style="background-color: aliceblue;"><img src="http://julyoganiko.hospedagemdesites.ws/wp-content/uploads/2018/03/logo-julio-ganiko-principal.png" style="width:78%;height:78%;">
+    <div class="media align-items-center" style="padding-left: 60px">
+      <a href="/" class="circle-icon"><img src="http://julyoganiko.hospedagemdesites.ws/wp-content/uploads/2018/03/logo-julio-ganiko-principal.png" style="width:78%;height:78%;">
 </a>
-      <div class="media-body">
+      <!--<div class="media-body">
         <strong><a href="/" class="h7 m-0 text-link" style="color: #e0e0e0; font-size: 20px; font-family: ">Spa Urbano Julio Ganiko</a></strong>
-      </div>
+      </div>-->
     </div>
   </div>
   <div style="position: relative;">
   <% if user_signed_in? %>
     <div style="padding-left: 10px">
         <a onclick="toogleUser()" href="javascript:void(0);" style="color: #e0e0e0"><%= current_user.email %></a>
-      <div id="divUser" style="display: none">
+      <div id="divUser" style="display: none; margin-top: 15px;">
       <%= link_to "Logout", destroy_user_session_path, :method => :delete, :style => "color: #e0e0e0"  %>
     </div>
     </div>
   <% end %>
   </div>
+  <hr style="opacity: 0.5">
 
   <!-- HEADING -->
   <div style="position: relative;">
@@ -81,11 +82,11 @@
             <span class="drawer-menu-text" style="color: #e0e0e0">Terapias</span>
           </a>
         </li>
+
+
       <% end %>
     </div>
   </ul>
-  </div>
-</nav>
 
 
 <script>
