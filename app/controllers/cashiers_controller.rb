@@ -33,14 +33,10 @@ class CashiersController < ApplicationController
   def new
     @cashier = Cashier.new
     @client = Client.all
-    @users = User.all
-    authorize @users
   end
 
   # GET /cashiers/1/edit
   def edit
-    @users = User.all
-    authorize @users
   end
 
   def historico
@@ -50,8 +46,6 @@ class CashiersController < ApplicationController
   # POST /cashiers.json
   def create
     @cashier = Cashier.new(cashier_params)
-    @users = User.all
-    authorize @users
 
     respond_to do |format|
       if @cashier.save
@@ -81,8 +75,6 @@ class CashiersController < ApplicationController
   # DELETE /cashiers/1
   # DELETE /cashiers/1.json
   def destroy
-    @users = User.all
-    authorize @users
     @cashier.destroy
     respond_to do |format|
       format.html { redirect_to cashiers_url, notice: 'Cashier was successfully destroyed.' }

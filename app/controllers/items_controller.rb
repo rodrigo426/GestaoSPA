@@ -21,8 +21,6 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @users = User.all
-    authorize @users
   end
 
   # POST /items

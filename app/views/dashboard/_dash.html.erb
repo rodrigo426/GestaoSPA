@@ -104,7 +104,7 @@
           <% @clients.each do |client| %>
             <% if client.birthdate.strftime("%m") == Date.today.strftime("%m") %>
               <% if client.birthdate.strftime("%d/%m") == Date.today.strftime("%d/%m") %>
-                <tr style="background-color: #FF7076">
+                <tr style="background-color: #DC3912">
                   <td><%= link_to(client.name, client, class: 'link-to-text-color') %></td>
                   <td><%= client.birthdate.strftime("%d/%m/%Y") %> - É hoje!</td>
                   <td></td>

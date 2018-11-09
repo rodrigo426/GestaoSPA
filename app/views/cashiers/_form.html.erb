@@ -28,10 +28,6 @@
     <%= form.label "Valor pago" %>
     <%= form.text_field :paid_value, class: 'form-control' %>
       <%= form.fields_for :client do |ff| %>
-  <div><br/><br/>
-    <%= ff.label "Credito do Cliente" %>
-    <%= ff.text_field :credit, :disabled=>true, class: 'form-control' %>
-  </div>
 <% end %>
 
   </div>

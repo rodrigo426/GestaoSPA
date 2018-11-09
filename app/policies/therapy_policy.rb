@@ -4,6 +4,17 @@ class TherapyPolicy < ApplicationPolicy
     user.gerente? || user.recepcionista?
   end
 
+  def show?
+    user.gerente? || user.recepcionista?
+  end
+
+  def new?
+    user.gerente? || user.recepcionista?
+  end
+
+  def edit?
+    user.gerente? || user.recepcionista?
+  end
   
   class Scope < Scope
     def resolve

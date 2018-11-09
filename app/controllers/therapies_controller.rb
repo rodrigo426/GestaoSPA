@@ -12,15 +12,11 @@ class TherapiesController < ApplicationController
   # GET /therapies/1
   # GET /therapies/1.json
   def show
-    @users = User.all
-    authorize @users
   end
 
   # GET /therapies/new
   def new
     @therapy = Therapy.new
-    @users = User.all
-    authorize @users
   end
 
   # GET /therapies/1/edit
@@ -33,7 +29,6 @@ class TherapiesController < ApplicationController
   # POST /therapies.json
   def create
     @users = User.all
-    authorize @users
     @therapy = Therapy.new(therapy_params)
 
     respond_to do |format|
@@ -51,7 +46,6 @@ class TherapiesController < ApplicationController
   # PATCH/PUT /therapies/1.json
   def update
     @users = User.all
-    authorize @users
     respond_to do |format|
       if @therapy.update(therapy_params)
         format.html { redirect_to @therapy, notice: 'Therapy was successfully updated.' }
@@ -67,7 +61,6 @@ class TherapiesController < ApplicationController
   # DELETE /therapies/1.json
   def destroy
     @users = User.all
-    authorize @users
     @therapy.destroy
     respond_to do |format|
       format.html { redirect_to therapies_url, notice: 'Therapy was successfully destroyed.' }

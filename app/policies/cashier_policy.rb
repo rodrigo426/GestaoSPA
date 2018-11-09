@@ -4,7 +4,11 @@ class CashierPolicy < ApplicationPolicy
     user.gerente? || user.recepcionista?
   end
 
-   def new?
+  def new?
+    user.gerente? || user.recepcionista?
+  end
+
+  def edit?
     user.gerente? || user.recepcionista?
   end
 
