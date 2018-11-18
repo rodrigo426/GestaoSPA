@@ -10,7 +10,8 @@ class Cashier < ApplicationRecord
   validates :therapy_id, presence: true
 
 	enum paid: [:nao, :sim]
-	enum paymment: ["Cartão de crédito", "cartão de débito", "Dinheiro", "Cheque"]
+	enum discount: ["Não", "Sim"]
+	enum paymment: ["Cartão de crédito", "cartão de débito", "Dinheiro", "Cheque", "Tranferência Bancária", "Permuta", "Cortesia"]
 	usar_como_dinheiro :price
 	usar_como_dinheiro :paid_value
 

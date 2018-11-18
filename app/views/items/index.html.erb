@@ -21,7 +21,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @items.each do |item| %>
+            <% @items.order('created_at DESC').each do |item| %>
               <tr>
                 <td><%= item.client.name %></td>
                 <td><%= item.user.name %></td>

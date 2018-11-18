@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
   $('#items').dataTable
+    ordering: false
     bJqueryUI: true
 	bProcessing: true
 	bServerSide: true

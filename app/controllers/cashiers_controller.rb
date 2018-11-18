@@ -39,9 +39,6 @@ class CashiersController < ApplicationController
   def edit
   end
 
-  def historico
-  end
-
   # POST /cashiers
   # POST /cashiers.json
   def create
@@ -63,7 +60,7 @@ class CashiersController < ApplicationController
   def update
     respond_to do |format|
       if @cashier.update(cashier_params)
-        format.html { redirect_to @cashier, notice: 'Cashier was successfully updated.' }
+        format.html { redirect_to '/cashiers', notice: 'Comanda Atualizada!' }
         format.json { render :show, status: :ok, location: @cashier }
       else
         format.html { render :edit }

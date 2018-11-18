@@ -10,7 +10,8 @@
         <tr>
           <th>Nome</th>
           <th>Email</th>
-          <th>Ocupacao</th>
+          <th>Telefone(s)</th>
+          <th></th>
           <th></th>
           <th></th>
 
@@ -21,7 +22,14 @@
           <tr>
             <td><%= link_to(client.name, client) %></td>
             <td><%= client.email %></td>
-            <td><%= client.occupation %></td>
+            <td>
+              <% unless client.phone_clients.blank? %>
+                <% client.phone_clients.each do |phone_client|%>
+                  <%= phone_client.number%>;&nbsp;
+                <% end %>
+              <% end %>
+            </td>
+            <td><%= link_to('Abrir Comanda', cashiers_path(), class: 'btn btn-info') %>
             <td><%= link_to('Editar', edit_client_path(client), class: 'btn btn-info') %>
               <td><%= link_to('Deletar', client, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger') %></td>
             </td>

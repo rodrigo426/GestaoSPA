@@ -55,18 +55,22 @@
               <th>Terapeuta</th>
               <th>Terapia</th>
               <th>Valor</th>
+              <th>Valor Pago</th>
+              <th>Forma de Pagamento</th>
               <th>Data de abertura</th>
               <th>Data de fechamento</th>
             </tr>
           </thead>
 
           <tbody>
-          <% @cashiers.each do |cashier| %>
+          <% @cashiers.order('created_at DESC').each do |cashier| %>
             <tr>
               <td><%= cashier.client.name if cashier.client%></td>
               <td><%= cashier.user.name if cashier.user%></td>
               <td><%= cashier.therapy.name if cashier.therapy%></td>
               <td><%= cashier.price %></td>
+              <td><%= cashier.paid_value %></td>
+              <td><%= cashier.paymment %></td>
               <td><%= cashier.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
               <td><%= cashier.updated_at.strftime("%d/%m/%Y - %H:%M") %></td>
             </tr>

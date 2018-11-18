@@ -11,6 +11,7 @@ module ApplicationHelper
 
 
     ESTADOS_BRASILEIROS = [
+    ["São Paulo", "SP"],
     ["Acre", "AC"],
     ["Alagoas", "AL"],
     ["Amapá", "AP"],
@@ -35,7 +36,6 @@ module ApplicationHelper
     ["Rondônia", "RO"],
     ["Roraima", "RR"],
     ["Santa Catarina", "SC"],
-    ["São Paulo", "SP"],
     ["Sergipe", "SE"],
     ["Tocantins", "TO"]
   ]

@@ -18,25 +18,31 @@
     <%= form.text_field :price, :disabled=>true, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= form.label "Forma de pagamento" %>
-    <%= form.select :paymment, options_for_select(Cashier.paymments.map {|k,v| [k,v]}), {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+  <div class="form-row">
+    <div class='col form-group'>
+      <%= form.label "Valor pago" %>
+      <%= form.text_field :paid_value, class: 'form-control' %>
+    </div>
+    <div class='col form-group'>
+      <%= form.label "Valor de Repasse" %>
+      <%= form.text_field :therapist_value, class: 'form-control' %>
+    </div>
+    <div class='col form-group'>
+      <%= form.label "Desconto?" %>
+      <%= form.select :discount, options_for_select(Cashier.discounts.map {|k,v| [k,v]}), {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+    </div>
   </div>
 
+  <div class="form-row">
+    <div class='col form-group'>
+      <%= form.label "Forma de pagamento" %>
+      <%= form.select :paymment, options_for_select(Cashier.paymments.map {|k,v| [k,v]}), {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+    </div>
 
-  <div class="form-group" style="display:inline;">
-    <%= form.label "Valor pago" %>
-    <%= form.text_field :paid_value, class: 'form-control' %>
-      <%= form.fields_for :client do |ff| %>
-<% end %>
-
-  </div>
-
-
-
-  <div class="form-group">
-    <%= form.label "Pago?" %>
-    <%= form.select :paid, options_for_select(Cashier.paids.map {|k,v| [k,v]}), {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+    <div class='col form-group'>
+      <%= form.label "Pago?" %>
+      <%= form.select :paid, options_for_select(Cashier.paids.map {|k,v| [k,v]}), {}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+    </div>
   </div>
 
   <div class="actions">

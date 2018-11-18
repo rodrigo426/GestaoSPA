@@ -36,7 +36,7 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       if @schedule.save
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
+        format.html { redirect_to @schedule, notice: 'Agendamento Cadastrado!' }
         format.json { render :show, status: :created, location: @schedule }
       else
         format.html { render :new }
@@ -48,7 +48,15 @@ class SchedulesController < ApplicationController
   # PATCH/PUT /schedules/1
   # PATCH/PUT /schedules/1.json
   def update
-    @schedule.update(schedule_params)
+    respond_to do |format|
+      if @schedule.update(schedule_params)
+        format.html { redirect_to '/schedules', notice: 'Agendamento Atualizado!' }
+        format.json { render :show, status: :ok, location: @schedule }
+      else
+        format.html { render :edit }
+        format.json { render json: @schedule.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /schedules/1

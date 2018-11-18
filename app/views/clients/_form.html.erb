@@ -51,7 +51,7 @@
           </div>
           <div class='col form-group'>
             <div class="card-body border">
-              <h5>Telefone(s) <%= link_to_add_association('+', form, :phone_clients) %></h5>
+              <h5>Telefone(s) <%= link_to_add_association('+', form, :phone_clients, class: "btn btn-primary") %></h5>
               <div id="phone_clients">
                 
                 <%= form.fields_for :phone_clients do |phone_clients_fields| %>

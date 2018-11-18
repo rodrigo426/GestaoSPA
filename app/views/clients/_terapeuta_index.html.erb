@@ -7,7 +7,7 @@
         <tr>
           <th>Nome</th>
           <th>Email</th>
-          <th>Ocupacao</th>
+          <th>Telefone(s)</th>
           <th></th>
 
         </tr>
@@ -17,7 +17,13 @@
           <tr>
             <td><%= link_to(client.name, client) %></td>
             <td><%= client.email %></td>
-            <td><%= client.occupation %></td>
+            <td>
+              <% unless client.phone_clients.blank? %>
+                <% client.phone_clients.each do |phone_client|%>
+                  <%= phone_client.number%>;&nbsp;
+                <% end %>
+              <% end %>
+            </td>
             <td><%= link_to('Editar', edit_client_path(client), class: 'btn btn-info') %>
             </td>
           </tr>
