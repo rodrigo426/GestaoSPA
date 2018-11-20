@@ -22,17 +22,33 @@
           </thead>
           <tbody>
             <% @items.order('created_at DESC').each do |item| %>
-              <tr>
-                <td><%= item.client.name %></td>
-                <td><%= item.user.name %></td>
-                <td><%= item.therapy.name %></td>
-                <td><%= item.description %></td>
-                <td><%= item.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
-                <td><%= link_to('Detalhes', item, class: 'btn btn-info') %></td>
-                <% if current_user.gerente? || current_user.terapeuta? %>
-                  <td><%= link_to('Editar', edit_item_path(item), class: 'btn btn-info') %></td>
+              <% if current_user.terapeuta? %>
+                <% if current_user == item.user %>
+                  <tr>
+                    <td><%= item.client.name %></td>
+                    <td><%= item.user.name %></td>
+                    <td><%= item.therapy.name %></td>
+                    <td><%= item.description %></td>
+                    <td><%= item.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
+                    <td><%= link_to('Detalhes', item, class: 'btn btn-info') %></td>
+                    <% if current_user.gerente? || current_user.terapeuta? %>
+                      <td><%= link_to('Editar', edit_item_path(item), class: 'btn btn-info') %></td>
+                    <% end %>
+                  </tr>
                 <% end %>
-              </tr>
+              <% else %>
+                <tr>
+                  <td><%= item.client.name %></td>
+                  <td><%= item.user.name %></td>
+                  <td><%= item.therapy.name %></td>
+                  <td><%= item.description %></td>
+                  <td><%= item.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
+                  <td><%= link_to('Detalhes', item, class: 'btn btn-info') %></td>
+                  <% if current_user.gerente? || current_user.terapeuta? %>
+                    <td><%= link_to('Editar', edit_item_path(item), class: 'btn btn-info') %></td>
+                  <% end %>
+                </tr>
+              <% end %>
             <% end %>
           </tbody>
         </table>
