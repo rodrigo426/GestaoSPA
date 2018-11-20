@@ -5,15 +5,15 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.gerente?
+    user.gerente? || user.recepcionista?
   end
 
   def create?
-    user.gerente?
+    user.gerente? || user.recepcionista?
   end
 
   def update?
-    user.gerente?
+    user.gerente? || user.recepcionista?
   end
 
   def destroy?

@@ -33,7 +33,11 @@
             <div class="form-row">
               <div class="col form-group">
                 <%= form.label "Tipo" %>
-                <%= form.select :kind, User.kinds.map { |key, value| [key.humanize, key] }, { include_blank: true}, class: "form-control" %>
+                <% if current_user.recepcionista? %>
+                  <%= form.select :kind, options_for_select(["terapeuta", "recepcionista"]), {}, class: 'form-control' %>
+                <% else %>
+                  <%= form.select :kind, options_for_select(["terapeuta", "gerente", "recepcionista"]), {}, class: 'form-control' %>
+                <% end %>
               </div>
             <div class="col form-group" id="color">
               <%= form.label "Cor(Para agenda)" %>

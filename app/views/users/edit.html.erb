@@ -19,7 +19,9 @@
               </ul>
             </div>
           <% end %>
-
+            <% if current_user.recepcionista? && @user.gerente? %>
+              <h1 style="color: red" align="center">Você não tem permissão para realizar esta ação!</h1>
+            <% else %>
             <div class="form-row">
               <div class="col form-group">
                 <%= form.label "Nome" %>
@@ -62,6 +64,7 @@
             <div class="col form-group" align="center"><%= link_to 'Detalhes', @user, class: 'btn btn-info' %></div>
             <div class="col form-group" align="center"><%= link_to 'Sair', users_path, class: 'btn btn-warning' %></div>
           </div>
+          <% end %>
       
         <% end %>
       </article> <!-- card-body end .// -->
