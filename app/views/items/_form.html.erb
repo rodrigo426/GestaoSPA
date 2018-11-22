@@ -20,12 +20,13 @@
       <article class="card-body">
 
             <%= simple_fields_for :item do |item_form| %>
+
             <div class="form-row">
-              <div class='col form-group'>Cliente: <%= item_form.collection_select :client_id, Client.all, :id, :name, { include_blank: true }, class: "form-control" %></div>
-              <div class='col form-group'>Terapeuta: <%= item_form.collection_select :user_id, User.where(kind: [:terapeuta, :gerente]), :id, :name, { include_blank: true }, class: "form-control" %></div>
-              <div class='col form-group'>Terapia: <%= item_form.collection_select :therapy_id, Therapy.all, :id, :name, { include_blank: true }, class: "form-control" %></div>
+              <div class='col form-group'><%= item_form.collection_select :client_id, Client.all, :id, :name, { include_blank: true }, class: "selecttwo", "data-placeholder" => "Cliente" %></div>
+              <div class='col form-group'><%= item_form.collection_select :user_id, User.where(kind: [:terapeuta, :gerente]), :id, :name, { include_blank: true }, class: "selecttwo", "data-placeholder" => "Terapeuta" %></div>
+              <div class='col form-group'><%= item_form.collection_select :therapy_id, Therapy.all, :id, :name, { include_blank: true }, class: "selecttwo", "data-placeholder" => "Terapia" %></div>
             </div>
-              <div class='col form-group'>Descrição: <%= item_form.text_area :description, class: 'form-control' %></div>
+              <div class='col form-group'><%= item_form.text_area :description, class: 'form-control', placeholder: "Descrição" %></div>
 
               <div class="form-actions" align="center">
                 <%= item_form.submit 'Confirmar', class: "btn btn-success"%>

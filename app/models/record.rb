@@ -1,5 +1,5 @@
 class Record < ApplicationRecord
   belongs_to :client, optional: true
-  enum blood_pressure: [:alta, :normal, :baixa]
+  enum blood_pressure: [:normal, :alta, :baixa]
 
 end

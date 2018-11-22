@@ -23,7 +23,8 @@
 //= require bootstrap-datepicker
 //= require activestorage
 //= require turbolinks
-//= require moment 
+//= require moment
+//= require select2
 //= require fullcalendar
 //= require fullcalendar/locale-all
 //= require daterangepicker
@@ -33,6 +34,10 @@
 //= require_tree .
 
 
+
+$(function($){
+$(".selecttwo").select2();
+});
 
 
 //template dashboard

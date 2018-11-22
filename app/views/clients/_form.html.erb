@@ -22,8 +22,7 @@
             <div class="card-body border">
             <div class='col form-group'>
               <div class="field">
-                <%= form.label "Nome" %>
-                <%= form.text_field :name, class: 'form-control' %>
+                <%= form.text_field :name, class: 'form-control', placeholder: "Nome" %>
               </div><br>
 
               <div class="field">
@@ -32,19 +31,16 @@
               </div>
 
               <div class="field">
-                <%= form.label "E-mail" %>
-                <%= form.text_field :email, class: 'form-control' %>
+                <%= form.text_field :email, class: 'form-control', placeholder: "E-mail" %>
               </div>
-
+              <br>
               <div class="form-row">
                 <div class="col form-group">
-                  <%= form.label "Ocupação" %>
-                  <%= form.text_field :occupation, class: 'form-control' %>
+                  <%= form.text_field :occupation, class: 'form-control', placeholder: "Ocupação" %>
                 </div>
 
                 <div class="col form-group">
-                  <%= form.label "Indicação" %>
-                  <%= form.text_field :indication, class: 'form-control' %>
+                  <%= form.text_field :indication, class: 'form-control', placeholder: "Indicação" %>
                 </div>
               </div><br/>
           </div>
@@ -66,10 +62,10 @@
             <h5>Endereço</h5>
             <%= form.fields_for :address do |address_form| %>
             <div class="form-row">
-              <div class='col form-group'>Endereco: <%= address_form.text_field :street, class: 'form-control' %></div>
-              <div class='col form-group'>Cidade: <%= address_form.text_field :city, class: 'form-control' %></div>
+              <div class='col form-group'><%= address_form.text_field :street, class: 'form-control', placeholder: "Endereco" %></div>
+              <div class='col form-group'><%= address_form.text_field :city, class: 'form-control', placeholder: "Cidade" %></div>
               </div>
-              <div class='field'>Estado: <%= address_form.select :state, options_for_state(@client.address.state), {}, class: "form-control" %></div>
+              <div class='field'>Estado <%= address_form.select :state, options_for_state(@client.address.state), {}, class: "form-control" %></div>
 
             <% end %>
           </div>
@@ -84,8 +80,8 @@
               <div id="divRecord" style="display: none">
                 <%= form.fields_for :record do |record_form| %>
                 <br><div class="card-body border text-center"><div class="form-row">
-                    <div class='col form-group' style="padding-left: 70px">Alergia a Creme:<%= record_form.check_box :cream_allergy, class: 'form-control' %></div>
-                    <div class='col form-group' style="padding-left: 400px; margin-right: 63px">Pressão Arterial<%= record_form.select :blood_pressure, Record.blood_pressures.map { |key, value| [key.humanize, key] }, {}, class: "form-control" %></div>
+                    <div class='col form-group'>Alergia a Creme:<%= record_form.check_box :cream_allergy, class: 'form-control' %></div>
+                    <div class='col form-group'>Pressão Arterial<%= record_form.select :blood_pressure, Record.blood_pressures.map { |key, value| [key.humanize, key] }, {}, class: "form-control" %></div>
                 </div></div>
                 <div class="card-body border text-center"><div class="form-row">
                     <div class='col form-group'>Marcapasso:<%= record_form.check_box :uses_pacemaker, class: 'form-control' %></div>
@@ -94,20 +90,20 @@
 
                     <div class='col form-group'>Cirurgia:<%= record_form.check_box :surgery, class: 'form-control', id:"surgeryCheck", onclick:"myFunction()" %></div>
 
-                    <div class='col form-group' id="textSurgery" style="display:none">Local da Cirurgia:<%= record_form.text_field :surgery_where, class: 'form-control' %></div>
+                    <div class='col form-group' id="textSurgery" style="display:none"><%= record_form.text_field :surgery_where, class: 'form-control', placeholder: "Local da Cirurgia" %></div>
                 </div>
               </div>
 
                 <div class="card-body border text-center"><div class="form-row">
                     <div class='col form-group'>Acidente ou Fratura:<%= record_form.check_box :accident_fracture, class: 'form-control', id:"accidentCheck", onclick:"myFunction()" %></div>
                   
-                  <div class='col form-group' id="textAccident" style="display:none">Local da Fratua:<%= record_form.text_field :accident_where, class: 'form-control' %></div>
+                  <div class='col form-group' id="textAccident" style="display:none"><%= record_form.text_field :accident_where, class: 'form-control', placeholder: "Local da Fratua" %></div>
 
                   <div class='col form-group'>Doença Ossea:<%= record_form.check_box :bone_disease, class: 'form-control' %></div>
 
                   <div class='col form-group'>Medicamentos:<%= record_form.check_box :medicine, class: 'form-control', id:"medicineCheck", onclick:"myFunction()" %></div>
 
-                  <div class='col form-group' id="textMedicine" style="display:none">Quais medicamentos:<%= record_form.text_field :medicine_which, class: 'form-control' %></div>
+                  <div class='col form-group' id="textMedicine" style="display:none"><%= record_form.text_field :medicine_which, class: 'form-control', placeholder: "Quais Medicamentos" %></div>
                   </div></div>
 
                   <div class="card-body border text-center"><div class="form-row">
