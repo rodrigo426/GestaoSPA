@@ -34,7 +34,7 @@
                 <% if current_user.recepcionista? %>
                   <%= form.select :kinds, options_for_select(["terapeuta", "recepcionista"]), {}, class: 'form-control' %>
                 <% else %>
-                  <%= form.select :kinds, options_for_select(["terapeuta", "gerente", "recepcionista"]), {}, class: 'form-control' %>
+                  <%= form.select :kinds, options_for_select(["terapeuta", "gerente", "recepcionista", "financeiro"]), {}, class: 'form-control' %>
                 <% end %>
               </div>
             </div>

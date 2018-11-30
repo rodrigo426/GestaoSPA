@@ -1,0 +1,49 @@
+<h5 id="notice" style="color: red" align="center"><%= notice %></h5>
+<div class="row justify-content-center">
+  <div class="col-md-20">
+    <div class="card">
+      <header class="card-header">
+        <h3 class="card-title mt-2 text-center">Detalhes do Agendamento</h3>
+      </header>
+      <div style="padding: 5px 25px">
+
+<%= simple_form_for(@event) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+        <p>
+          <strong>Nome:</strong>
+          <%= @event.name %>
+        </p>
+
+        <p>
+          <strong>Valor:</strong>
+          <%= @event.price %>
+        </p>
+
+        <p>
+          <strong>Descrição:</strong>
+          <%= @event.description %>
+        </p>
+
+        <p>
+          <strong>Data de Vencimento:</strong>
+          <%= @event.start.strftime("%d/%m/%Y") %>
+        </p>
+
+        <p>
+          <%= f.input :paid, label: 'Pago' %><br>
+        </p>
+
+        <%= f.button :submit %>
+
+        <%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-primary' %>
+        <%= link_to 'Back', events_path, class: 'btn btn-warning' %>
+
+<% end %>
+      </div>
+
+      </article> <!-- card-body end .// -->
+    </div> <!-- card.// -->
+  </div> <!-- col.//-->
+</div> <!-- row.//-->

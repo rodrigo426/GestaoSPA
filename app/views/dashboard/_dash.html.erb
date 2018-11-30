@@ -1,6 +1,7 @@
 <br />
 <% if current_user.gerente? || current_user.recepcionista? %>
 <h3 align="center">Olá <%= current_user.name %>!</h3><br>
+    <% unless current_user.financeiro? %>
     <div class="container">
     	<div class="row">
     		<div class="col-sm-4">
@@ -31,7 +32,7 @@
                     </div>
                 </div>
     		</div>
-            <div class="col-sm-4">
+            <!--<div class="col-sm-4">
         	    <div class="widget-blue">
                     <div class="icon">
                          <i class="material-icons" style="color: #007BFF;">perm_contact_calendar</i>
@@ -43,12 +44,13 @@
                     <div class="options">
                         <a href="/schedules" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i>+ 1 Agendamento</a>
                     </div>
-                </div>
+                </div> -->
         	</div>
     	</div>
     </div>
+    <% end %>
     <br>
-    <% if current_user.gerente? %>
+    <!--<% if current_user.gerente? %>
         <div class="table-responsive">
           <br/>
           <h3 align="center">Seus agendamentos de hoje</h3>
@@ -63,7 +65,7 @@
             </thead>
 
             <tbody>
-              <% @schedules.each do |schedule| %>
+              <% @schedules.order('start_time').each do |schedule| %>
 
                 <% if schedule.user == current_user && schedule&.start_time&.strftime("%d/%m/%Y") == Date.today.strftime("%d/%m/%Y") %>
                     <tr style="background-color: #CBBA7F">
@@ -76,14 +78,14 @@
             </tbody>
           </table>
         </div>
-    <% end %>
+    <% end %>-->
     <br>
 
     <h3 align="center">Valor total de vendas por dia nesta semana</h3>
     <%= column_chart Cashier.group_by_day_of_week(:created_at, format: "%a").where('created_at >= ?', Date.current.beginning_of_week).sum(:price), xtitle: "Dia da semana", ytitle: "Total em R$" %>
     <br>
-    <h3 align="center">Terapias mais vendidas neste mês</h3>
-    <%= pie_chart Cashier.joins(:therapy).group(:name).where('cashiers.created_at >= ?', Date.current.beginning_of_month).count %>
+    <!--<h3 align="center">Terapias mais vendidas neste mês</h3>
+    <%= pie_chart Cashier.joins(:therapy).group(:name).where('cashiers.created_at >= ?', Date.current.beginning_of_month).count %> -->
 
 
 
@@ -143,7 +145,7 @@
         </thead>
 
         <tbody>
-          <% @schedules.each do |schedule| %>
+          <% @schedules.order('start_time').each do |schedule| %>
 
             <% if schedule.user == current_user && schedule&.start_time&.strftime("%d/%m/%Y") == Date.today.strftime("%d/%m/%Y") %>
                 <tr style="background-color: #CBBA7F">

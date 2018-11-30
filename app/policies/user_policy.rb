@@ -5,7 +5,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.gerente? || user.recepcionista?
+    user.gerente?# || user.recepcionista?
   end
 
   def create?

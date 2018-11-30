@@ -38,12 +38,12 @@
     </div>
     <br><a onclick="toogleRecepcao()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #e0e0e0">Recepção</a>
     <div id="divRecepcao">
-      <li class="drawer-menu-item">
+      <!--<li class="drawer-menu-item">
         <a href="/schedules">
           <i class="material-icons" style="color: #e0e0e0">perm_contact_calendar</i>
           <span class="drawer-menu-text" style="color: #e0e0e0">Agenda</span>
         </a>
-      </li>
+      </li>-->
       <% if current_user.gerente? || current_user.recepcionista? %>
         <li class="drawer-menu-item">
           <a href="/cashiers">
@@ -58,7 +58,37 @@
           <span class="drawer-menu-text" style="color: #e0e0e0">Histórico</span>
         </a>
       </li>
-    </div><br>
+    </div>
+
+
+
+
+<% if current_user.gerente? || current_user.financeiro? %>
+<br><br>
+<a onclick="toogleFinanceiro()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #e0e0e0">Financeiro</a>
+    <div id="divFinanceiro">
+      <li class="drawer-menu-item">
+        <a href="/reports">
+          <i class="material-icons" style="color: #e0e0e0">list_alt</i>
+          <span class="drawer-menu-text" style="color: #e0e0e0">Relatórios</span>
+        </a>
+      </li>
+        <li class="drawer-menu-item">
+          <a href="/events">
+            <i class="material-icons" style="color: #e0e0e0">local_atm</i>
+            <span class="drawer-menu-text" style="color: #e0e0e0">Despesas</span>
+          </a>
+        </li>
+    </div>
+<% end %>
+
+
+
+
+
+<% unless current_user.financeiro? || current_user.terapeuta? %>
+
+    <br>
     <br><a onclick="toogleCadastros()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #e0e0e0">Cadastros</a>
     <div id="divCadastros">
       <li class="drawer-menu-item">
@@ -86,6 +116,8 @@
 
       <% end %>
     </div>
+
+    <% end %>
   </ul>
 
 
@@ -118,6 +150,15 @@ function toogleRecepcao() {
 
 function toogleCadastros() {
     var x = document.getElementById("divCadastros");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+function toogleFinanceiro() {
+    var x = document.getElementById("divFinanceiro");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {

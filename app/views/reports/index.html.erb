@@ -1,0 +1,15 @@
+<a href="/reports/therapist" class="btn btn-info">Relatorio Terapeuta</a>
+
+<a href="/reports/Entrada" class="btn btn-info">Relatorio Geral Entrada</a>
+
+<a href="/reports/despesas" class="btn btn-info">Relatorio Geral Despesas</a>
+
+<br><br>
+<h3 align="center">Quantidade de terapias vendidas no mês</h3>
+<%= pie_chart Cashier.joins(:therapy).group(:name).where('cashiers.created_at >= ?', Date.current.beginning_of_month).count %>
+<br>
+<h3 align="center">Valor total de terapias vendidas no mês</h3>
+<%= pie_chart Cashier.joins(:therapy).group(:name).where('cashiers.created_at >= ?', Date.current.beginning_of_month).sum(:price) %>
+<br>
+<h3 align="center">Valor total de formas de pagamento no mês</h3>
+<%= pie_chart Cashier.joins(:therapy).group(:paymment).where('cashiers.created_at >= ?', Date.current.beginning_of_month).sum(:paid_value) %>

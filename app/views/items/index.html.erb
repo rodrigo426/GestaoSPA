@@ -14,6 +14,9 @@
               <th>Terapia</th>
               <th>Descrição</th>
               <th>Data</th>
+              <% if current_user.gerente? %>
+                <th></th>
+              <% end %>
               <th></th>
               <% if current_user.gerente? || current_user.terapeuta? %>
                 <th></th>
@@ -43,6 +46,11 @@
                   <td><%= item.therapy.name %></td>
                   <td><%= item.description %></td>
                   <td><%= item.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
+
+                  <% if current_user.gerente? %>
+                    <td><%= link_to('Deletar', item, method: :delete, data: { confirm: 'CUIDADO! Ao deletar uma comanda, o historico relacionado a comanda também será deletado. Tem certeza?' }, class: 'btn btn-danger') %></td>
+                  <% end %>
+
                   <td><%= link_to('Detalhes', item, class: 'btn btn-info') %></td>
                   <% if current_user.gerente? || current_user.terapeuta? %>
                     <td><%= link_to('Editar', edit_item_path(item), class: 'btn btn-info') %></td>

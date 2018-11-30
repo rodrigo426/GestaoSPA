@@ -13,7 +13,6 @@
           <th>Telefone(s)</th>
           <th></th>
           <th></th>
-          <th></th>
 
         </tr>
       </thead>
@@ -29,8 +28,7 @@
                 <% end %>
               <% end %>
             </td>
-            <td><%= link_to('Abrir Comanda', cashiers_path(), class: 'btn btn-info') %>
-            <td><%= link_to('Editar', edit_client_path(client), class: 'btn btn-info') %>
+            <td><%= link_to('Editar', edit_client_path(client), class: 'btn btn-info') %></td>
               <td><%= link_to('Deletar', client, method: :delete, data: { confirm: 'CUIDADO! Ao deletar um cliente, todo historico, comanda e agendamento relacionado ao cliente também será deletado. Tem certeza?' }, class: 'btn btn-danger') %></td>
             </td>
           </tr>

@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
 
+
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
+gem 'ransack'
 gem 'select2-rails'
 gem 'pundit'
 gem 'jquery-minicolors-rails'

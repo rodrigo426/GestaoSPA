@@ -17,7 +17,7 @@
               <th>Nome</th>
               <th>Email</th>
               <th>Tipo</th>
-              <% if current_user.gerente? || current_user.recepcionista? %>
+              <% if current_user.gerente? #|| current_user.recepcionista? %>
                 <th></th>
               <% end %>
             </tr>
@@ -29,13 +29,8 @@
                 <td><%= link_to(user.name, user) %></td>
                 <td><%= user.email %></td>
                 <td><%= user.kind %></td>
-                <% if current_user.gerente? || current_user.recepcionista? %>
-                  <% if current_user.recepcionista? && user.gerente? %>
-                    <td></td>
-                  <% else %>
-                    <td><%= link_to('Editar', edit_user_path(user), class: 'btn btn-info') %>
-                  </td>
-                  <% end %>
+                <% if current_user.gerente? %>
+                  <td><%= link_to('Editar', edit_user_path(user), class: 'btn btn-info') %></td>
                 <% end %>
               </tr>
             <% end %>

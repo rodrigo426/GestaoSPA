@@ -50,7 +50,7 @@
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
+        format.html { redirect_to @client, notice: 'Cliente Cadastrado!' }
         format.json { render :show, status: :created, location: @client }
       else
         format.html { render :new }
@@ -78,7 +78,7 @@
   def destroy
     @client.destroy
     respond_to do |format|
-      format.html { redirect_to clients_url, notice: 'Client was successfully destroyed.' }
+      format.html { redirect_to clients_url, notice: 'Cliente Removido!' }
       format.json { head :no_content }
     end
   end

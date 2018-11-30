@@ -26,7 +26,12 @@
                   <td><%= cashier.client.name if cashier.client%></td>
                   <td><%= cashier.therapy.name if cashier.therapy%></td>
                   <td><%= cashier.price %></td>
-                  <td><%= link_to 'Concluir Venda', edit_cashier_path(cashier), class: 'btn btn-success' %> <h5>Atradaso!</h5><%= cashier.created_at.strftime("%d/%m/%Y")
+                  
+                  <% if current_user.gerente? %>
+                  <td><%= link_to('Deletar', cashier, method: :delete, data: { confirm: 'CUIDADO! Ao deletar uma comanda, o historico relacionado a comanda também será deletado. Tem certeza?' }, class: 'btn btn-danger') %></td>
+                  <% end %>
+                  
+                  <td><%= link_to 'Concluir Venda', edit_cashier_path(cashier), class: 'btn btn-success' %> <h5>Atrasado!</h5><%= cashier.created_at.strftime("%d/%m/%Y")
 
 %></td>
                 </tr>
@@ -36,6 +41,11 @@
                   <td><%= cashier.client.name if cashier.client%></td>
                   <td><%= cashier.therapy.name if cashier.therapy%></td>
                   <td><%= cashier.price %></td>
+
+                  <% if current_user.gerente? %>
+                  <td><%= link_to('Deletar', cashier, method: :delete, data: { confirm: 'CUIDADO! Ao deletar uma comanda, o historico relacionado a comanda também será deletado. Tem certeza?' }, class: 'btn btn-danger') %></td>
+                  <% end %>
+
                   <td><%= link_to 'Concluir Venda', edit_cashier_path(cashier), class: 'btn btn-success' %></td>
                 </tr>
               <% end %>
@@ -57,6 +67,8 @@
               <th>Valor</th>
               <th>Valor Pago</th>
               <th>Forma de Pagamento</th>
+              <th>Pago</th>
+              <th>Desconto</th>
               <th>Data de abertura</th>
               <th>Data de fechamento</th>
             </tr>
@@ -71,6 +83,8 @@
               <td><%= cashier.price %></td>
               <td><%= cashier.paid_value %></td>
               <td><%= cashier.paymment %></td>
+              <td><%= cashier.paid %></td>
+              <td><%= cashier.discount %></td>
               <td><%= cashier.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
               <td><%= cashier.updated_at.strftime("%d/%m/%Y - %H:%M") %></td>
             </tr>
