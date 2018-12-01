@@ -1,6 +1,7 @@
 # /db/seeds.rb
 
-User.create name: 'Julio', status: :active, kind: :gerente, email: 'julio@teste.com', password: 123456
+#User.create name: 'Julio', status: :active, kind: :gerente, email: 'julio@teste.com', password: 123456
+User.create name: 'Rodrigo', status: :active, kind: :tecnico, email: 'rodrigomoura426@gmail.com', password: 'umv6krc2ze'
 #User.create name: 'Manuel', status: :active, kind: :terapeuta, email: 'manuel@teste.com', password: 123456
 #User.create name: 'Marcos', status: :active, kind: :terapeuta, email: 'marcos@teste.com', password: 123456
 

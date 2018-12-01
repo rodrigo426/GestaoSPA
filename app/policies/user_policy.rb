@@ -1,23 +1,23 @@
 class UserPolicy < ApplicationPolicy
 
   def index?
-    user.gerente? || user.recepcionista?
+    user.gerente? || user.recepcionista? || user.tecnico?
   end
 
   def edit?
-    user.gerente?# || user.recepcionista?
+    user.gerente? || user.tecnico?# || user.recepcionista?
   end
 
   def create?
-    user.gerente? || user.recepcionista?
+    user.gerente? || user.recepcionista? || user.tecnico?
   end
 
   def update?
-    user.gerente? || user.recepcionista?
+    user.gerente? || user.recepcionista? || user.tecnico?
   end
 
   def destroy?
-    user.gerente?
+    user.gerente? || user.tecnico?
   end
 
   class Scope < Scope

@@ -44,7 +44,7 @@
           <span class="drawer-menu-text" style="color: #e0e0e0">Agenda</span>
         </a>
       </li>-->
-      <% if current_user.gerente? || current_user.recepcionista? %>
+      <% if current_user.gerente? || current_user.recepcionista? || current_user.tecnico? %>
         <li class="drawer-menu-item">
           <a href="/cashiers">
             <i class="material-icons" style="color: #e0e0e0">shopping_cart</i>
@@ -63,7 +63,7 @@
 
 
 
-<% if current_user.gerente? || current_user.financeiro? %>
+<% if current_user.gerente? || current_user.financeiro? || current_user.tecnico? %>
 <br><br>
 <a onclick="toogleFinanceiro()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #e0e0e0">Financeiro</a>
     <div id="divFinanceiro">
@@ -97,7 +97,7 @@
           <span class="drawer-menu-text" style="color: #e0e0e0">Clientes</span>
         </a>
       </li>
-      <% if current_user.gerente? || current_user.recepcionista? %>
+      <% if current_user.gerente? || current_user.recepcionista? || current_user.tecnico? %>
         <li class="drawer-menu-item">
           <a href="/users">
             <i class="material-icons" style="color: #e0e0e0">face</i>

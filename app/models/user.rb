@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :validatable
-  enum kind: [:terapeuta, :gerente, :recepcionista, :financeiro]
+  enum kind: [:terapeuta, :gerente, :recepcionista, :financeiro, :tecnico]
   enum status: [:active, :inactive]
 
   has_many :phone_users
