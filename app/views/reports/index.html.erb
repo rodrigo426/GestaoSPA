@@ -4,6 +4,8 @@
 
 <a href="/reports/despesas" class="btn btn-info">Relatorio Geral Despesas</a>
 
+<a href="/reports/produtos" class="btn btn-info">Relatorio de Venda de Produtos</a>
+
 <br><br>
 <h3 align="center">Quantidade de terapias vendidas no mês</h3>
 <%= pie_chart Cashier.joins(:therapy).group(:name).where('cashiers.created_at >= ?', Date.current.beginning_of_month).count %>

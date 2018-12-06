@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  match "reports/produtos" => "reports#produtos", as: :reports_produtos, via: [:get, :post]
   resources :product_movements
   resources :products
   match "reports/despesas" => "reports#despesas", as: :reports_despesas, via: [:get, :post]

@@ -32,4 +32,9 @@ class ReportsController < ApplicationController
     @search = Event.search(params[:q])
     @events = @search.result
   end
+
+  def produtos
+    @search = ProductMovement.search(params[:q])
+    @product_movements = @search.result
+  end
 end

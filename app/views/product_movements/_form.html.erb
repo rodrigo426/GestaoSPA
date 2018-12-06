@@ -6,7 +6,6 @@
   <div class="form-inputs">
     <%= f.association :product %>
     <%= f.select :kind, options_for_select(["Entrada", "Saída"]), {}, class: 'form-control' %>
-    <%= f.input :price %>
     <%= f.input :quantity %>
     <div style="display: none;"><%= f.text_field :user_id, :value => current_user.id %></div>
   </div>
