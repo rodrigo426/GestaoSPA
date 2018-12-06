@@ -87,7 +87,7 @@ class CashiersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cashier_params
-      cp = params.require(:cashier).permit(:price, :paymment, :paid_value, :paid, :discount, :therapist_value , items_attributes: [:id, :client, :user, :therapy, :description, :_destroy], product_movements_attributes: [:id, :product_id, :kind, :price, :quantity, :_destroy])
+      cp = params.require(:cashier).permit(:price, :paymment, :paid_value, :paid, :discount, :therapist_value , items_attributes: [:id, :client, :user, :therapy, :description, :_destroy], product_movements_attributes: [:id, :product_id, :kind, :price, :quantity, :user_id, :_destroy])
       cp[:therapist_value] = params[:cashier][:therapist_value].to_i
       cp[:discount] = params[:cashier][:discount].to_i
       cp[:paymment] = params[:cashier][:paymment].to_i

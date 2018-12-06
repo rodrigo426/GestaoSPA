@@ -1,6 +1,7 @@
 class ProductMovement < ApplicationRecord
   belongs_to :product
   has_one :cashier
+  belongs_to :user
 
   enum kind: ["Entrada", "Saída"]
 
