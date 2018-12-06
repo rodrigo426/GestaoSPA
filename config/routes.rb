@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :product_movements
+  resources :products
   match "reports/despesas" => "reports#despesas", as: :reports_despesas, via: [:get, :post]
   resources :events
   match "reports/Entrada" => "reports#Entrada", as: :reports_Entrada, via: [:get, :post]

@@ -10,24 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_29_170051) do
+ActiveRecord::Schema.define(version: 2018_12_06_163409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.string "namespace"
-    t.text "body"
-    t.string "resource_type"
-    t.bigint "resource_id"
-    t.string "author_type"
-    t.bigint "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
-  end
 
   create_table "addresses", force: :cascade do |t|
     t.string "country"
@@ -43,60 +29,6 @@ ActiveRecord::Schema.define(version: 2018_11_29_170051) do
     t.index ["client_id"], name: "index_addresses_on_client_id"
   end
 
-  create_table "blazer_audits", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "query_id"
-    t.text "statement"
-    t.string "data_source"
-    t.datetime "created_at"
-    t.index ["query_id"], name: "index_blazer_audits_on_query_id"
-    t.index ["user_id"], name: "index_blazer_audits_on_user_id"
-  end
-
-  create_table "blazer_checks", force: :cascade do |t|
-    t.bigint "creator_id"
-    t.bigint "query_id"
-    t.string "state"
-    t.string "schedule"
-    t.text "emails"
-    t.string "check_type"
-    t.text "message"
-    t.datetime "last_run_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["creator_id"], name: "index_blazer_checks_on_creator_id"
-    t.index ["query_id"], name: "index_blazer_checks_on_query_id"
-  end
-
-  create_table "blazer_dashboard_queries", force: :cascade do |t|
-    t.bigint "dashboard_id"
-    t.bigint "query_id"
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dashboard_id"], name: "index_blazer_dashboard_queries_on_dashboard_id"
-    t.index ["query_id"], name: "index_blazer_dashboard_queries_on_query_id"
-  end
-
-  create_table "blazer_dashboards", force: :cascade do |t|
-    t.bigint "creator_id"
-    t.text "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["creator_id"], name: "index_blazer_dashboards_on_creator_id"
-  end
-
-  create_table "blazer_queries", force: :cascade do |t|
-    t.bigint "creator_id"
-    t.string "name"
-    t.text "description"
-    t.text "statement"
-    t.string "data_source"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
-  end
-
   create_table "cashiers", force: :cascade do |t|
     t.decimal "price"
     t.integer "paymment"
@@ -109,7 +41,9 @@ ActiveRecord::Schema.define(version: 2018_11_29_170051) do
     t.bigint "client_id"
     t.integer "discount"
     t.decimal "therapist_value"
+    t.bigint "product_movment_id"
     t.index ["client_id"], name: "index_cashiers_on_client_id"
+    t.index ["product_movment_id"], name: "index_cashiers_on_product_movment_id"
     t.index ["therapy_id"], name: "index_cashiers_on_therapy_id"
     t.index ["user_id"], name: "index_cashiers_on_user_id"
   end
@@ -166,6 +100,37 @@ ActiveRecord::Schema.define(version: 2018_11_29_170051) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_phone_users_on_user_id"
+  end
+
+  create_table "product_movements", force: :cascade do |t|
+    t.bigint "product_id"
+    t.integer "kind"
+    t.decimal "price"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "cashier_id"
+    t.index ["cashier_id"], name: "index_product_movements_on_cashier_id"
+    t.index ["product_id"], name: "index_product_movements_on_product_id"
+  end
+
+  create_table "product_movments", force: :cascade do |t|
+    t.bigint "product_id"
+    t.integer "kind"
+    t.decimal "price"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_movments_on_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "records", force: :cascade do |t|
@@ -237,6 +202,7 @@ ActiveRecord::Schema.define(version: 2018_11_29_170051) do
 
   add_foreign_key "addresses", "clients"
   add_foreign_key "cashiers", "clients"
+  add_foreign_key "cashiers", "product_movments"
   add_foreign_key "cashiers", "therapies"
   add_foreign_key "cashiers", "users"
   add_foreign_key "items", "cashiers"
@@ -245,6 +211,9 @@ ActiveRecord::Schema.define(version: 2018_11_29_170051) do
   add_foreign_key "items", "users"
   add_foreign_key "phone_clients", "clients"
   add_foreign_key "phone_users", "users"
+  add_foreign_key "product_movements", "cashiers"
+  add_foreign_key "product_movements", "products"
+  add_foreign_key "product_movments", "products"
   add_foreign_key "records", "clients"
   add_foreign_key "schedules", "clients"
   add_foreign_key "schedules", "therapies"

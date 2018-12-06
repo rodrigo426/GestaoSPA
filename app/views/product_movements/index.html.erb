@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Product_movements</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Kind</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product_movements.each do |product_movement| %>
+      <tr>
+        <td><%= product_movement.product.name if product_movement.product %></td>
+        <td><%= product_movement.kind %></td>
+        <td><%= product_movement.price %></td>
+        <td><%= product_movement.quantity %></td>
+        <td><%= link_to 'Show', product_movement %></td>
+        <td><%= link_to 'Edit', edit_product_movement_path(product_movement) %></td>
+        <td><%= link_to 'Destroy', product_movement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product_movement', new_product_movement_path %>
