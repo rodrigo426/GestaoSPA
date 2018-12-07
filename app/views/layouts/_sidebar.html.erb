@@ -89,8 +89,8 @@
 
 <% if current_user.gerente? || current_user.financeiro? || current_user.tecnico? %>
 <br><br>
-<a onclick="toogleFinanceiro()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #e0e0e0">Produtos</a>
-    <div id="divFinanceiro">
+<a onclick="toogleProdutos()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #e0e0e0">Produtos</a>
+    <div id="divProdutos">
       <li class="drawer-menu-item">
         <a href="/products">
           <i class="material-icons" style="color: #e0e0e0">list_alt</i>
@@ -183,6 +183,15 @@ function toogleCadastros() {
 
 function toogleFinanceiro() {
     var x = document.getElementById("divFinanceiro");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+function toogleProdutos() {
+    var x = document.getElementById("divProdutos");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
