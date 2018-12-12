@@ -1,11 +1,18 @@
+
+
+
+
 <br><div id="example1" align="center"><br/>
 <%= search_form_for @search, url: reports_Entrada_path, method: :post do |f| %>
   <div class="field">
     <%= f.label :therapy_name_cont, 'Terapia' %>
     <%= f.select :therapy_id_eq, options_from_collection_for_select(Therapy.all, "id", "name", @search.therapy_id_eq), :include_blank => true %>
-    <%= f.label :paymment_eq, 'Forma de Pagamento' %>
+    <%= f.label :paymment_eq, 'Uma Forma de Pagamento' %>
     <%= f.select :paymment_eq, Cashier.paymments.to_a.map { |w| [w[0].humanize, w[1]] },
                          {:include_blank => true} %>
+
+    <%= f.label :pagamento_caixa_id_eq, 'Duas Formas de Pagamento' %>
+    <%= f.select :pagamento_caixa_pagamento_name_cont, options_for_select(["Cartão de crédito", "Cartão de débito", "Dinheiro", "Cheque", "Tranferência Bancária", "Cortesia", "Pacote", "Permuta", "Pendente"]), {:include_blank => true} %>
 	<%= f.label :discount_eq, 'Desconto' %>
     <%= f.select :discount_eq, Cashier.discounts.to_a.map { |w| [w[0].humanize, w[1]] },
                          {:include_blank => true} %>
@@ -19,40 +26,53 @@
 <% end %>
 
 <div class="table-responsive">
+  <table id="countit" class='table table-striped table-bordered' style="width:90%;" align="center">
+    <thead>
+      <tr>
+        <th>Terapia</th>
+        <th>Valor da Terapia</th>
+        <th>Valor Pago</th>
+        <th>Uma Forma de Pagamento</th>
+        <th>Duas Formas de Pagamento</th>
+        <th>Desconto</th>
+        <th>Data de abertura</th>
+        <th>Data de fechamento</th>
+      </tr>
+    </thead>
 
-<table id="countit" class='table table-striped table-bordered' style="width:90%;" align="center">
-  <thead>
-    <tr>
-      <th>Terapia</th>
-      <th>Valor da Terapia</th>
-      <th>Valor Pago</th>
-      <th>Forma de Pagamento</th>
-      <th>Desconto</th>
-      <th>Data de abertura</th>
-      <th>Data de fechamento</th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <% @cashiers.order('created_at DESC').each do |cashier| %>
-  	<% if cashier.sim? %>
-	    <tr>
-	      <td><%= cashier.therapy.name if cashier.therapy%></td>
-        <td><%= number_to_currency(cashier.price.to_f) %></td>
-        <td class="count-value" style="display: none;"><%= cashier.price.to_f %></td>
-	      <td><%= number_to_currency(cashier.paid_value.to_f) %></td>
-	      <td class="count-paid" style="display: none;"><%= cashier.paid_value.to_f %></td>
-	      <td class="pagamento"><%= cashier.paymment %></td>
-	      <td><%= cashier.discount %></td>
-	      <td><%= cashier.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
-	      <td><%= cashier.updated_at.strftime("%d/%m/%Y - %H:%M") %></td>
-	    </tr>
-	<% end %>
-  <% end %>
-  </tbody>
-</table>
-
+    <tbody>
+    <% @cashiers.order('created_at DESC').each do |cashier| %>
+    	<% if cashier.sim? %>
+  	    <tr>
+  	      <td><%= cashier.therapy.name if cashier.therapy%></td>
+          <td><%= number_to_currency(cashier.price.to_f) %></td>
+          <td class="count-value" style="display: none;"><%= cashier.price.to_f %></td>
+  	      <td><%= number_to_currency(cashier.paid_value.to_f) %></td>
+  	      <td class="count-paid" style="display: none;"><%= cashier.paid_value.to_f %></td>
+  	      <td class="pagamento"><%= cashier.paymment if cashier.pagamento_caixa.blank? %></td>
+          <td>
+            <table>
+            <% unless cashier.pagamento_caixa.blank? %>
+              <% cashier.pagamento_caixa.each do |pagamento_caixa|%>
+                <tr>
+                <td><%= pagamento_caixa.pagamento.name %></td><td>R$<%= pagamento_caixa.value %></td>
+                </tr>
+              <% end %>
+            <% end %> 
+            </table>
+          </td>
+  	      <td><%= cashier.discount %></td>
+  	      <td><%= cashier.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
+  	      <td><%= cashier.updated_at.strftime("%d/%m/%Y - %H:%M") %></td>
+  	    </tr>
+  	<% end %>
+    <% end %>
+    <td><%= Cashier.joins(:therapy).group(:paymment).where('cashiers.created_at >= ?', params[:created_at_gteq]).sum(:paid_value) %></td>
+    </tbody>
+  </table>
 </div>
+
+<button>Print me</button>
 
 <script language="javascript" type="text/javascript">
     var tds = document.getElementById('countit').getElementsByTagName('td');
@@ -77,6 +97,26 @@
     var difValuePaid = sumValue - sumPaid
 
     document.getElementById('countit').innerHTML += '<tr><td><b>Valor Total em Desconto</b></td><td><b>R$ ' + difValuePaid + '</b></td></tr>';
+
+
+
+
+
+    function printData()
+      {
+         var divToPrint=document.getElementById("countit");
+         newWin= window.open("");
+         newWin.document.write('<html><head><title></title>');
+         newWin.document.write('<style> table, th, td {border: 1px solid #ddd;;width:100%;border-collapse: collapse;}</style>');
+         newWin.document.write('</head>');
+         newWin.document.write(divToPrint.outerHTML);
+         newWin.print();
+         newWin.close();
+      }
+
+      $('button').on('click',function(){
+      printData();
+      })
 </script>
 
 

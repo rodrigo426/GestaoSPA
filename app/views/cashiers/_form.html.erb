@@ -15,36 +15,48 @@
 
   <div class="form-group">
     <%= form.label "Valor" %>
-    <%= form.text_field :price, :disabled=>true, class: 'form-control' %>
+    <%= form.text_field :price, :disabled=>true, class: 'form-control', id: 'valor' %>
   </div>
 
   <div class="form-row">
     <div class='col form-group'>
       <%= form.label "Valor pago" %>
-      <%= form.text_field :paid_value, class: 'form-control' %>
+      <%= form.text_field :paid_value, class: 'form-control', id: 'valor_pago' %>
     </div>
     <div class='col form-group'>
       <%= form.label "Valor de Repasse" %>
       <%= form.text_field :therapist_value, class: 'form-control' %>
     </div>
-    <div class='col form-group'>
+
+    <div class='col form-group' style="display: none">
       <%= form.label "Desconto?" %>
-      <%= form.select :discount, options_for_select(Cashier.discounts.map {|k,v| [k,v]}), {}, {required: 'true', class: 'form-control'} %>
+      <%= form.select :discount, options_for_select(Cashier.discounts.map {|k,v| [k,v]}), {:include_blank => true}, {class: 'form-control', id: 'desconto'} %>
     </div>
   </div>
 
-  <div class="form-row">
+    <div class='col form-group' style="display: none">
+      <%= form.label "Pago?" %>
+      <%= form.select :paid, options_for_select(Cashier.paids.map {|k,v| [k,v]}), {}, {required: 'true', class: 'form-control', id: 'pago'} %>
+    </div>
+  </div>
+
+
     <div class='col form-group'>
-      <%= form.label "Forma de pagamento" %>
+      <%= form.label "Uma Forma de pagamento" %>
       <%= form.select :paymment, options_for_select(Cashier.paymments.map {|k,v| [k,v]}), {}, {required: 'true', class: 'form-control'} %>
     </div>
 
-    <div class='col form-group'>
-      <%= form.label "Pago?" %>
-      <%= form.select :paid, options_for_select(Cashier.paids.map {|k,v| [k,v]}), {}, {required: 'true', class: 'form-control'} %>
-    </div>
-  </div>
 
+
+  <div class="card-body border">
+    <h5>Duas Formas de Pagamento <%= link_to_add_association('+', form, :pagamento_caixa, class: "btn btn-primary") %></h5>
+    <div id="pagamento_caixa">
+      
+      <%= form.simple_fields_for :pagamento_caixa do |pagamento_caixa_fields| %>
+        <%= render partial: "pagamento_caixa_fields", locals: { f: pagamento_caixa_fields } %>
+      <% end %>
+    </div>
+  </div><br>
 
   <div class="card-body border">
     <h5>Produto(s) <%= link_to_add_association('+', form, :product_movements, class: "btn btn-primary") %></h5>
@@ -57,10 +69,27 @@
   </div><br>
 
 
+
   <div class="actions">
-    <%= form.button "Confirmar", class: "btn btn-primary" %>
+    <%= form.button "Confirmar e concluir venda", class: "btn btn-success", :onclick =>'ValorPago()'%>
+    <%= form.button "Confirmar e deixar pendente", class: "btn btn-secondary", :onclick =>'ValorNaoPago()'%>
     <%= link_to 'Voltar', cashiers_path, class: 'btn btn-warning' %>
   </div>
 <% end %>
 </th></tr>
 </table>
+
+
+<script>
+function ValorPago() {
+  document.getElementById("pago").value = "1";
+  if(parseFloat(document.getElementById('valor_pago').value) < parseFloat(document.getElementById('valor').value))
+    document.getElementById('desconto').value='1'
+  else
+    document.getElementById('desconto').value='0'
+}
+
+function ValorNaoPago() {
+  document.getElementById("pago").value = "0";
+}
+</script>

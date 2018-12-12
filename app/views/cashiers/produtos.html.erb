@@ -1,0 +1,65 @@
+<br>
+<div id="example1" align="center">
+	<br>
+	<table style="width:50%;" align="center">
+	  <tr><th>
+	<%= form_with(model: @cashier, local: true) do |form| %>
+	  <% if @cashier.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@cashier.errors.count, "error") %> prohibited this cashier from being saved:</h2>
+
+	      <ul>
+	      <% @cashier.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+
+
+		<div class='col form-group'>
+			<%= form.collection_select :client_id, Client.all, :id, :name, { include_blank: true }, class: "selecttwo", "data-placeholder" => "Cliente" %>
+		</div>
+		<div style="display: none;"><%= form.text_field :user_id, :value => current_user.id %></div>
+
+
+
+	    <div class='col form-group' style="display: none">
+	      <%= form.label "Pago?" %>
+	      <%= form.select :paid, options_for_select(Cashier.paids.map {|k,v| [k,v]}), {}, {required: 'true', class: 'form-control', id: 'pago'} %>
+	    </div>
+
+
+	  <div class="card-body border">
+	    <h5><%= link_to_add_association('+', form, :product_movements, class: "btn btn-primary") %> Produto(s)</h5>
+	    <div id="product_movements">
+	      
+	      <%= form.simple_fields_for :product_movements do |product_movements_fields| %>
+	        <%= render partial: "product_movement_fields", locals: { f: product_movements_fields } %>
+	      <% end %>
+	    </div>
+	  </div><br>
+
+	  <div class="actions">
+	    <%= form.button 'Confirmar Venda', class: "btn btn-success", :onclick =>'ValorPago()' %>
+	    <%= link_to 'Voltar', cashiers_path, class: 'btn btn-warning' %>
+	  </div>
+
+	  <% end %>
+	</th></tr>
+	</table>
+	<br>
+</div>
+
+
+
+<script>
+function ValorPago() {
+  document.getElementById("pago").value = "1";
+  if(parseFloat(document.getElementById('valor_pago').value) < parseFloat(document.getElementById('valor').value))
+    document.getElementById('desconto').value='1'
+  else
+    document.getElementById('desconto').value='0'
+}
+
+</script>

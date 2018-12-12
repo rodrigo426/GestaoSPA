@@ -1,7 +1,7 @@
 <div class="col-md-5">
 	<div class='nested-fields'>
 	    <div>
-	    	<div class='col form-group'><%= f.collection_select :product_id, Product.all, :id, :name, { include_blank: true }, {:onChange=>'mytest()', :id=>'quantitySelect' } %></div>
+	    	<div class='col form-group'><%= f.collection_select :product_id, Product.all, :id, :name, { include_blank: true }, class: "selecttwo" %></div>
 	    	Quantidade: <%= f.text_field :quantity %>
 	    	<div style="display: none;"><%= f.select :kind, options_for_select(["Saída"]), {}, class: 'form-control' %></div>
 	    	<div style="display: none;"><%= f.text_field :user_id, :value => current_user.id %></div>

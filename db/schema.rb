@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_181324) do
+ActiveRecord::Schema.define(version: 2018_12_10_185502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,9 @@ ActiveRecord::Schema.define(version: 2018_12_06_181324) do
     t.integer "discount"
     t.decimal "therapist_value"
     t.bigint "product_movment_id"
+    t.bigint "pagamento_caixa_id"
     t.index ["client_id"], name: "index_cashiers_on_client_id"
+    t.index ["pagamento_caixa_id"], name: "index_cashiers_on_pagamento_caixa_id"
     t.index ["product_movment_id"], name: "index_cashiers_on_product_movment_id"
     t.index ["therapy_id"], name: "index_cashiers_on_therapy_id"
     t.index ["user_id"], name: "index_cashiers_on_user_id"
@@ -84,6 +86,22 @@ ActiveRecord::Schema.define(version: 2018_12_06_181324) do
     t.index ["client_id"], name: "index_items_on_client_id"
     t.index ["therapy_id"], name: "index_items_on_therapy_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "pagamento_caixas", force: :cascade do |t|
+    t.bigint "pagamento_id"
+    t.bigint "cashier_id"
+    t.decimal "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cashier_id"], name: "index_pagamento_caixas_on_cashier_id"
+    t.index ["pagamento_id"], name: "index_pagamento_caixas_on_pagamento_id"
+  end
+
+  create_table "pagamentos", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "phone_clients", force: :cascade do |t|
@@ -204,6 +222,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_181324) do
 
   add_foreign_key "addresses", "clients"
   add_foreign_key "cashiers", "clients"
+  add_foreign_key "cashiers", "pagamento_caixas"
   add_foreign_key "cashiers", "product_movments"
   add_foreign_key "cashiers", "therapies"
   add_foreign_key "cashiers", "users"
@@ -211,6 +230,8 @@ ActiveRecord::Schema.define(version: 2018_12_06_181324) do
   add_foreign_key "items", "clients"
   add_foreign_key "items", "therapies"
   add_foreign_key "items", "users"
+  add_foreign_key "pagamento_caixas", "cashiers"
+  add_foreign_key "pagamento_caixas", "pagamentos"
   add_foreign_key "phone_clients", "clients"
   add_foreign_key "phone_users", "users"
   add_foreign_key "product_movements", "cashiers"

@@ -4,11 +4,7 @@ class Cashier < ApplicationRecord
 	belongs_to :user
 	belongs_to :therapy
 	belongs_to :client
-
-	
-  validates :user_id, presence: true
-  validates :client_id, presence: true
-  validates :therapy_id, presence: true
+	has_many :pagamento_caixa, dependent: :destroy
 
 	enum paid: [:nao, :sim]
 	enum discount: ['Não', 'Sim']
@@ -19,6 +15,7 @@ class Cashier < ApplicationRecord
 	accepts_nested_attributes_for :item
 	accepts_nested_attributes_for :client
 	accepts_nested_attributes_for :product_movements
+	accepts_nested_attributes_for :pagamento_caixa
 
 
 end

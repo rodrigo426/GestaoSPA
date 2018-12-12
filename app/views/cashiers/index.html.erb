@@ -2,6 +2,8 @@
 <%= render 'items/form', item: @item %>
   <div id="example1" align="center">
     <h5 id="notice" style="color: red"><%= notice %></h5>
+    <br>
+    <a href="/cashiers/produtos" class="btn btn-info">Abrir Venda de Produto</a>
 
     <div class="table-responsive">
       <br/>
@@ -53,7 +55,7 @@
           <% end %>
         </tbody>
       </table>
-    </div>
+    
     <a onclick="toogleRecord()" href="javascript:void(0);" class="btn btn-info" style="margin-bottom: 20px">Mostrar vendas concluídas</a>
 
     <div id="divRecord" style="display: none">
@@ -66,6 +68,7 @@
               <th>Terapia</th>
               <th>Valor</th>
               <th>Valor Pago</th>
+              <th>Forma de Pagamento</th>
               <th>Forma de Pagamento</th>
               <th>Pago</th>
               <th>Desconto</th>
@@ -82,7 +85,14 @@
               <td><%= cashier.therapy.name if cashier.therapy%></td>
               <td><%= cashier.price %></td>
               <td><%= cashier.paid_value %></td>
-              <td><%= cashier.paymment %></td>
+              <td><%= cashier.paymment if cashier.pagamento_caixa.blank? %></td>
+              <td>
+                <% unless cashier.pagamento_caixa.blank? %>
+                  <% cashier.pagamento_caixa.each do |pagamento_caixa|%>
+                    <%= pagamento_caixa.pagamento.name %>: R$<%= pagamento_caixa.value %>&nbsp;|&nbsp;
+                  <% end %>
+                <% end %>    
+              </td>
               <td><%= cashier.paid %></td>
               <td><%= cashier.discount %></td>
               <td><%= cashier.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
@@ -93,6 +103,7 @@
         </table>
       </div>
       <br>
+    </div>
     </div>
   </div>
 <br>
