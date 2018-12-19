@@ -3,6 +3,4 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
   $('#therapies').dataTable
-    bJqueryUI: true
-	bProcessing: true
-	bServerSide: true
+    pageLength: 50

@@ -3,7 +3,6 @@
   <div id="example1" align="center">
     <h5 id="notice" style="color: red"><%= notice %></h5>
     <br>
-    <a href="/cashiers/produtos" class="btn btn-info">Abrir Venda de Produto</a>
 
     <div class="table-responsive">
       <br/>
@@ -79,6 +78,7 @@
 
           <tbody>
           <% @cashiers.order('created_at DESC').each do |cashier| %>
+          <% unless cashier.therapy.blank? %>
             <tr>
               <td><%= cashier.client.name if cashier.client%></td>
               <td><%= cashier.user.name if cashier.user%></td>
@@ -98,6 +98,7 @@
               <td><%= cashier.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
               <td><%= cashier.updated_at.strftime("%d/%m/%Y - %H:%M") %></td>
             </tr>
+          <% end %>
           <% end %>
           </tbody>
         </table>

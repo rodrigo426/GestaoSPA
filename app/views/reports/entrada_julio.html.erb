@@ -1,9 +1,5 @@
-
-
-
-
 <br><div id="example1" align="center"><br/>
-<%= search_form_for @search, url: reports_Entrada_path, method: :post do |f| %>
+<%= search_form_for @search, url: reports_entrada_julio_path, method: :post do |f| %>
   <div class="field">
     <%= f.label :therapy_name_cont, 'Terapia' %>
     <%= f.select :therapy_id_eq, options_from_collection_for_select(Therapy.all, "id", "name", @search.therapy_id_eq), :include_blank => true %>
@@ -11,7 +7,7 @@
     <%= f.select :paymment_eq, Cashier.paymments.to_a.map { |w| [w[0].humanize, w[1]] },
                          {:include_blank => true} %>
 
-  <%= f.label :discount_eq, 'Desconto' %>
+	<%= f.label :discount_eq, 'Desconto' %>
     <%= f.select :discount_eq, Cashier.discounts.to_a.map { |w| [w[0].humanize, w[1]] },
                          {:include_blank => true} %>
   </div>
@@ -40,15 +36,15 @@
     <%  a = 0 %>
     <tbody>
     <% @cashiers.order('created_at DESC').each do |cashier| %>
-      <% if cashier.sim? %>
-        <% unless cashier.therapy.blank? %>
-        <tr>
-          <td><%= cashier.therapy.name if cashier.therapy%></td>
+    	<% if cashier.sim? %>
+    	<% unless cashier.user.name == 'Julio' && cashier.user.kind == 'gerente'%>
+  	    <tr>
+  	      <td><%= cashier.therapy.name if cashier.therapy%></td>
           <td><%= number_to_currency(cashier.price.to_f) %></td>
           <td class="count-value" style="display: none;"><%= cashier.price.to_f %></td>
-          <td><%= number_to_currency(cashier.paid_value.to_f) %></td>
-          <td class="count-paid" style="display: none;"><%= cashier.paid_value.to_f %></td>
-          <td class="pagamento"><%= cashier.paymment if cashier.pagamento_caixa.blank? %></td>
+  	      <td><%= number_to_currency(cashier.paid_value.to_f) %></td>
+  	      <td class="count-paid" style="display: none;"><%= cashier.paid_value.to_f %></td>
+  	      <td class="pagamento"><%= cashier.paymment if cashier.pagamento_caixa.blank? %></td>
           <td>
             <% unless cashier.pagamento_caixa.blank? %>
               <% cashier.pagamento_caixa.each do |pagamento_caixa|%>
@@ -56,13 +52,13 @@
               <% end %>
             <% end %> 
            </td>
-          <td><%= cashier.discount %></td>
-          <td><%= cashier.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
-          <td><%= cashier.updated_at.strftime("%d/%m/%Y - %H:%M") %></td>
-        </tr>
+  	      <td><%= cashier.discount %></td>
+  	      <td><%= cashier.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
+  	      <td><%= cashier.updated_at.strftime("%d/%m/%Y - %H:%M") %></td>
+  	    </tr>
         <% a = a + 1 if cashier %>
-    <% end %>
-    <% end %>
+  	<% end %>
+  	<% end %>
     <% end %>
     <th>Total de Terapias</th><th><%= a %></th>
     </tbody>
@@ -103,7 +99,7 @@
       {
          var divToPrint=document.getElementById("countit");
          newWin= window.open("");
-         newWin.document.write('<html><head><title></title> <h1 align="center">Relatório de Entradas</h1> <%=  %>');
+         newWin.document.write('<html><head><title></title> <h1 align="center">Relatório de Entradas(Sem Júlio)</h1> <%=  %>');
          newWin.document.write('<style> table, th, td {border: 1px solid #ddd;;width:100%;border-collapse: collapse;padding-left:10px;padding-right:10px;}</style>');
          newWin.document.write('</head>');
          newWin.document.write(divToPrint.outerHTML);

@@ -1,0 +1,10 @@
+<div class="col-md-5">
+	<div class='nested-fields'>
+	    <div>
+	    	<div class='col form-group'><%= f.collection_select :pagamento_id, Pagamento.all, :id, :name, { include_blank: true }, class: "selecttwo" %></div>
+	    	Valor: <%= f.text_field :value %>
+
+	    	<%= link_to_remove_association('remover', f) %>
+	    </div><br>
+	</div>
+</div>

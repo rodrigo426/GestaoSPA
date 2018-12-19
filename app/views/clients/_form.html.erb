@@ -18,6 +18,8 @@
               </ul>
             </div>
           <% end %>
+
+          <% unless current_user.terapeuta? %>
           <div class="form-row">
             <div class="card-body border">
             <div class='col form-group'>
@@ -72,12 +74,18 @@
           </div>
           </div>
           <br>
+
+          <% end %>
           
           <div class="card-body border text-center">
             <div class="container">
               <h3>Prontuário</h3>
+              <% if current_user.terapeuta? %>
+                <div>
+              <% else %>
               <a onclick="toogleRecord()" href="javascript:void(0);" class="btn btn-info">Mostrar</a>
               <div id="divRecord" style="display: none">
+              <% end %>
                 <%= form.fields_for :record do |record_form| %>
                 <br><div class="card-body border text-center"><div class="form-row">
                     <div class='col form-group'>Alergia a Creme:<%= record_form.check_box :cream_allergy, class: 'form-control' %></div>
@@ -169,7 +177,12 @@
           <div class="card-body border">
             <div class="form-row">
               <div class="col form-group" align="left"><%= form.button "Confirmar", class: "btn btn-success" %></div>
+
+              <% if current_user.terapeuta? %>
+                <div class="col form-group" align="center"><%= link_to 'Sair', items_path, class: "btn btn-secondary" %></div>
+              <% else %>
               <div class="col form-group" align="right"><%= link_to 'Sair', clients_path, class: 'btn btn-warning' %></div>
+              <% end %>
               
             </div>
           </div>

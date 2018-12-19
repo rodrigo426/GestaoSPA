@@ -120,8 +120,15 @@
         </div><br>
         <div class="form-row">
           <div class="col form-group" align="center"><%= link_to 'Editar', edit_client_path(@client), class: "btn btn-primary" %></div>
+
+          <% if current_user.terapeuta? %>
+            <div class="col form-group" align="center"><%= link_to 'Sair', items_path, class: "btn btn-secondary" %></div>
+            </div>
+          <% else %>
           <div class="col form-group" align="center"><%= link_to 'Sair', clients_path, class: "btn btn-secondary" %></div>
-        </div>
+          </div>
+
+        <% end %>
 
 
       </article> <!-- card-body end .// -->

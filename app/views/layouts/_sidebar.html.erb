@@ -38,17 +38,19 @@
     </div>
     <br><a onclick="toogleRecepcao()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #e0e0e0">Recepção</a>
     <div id="divRecepcao">
-      <!--<li class="drawer-menu-item">
-        <a href="/schedules">
-          <i class="material-icons" style="color: #e0e0e0">perm_contact_calendar</i>
-          <span class="drawer-menu-text" style="color: #e0e0e0">Agenda</span>
-        </a>
-      </li>-->
       <% if current_user.gerente? || current_user.recepcionista? || current_user.tecnico? %>
+
         <li class="drawer-menu-item">
           <a href="/cashiers">
             <i class="material-icons" style="color: #e0e0e0">shopping_cart</i>
             <span class="drawer-menu-text" style="color: #e0e0e0">Frente de Caixa</span>
+          </a>
+        </li>
+
+        <li class="drawer-menu-item">
+          <a href="/product_cashier/index">
+            <i class="material-icons" style="color: #e0e0e0">shopping_cart</i>
+            <span class="drawer-menu-text" style="color: #e0e0e0">Caixa de Produtos</span>
           </a>
         </li>
       <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_185502) do
+ActiveRecord::Schema.define(version: 2018_12_19_174908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 2018_12_10_185502) do
     t.datetime "end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "cashier_id"
+    t.index ["cashier_id"], name: "index_events_on_cashier_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -129,6 +131,8 @@ ActiveRecord::Schema.define(version: 2018_12_10_185502) do
     t.datetime "updated_at", null: false
     t.bigint "cashier_id"
     t.bigint "user_id"
+    t.decimal "buy_value"
+    t.text "description"
     t.index ["cashier_id"], name: "index_product_movements_on_cashier_id"
     t.index ["product_id"], name: "index_product_movements_on_product_id"
     t.index ["user_id"], name: "index_product_movements_on_user_id"
@@ -151,6 +155,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_185502) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "buy_value"
   end
 
   create_table "records", force: :cascade do |t|
@@ -226,6 +231,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_185502) do
   add_foreign_key "cashiers", "product_movments"
   add_foreign_key "cashiers", "therapies"
   add_foreign_key "cashiers", "users"
+  add_foreign_key "events", "cashiers"
   add_foreign_key "items", "cashiers"
   add_foreign_key "items", "clients"
   add_foreign_key "items", "therapies"

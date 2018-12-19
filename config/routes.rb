@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  match "reports/despesas_terapeuta" => "reports#despesas_terapeuta", as: :reports_despesas_terapeuta, via: [:get, :post]
+  get 'product_cashier/index'
+  match "reports/entrada_julio" => "reports#entrada_julio", as: :reports_entrada_julio, via: [:get, :post]
   get 'cashiers/produtos'
   resources :pagamentos
   match "reports/produtos" => "reports#produtos", as: :reports_produtos, via: [:get, :post]

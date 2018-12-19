@@ -9,8 +9,6 @@ class CashiersController < ApplicationController
   def index
     @cashiers = Cashier.all
     @cashier = Cashier.new
-    @therapy = Therapy.all
-    @client = Client.all
     @cashier.item.build
     @item = Item.new
     @users = User.all
@@ -42,6 +40,7 @@ class CashiersController < ApplicationController
 
   def produtos
     @cashier = Cashier.new
+    @product_movement = ProductMovement.new
   end
   # POST /cashiers
   # POST /cashiers.json

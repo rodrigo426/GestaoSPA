@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
   $('#clients').dataTable
-    bJqueryUI: true
-	bPaginate: false
+    pageLength: 50
+    

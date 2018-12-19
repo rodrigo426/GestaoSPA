@@ -1,5 +1,5 @@
 <br><div id="example1" align="center"><br/>
-<%= search_form_for @search, url: reports_despesas_path, method: :post do |f| %>
+<%= search_form_for @search, url: reports_despesas_terapeuta_path, method: :post do |f| %>
   <div class="input-daterange">
     Período
     <%= f.text_field :start_gteq, placeholder: 'De', autocomplete: "off" %>
@@ -23,6 +23,7 @@
 
   <tbody>
   <% @events.order('start DESC').each do |event| %>
+  <% if event.cashier_id.blank? %>
     <tr>
       <td><%= event.name %></td>
       <td><%= number_to_currency(event.price.to_f) %></td>
@@ -31,6 +32,7 @@
       <td><% if event.paid == false && event.cashier_id == nil %>Não <% end %><% if event.paid == true && event.cashier_id == nil %> Sim <% end %></td>
       <td><%= event.start.strftime("%d/%m/%Y") if event.start%></td>
     </tr>
+  <% end %>
   <% end %>
   </tbody>
 </table>

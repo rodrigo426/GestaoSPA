@@ -28,7 +28,17 @@ class ReportsController < ApplicationController
     @cashiers = @search.result
   end
 
+  def entrada_julio
+    @search = Cashier.search(params[:q])
+    @cashiers = @search.result
+  end
+
   def despesas
+    @search = Event.search(params[:q])
+    @events = @search.result
+  end
+
+  def despesas_terapeuta
     @search = Event.search(params[:q])
     @events = @search.result
   end

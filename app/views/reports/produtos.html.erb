@@ -23,12 +23,15 @@
 	    <tr>
 	      <th>Produto</th>
 	      <th>Valor</th>
+	      <th>Valor de compra</th>
+	      <th>Uma Forma de Pagamento</th>
+          <th>Duas Formas de Pagamento</th>
 	      <th>Quantidade</th>
 	      <th>Funcionario</th>
 	      <th>Data da Venda</th>
 	    </tr>
 	  </thead>
-
+	  <%  a = 0 %>
 	  <tbody>
 	    <% @product_movements.order('created_at DESC').each do |product_movement| %>
 		    <% if product_movement.cashier %>
@@ -36,18 +39,32 @@
 		        <td><%= product_movement.product.name if product_movement.product %></td>
 		        <td class="count-value" style="display: none;"><%= product_movement.price.to_f * product_movement.quantity %></td>
 		        <td><%= number_to_currency(product_movement.price.to_f * product_movement.quantity) %></td>
+		        <td class="count-value-compra" style="display: none;"><%= product_movement.buy_value.to_f * product_movement.quantity %></td>
+		        <td><%= number_to_currency(product_movement.buy_value.to_f * product_movement.quantity) %></td>
+		        <td class="pagamento"><%= product_movement.cashier.paymment if product_movement.cashier.pagamento_caixa.blank? %></td>
+	          <td>
+	            <% unless product_movement.cashier.pagamento_caixa.blank? %>
+	              <% product_movement.cashier.pagamento_caixa.each do |pagamento_caixa|%>
+	                <b><%= pagamento_caixa.pagamento.name %></b>: R$<%= pagamento_caixa.value %>;
+	              <% end %>
+	            <% end %> 
+	           </td>
 		        <td><%= product_movement.quantity %></td>
 		        <td><%= product_movement.user.name if product_movement.user %></td>
 		        <td><%= product_movement.created_at.strftime("%d/%m/%Y") %></td>
 		      </tr>
+		      <% a = a + product_movement.quantity if product_movement %>
 			<% end %>    
 	    <% end %>
+	    <th>Total de Produtos Vendidos</th><th><%= a %></th>
 	  </tbody>
 	</table>
 	<br>
+<button class="btn btn-info">Imprimir Relatório</button>
+<br><br>
+
 </div>
-
-
+<br>
 <script language="javascript" type="text/javascript">
     var tds = document.getElementById('countit').getElementsByTagName('td');
     var sumValue = 0;
@@ -56,6 +73,38 @@
             sumValue += isNaN(tds[i].innerHTML) ? 0 : parseFloat(tds[i].innerHTML);
         }
     }
-    document.getElementById('countit').innerHTML += '<tr><td><b>Valor Total</b></td><td><b>R$ ' + sumValue + '</b></td></tr>';
+
+    var tds = document.getElementById('countit').getElementsByTagName('td');
+    var sumBuy = 0;
+    for(var i = 0; i < tds.length; i ++) {
+        if(tds[i].className == 'count-value-compra') {
+            sumBuy += isNaN(tds[i].innerHTML) ? 0 : parseFloat(tds[i].innerHTML);
+        }
+    }
+
+    document.getElementById('countit').innerHTML += '<tr><td><b>Valor Total Vendido</b></td><td><b>R$ ' + sumValue + '</b></td></tr>';
+    document.getElementById('countit').innerHTML += '<tr><td><b>Valor Total de Compra</b></td><td><b>R$ ' + sumBuy + '</b></td></tr>';
+
+    var total = sumValue - sumBuy;
+    document.getElementById('countit').innerHTML += '<tr><td><b>Valor Total Liquido</b></td><td><b>R$ ' + total + '</b></td></tr>';
+
+
+
+
+        function printData()
+      {
+         var divToPrint=document.getElementById("countit");
+         newWin= window.open("");
+         newWin.document.write('<html><head><title></title> <h1 align="center">Relatório de Venda de Produtos</h1>');
+         newWin.document.write('<style> table, th, td {border: 1px solid #ddd;;width:100%;border-collapse: collapse; padding-left:10px;padding-right:10px;}</style>');
+         newWin.document.write('</head>');
+         newWin.document.write(divToPrint.outerHTML);
+         newWin.print();
+         newWin.close();
+      }
+
+      $('button').on('click',function(){
+      printData();
+      })
 
 </script>

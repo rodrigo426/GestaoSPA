@@ -69,6 +69,6 @@ class ProductMovementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_movement_params
-      params.require(:product_movement).permit(:id, :product_id, :kind, :price, :quantity, :user_id, :_destroy)
+      params.require(:product_movement).permit(:id, :product_id, :kind, :price, :quantity, :user_id, :buy_value, :_destroy)
     end
 end

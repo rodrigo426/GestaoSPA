@@ -1,10 +1,38 @@
-<a href="/reports/therapist" class="btn btn-info">Relatorio Terapeuta</a>
+<br><div id="example1" align="center"><br/>
 
-<a href="/reports/Entrada" class="btn btn-info">Relatorio Geral Entrada</a>
+<div class="form-row" style="padding-left: 20%">
+  <div class="row justify-content">
+    <div class="col-md-15">
+      <div class="card">
+        <header class="card-header">
+          <h4 class="card-title mt-2 text-center">Relatórios de Entrada</h4>
+        </header>
+        <article class="card-body">
+  		<a href="/reports/Entrada" class="btn btn-info">Entrada de Terapias</a><br><br>
+  		<a href="/reports/entrada_julio" class="btn btn-info">Entrada de Terapias(Sem Julio)</a><br><br>
+      <a href="/reports/produtos" class="btn btn-info">Venda de Produtos</a>
+        </article> <!-- card-body end .// -->
+      </div> <!-- card.// -->
+    </div> <!-- col.//-->
+  </div> <!-- row.//-->
 
-<a href="/reports/despesas" class="btn btn-info">Relatorio Geral Despesas</a>
+  <div class="row justify-content" style="margin-left: 60px">
+    <div class="col-md-15">
+      <div class="card">
+        <header class="card-header">
+          <h4 class="card-title mt-2 text-center">Relatórios de Despesas</h4>
+        </header>
+        <article class="card-body">
 
-<a href="/reports/produtos" class="btn btn-info">Relatorio de Venda de Produtos</a>
+          <a href="/reports/despesas" class="btn btn-info">Despesas Gerais</a><br><br>
+          <a href="/reports/despesas_terapeuta" class="btn btn-info">Despesas Gerais(Sem Repasse para Terapeutas)</a><br><br>
+          <a href="/reports/therapist" class="btn btn-info">Fechamento de Terapeuta</a>
+
+        </article> <!-- card-body end .// -->
+      </div> <!-- card.// -->
+    </div> <!-- col.//-->
+  </div> <!-- row.//-->
+</div>
 
 <br><br>
 <h3 align="center">Quantidade de terapias vendidas no mês</h3>
@@ -15,3 +43,5 @@
 <br>
 <h3 align="center">Valor total de formas de pagamento no mês</h3>
 <%= pie_chart Cashier.joins(:therapy).group(:paymment).where('cashiers.created_at >= ?', Date.current.beginning_of_month).sum(:paid_value) %>
+
+</div>

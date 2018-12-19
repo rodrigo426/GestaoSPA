@@ -9,6 +9,8 @@
   def index
     #@clients = policy_scope(Client).reverse
     @clients = Client.all
+    @users = User.all
+    authorize @users
   end
 
   # GET /clients/1

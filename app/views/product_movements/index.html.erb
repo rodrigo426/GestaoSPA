@@ -1,35 +1,32 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Movimentação de Produtos</h1>
-
-<table class='table table-striped table-bordered' style="width:90%;" align="center">
+<div id="example1" align="center">
+  <div class="table-responsive">
+<br><h1>Movimentação de Produtos</h1>
+<%= link_to 'Nova Movimentação', new_product_movement_path, class: "btn btn-info" %>
+<table id="product_movements_table" class='table table-striped table-bordered' style="width:90%;" align="center">
   <thead>
     <tr>
       <th>Produto</th>
       <th>Tipo de Movimentação</th>
-      <th>Valor</th>
       <th>Quantidade Movimentada</th>
       <th>Funcionario</th>
-      <th colspan="3"></th>
+      <th>Data da Movimentação</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @product_movements.each do |product_movement| %>
+    <% @product_movements.order('created_at DESC').each do |product_movement| %>
       <tr>
         <td><%= product_movement.product.name if product_movement.product %></td>
         <td><%= product_movement.kind %></td>
-        <td><%= product_movement.price %></td>
         <td><%= product_movement.quantity %></td>
         <td><%= product_movement.user.name if product_movement.user %></td>
-        <td><%= link_to 'Show', product_movement %></td>
-        <td><%= link_to 'Edit', edit_product_movement_path(product_movement) %></td>
-        <td><%= link_to 'Destroy', product_movement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= product_movement.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'Nova Movimentação', new_product_movement_path, class: "btn btn-info" %>
+</div>
+</div>

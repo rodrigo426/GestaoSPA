@@ -16,10 +16,10 @@ class ProductMovement < ApplicationRecord
         self.quantity = 0
       end
       product.update(quantity: self.product.quantity + self.quantity)
-      product_movement.update(price: self.product.price)
+      product_movement.update(price: self.product.price, buy_value: self.product.buy_value)
     else
       product.update(quantity: self.product.quantity - self.quantity)
-      product_movement.update(price: self.product.price)
+      product_movement.update(price: self.product.price, buy_value: self.product.buy_value)
     end
   end
 end

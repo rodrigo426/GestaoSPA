@@ -39,37 +39,38 @@
       <%= form.select :paid, options_for_select(Cashier.paids.map {|k,v| [k,v]}), {}, {required: 'true', class: 'form-control', id: 'pago'} %>
     </div>
   </div>
+<br>
+<div class="card-body border">
+  <h4><b>Forma de Pagamento</b></h4><input type="radio" value="false"  name="user_past_employ_status" id="pemp_yes" checked><label for="pemp_yes">Uma</label>
+  <input type="radio" value="true" name="user_past_employ_status" id="pemp_no"><label for="pemp_no">Duas(ou mais)</label>
 
 
-    <div class='col form-group'>
-      <%= form.label "Uma Forma de pagamento" %>
-      <%= form.select :paymment, options_for_select(Cashier.paymments.map {|k,v| [k,v]}), {}, {required: 'true', class: 'form-control'} %>
+  <br><br>
+
+  <div class="umaForma">
+
+      <div class='col form-group'>
+        <%= form.select :paymment, options_for_select(Cashier.paymments.map {|k,v| [k,v]}), {:include_blank => true}, {class: 'form-control'} %>
+      </div>
+
+  </div>
+
+
+  <div class="duasFormas" style="display: none">
+    <div class="card-body border">
+      <h5>Formas de Pagamento <%= link_to_add_association('+', form, :pagamento_caixa, class: "btn btn-primary") %></h5>
+      <div id="pagamento_caixa">
+        
+        <%= form.simple_fields_for :pagamento_caixa do |pagamento_caixa_fields| %>
+          <%= render partial: "pagamento_caixa_fields", locals: { f: pagamento_caixa_fields } %>
+        <% end %>
+      </div>
     </div>
 
+  </div>
+</div>
 
-
-  <div class="card-body border">
-    <h5>Duas Formas de Pagamento <%= link_to_add_association('+', form, :pagamento_caixa, class: "btn btn-primary") %></h5>
-    <div id="pagamento_caixa">
-      
-      <%= form.simple_fields_for :pagamento_caixa do |pagamento_caixa_fields| %>
-        <%= render partial: "pagamento_caixa_fields", locals: { f: pagamento_caixa_fields } %>
-      <% end %>
-    </div>
-  </div><br>
-
-  <div class="card-body border">
-    <h5>Produto(s) <%= link_to_add_association('+', form, :product_movements, class: "btn btn-primary") %></h5>
-    <div id="product_movements">
-      
-      <%= form.simple_fields_for :product_movements do |product_movements_fields| %>
-        <%= render partial: "product_movement_fields", locals: { f: product_movements_fields } %>
-      <% end %>
-    </div>
-  </div><br>
-
-
-
+<br><br>
   <div class="actions">
     <%= form.button "Confirmar e concluir venda", class: "btn btn-success", :onclick =>'ValorPago()'%>
     <%= form.button "Confirmar e deixar pendente", class: "btn btn-secondary", :onclick =>'ValorNaoPago()'%>
@@ -92,4 +93,12 @@ function ValorPago() {
 function ValorNaoPago() {
   document.getElementById("pago").value = "0";
 }
+
+
+
+
+$("input[name='user_past_employ_status']").on("click", function(){
+    $(".umaForma").toggle(this.value === "false" && this.checked);
+    $(".duasFormas").toggle(this.value === "true" && this.checked);
+});
 </script>

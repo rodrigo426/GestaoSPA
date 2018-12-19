@@ -1,0 +1,2 @@
+module ProductCashierHelper
+end
