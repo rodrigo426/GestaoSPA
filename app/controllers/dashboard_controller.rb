@@ -1,6 +1,7 @@
 class DashboardController < ApplicationController
 	def index
 		@schedules = Schedule.all
+		@items = Item.all
 		@clients = Client.all
 	end
 	def sell_week

@@ -1,7 +1,7 @@
 <body>
   <div id="example1" align="center">
     <p id="notice"><%= notice %></p>
-<% if policy(@clients).index? %>
+<% if current_user.gerente? || current_user.tecnico? %>
   <%= render partial: 'gerente_index' %>
     <% else %>
       <%= render partial: 'terapeuta_index' %>

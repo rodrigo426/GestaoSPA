@@ -53,6 +53,14 @@
             <span class="drawer-menu-text" style="color: #e0e0e0">Caixa de Produtos</span>
           </a>
         </li>
+        <% if current_user.recepcionista? %>
+          <li class="drawer-menu-item">
+            <a href="/reports/produtos">
+              <i class="material-icons" style="color: #e0e0e0">list_alt</i>
+              <span class="drawer-menu-text" style="color: #e0e0e0">Relatóro de Produtos</span>
+            </a>
+          </li>
+        <% end %>
       <% end %>
       <li class="drawer-menu-item">
         <a href="/items">
