@@ -5,6 +5,7 @@ class Cashier < ApplicationRecord
 	belongs_to :therapy, optional: true
 	belongs_to :client, optional: true
 	has_many :pagamento_caixa, dependent: :destroy
+	has_many :event, dependent: :destroy
 
 	enum paid: [:nao, :sim]
 	enum discount: ['Não', 'Sim']
