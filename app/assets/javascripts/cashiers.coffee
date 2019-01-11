@@ -5,3 +5,8 @@ jQuery ->
   $('#cashiers').dataTable
     pageLength: 50
     ordering: false
+
+  $('#cashiers-aberto').dataTable
+    ordering: false
+    paging: false
+    lengthChange: false

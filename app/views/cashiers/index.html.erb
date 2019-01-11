@@ -7,14 +7,17 @@
     <div class="table-responsive">
       <br/>
       <h1>Caixa</h1>
-      <table class="table" style="width: 90%;">
+      <table id='cashiers-aberto' class="table" style="width: 90%;">
         <thead>
           <tr>
             <th >Terapeuta</th>
             <th>Cliente</th>
             <th>Terapia</th>
             <th>Valor</th>
-            <th colspan="3"></th>
+            <th></th>
+            <% if current_user.gerente? %>
+              <th></th>
+            <% end %>
           </tr>
         </thead>
 
@@ -55,7 +58,7 @@
         </tbody>
       </table>
     
-    <a onclick="toogleRecord()" href="javascript:void(0);" class="btn btn-info" style="margin-bottom: 20px">Mostrar vendas concluídas</a>
+    <a onclick="toogleRecord()" href="javascript:void(0);" class="btn btn-info" style="margin-bottom: 20px">Mostrar todas as vendas</a>
 
     <div id="divRecord" style="display: none">
       <div style="width:95%">

@@ -12,7 +12,15 @@
       </ul>
     </div>
   <% end %>
+  <br>
+<table class='table table-striped table-bordered'>
+  <tr>
+    <td align="center"><h4><%= cashier.client.name %>, fez <%= cashier.therapy.name %> com <%= cashier.user.name %>.</h4></td>
+  </tr>
+</table>
 
+
+  
   <div class="form-group">
     <%= form.label "Valor" %>
     <%= form.text_field :price, :disabled=>true, class: 'form-control', id: 'valor' %>
