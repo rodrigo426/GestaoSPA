@@ -20,6 +20,9 @@
               <% if current_user.gerente? || current_user.tecnico?#|| current_user.recepcionista? %>
                 <th></th>
               <% end %>
+              <% if current_user.gerente? %>
+                <th></th>
+              <% end %>
             </tr>
           </thead>
 
@@ -32,6 +35,9 @@
                 <% if current_user.gerente? || current_user.tecnico?%>
                   <td><%= link_to('Editar', edit_user_path(user), class: 'btn btn-info') %></td>
                 <% end %>
+                <% if current_user.gerente? %>
+                    <td><%= link_to('Deletar', user, method: :delete, data: { confirm: 'CUIDADO! Ao deletar um funcionario, o historico e vendas relacionados a ele também será deletado. Tem certeza?' }, class: 'btn btn-danger') %></td>
+                  <% end %>
               </tr>
             <% end %>
           </tbody>

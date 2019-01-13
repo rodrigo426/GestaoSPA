@@ -29,10 +29,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @users = User.all
-    authorize @users
     @user = User.new(user_params)
-
+    
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'Funcionário cadastrado!' }
@@ -47,8 +45,6 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    @users = User.all
-    authorize @users
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'Funcionário atualizado!' }

@@ -36,13 +36,13 @@
               <div class="col form-group">
                 <%= form.label "Tipo" %>
                 <% if current_user.recepcionista? %>
-                  <%= form.select :kinds, options_for_select(["terapeuta", "recepcionista"]), {}, class: 'form-control' %>
+                  <%= form.select :kind, options_for_select(["terapeuta", "recepcionista"]), {}, class: 'form-control' %>
                 <% end %>
                 <% if current_user.gerente? %>
-                  <%= form.select :kinds, options_for_select(["terapeuta", "gerente", "recepcionista", "financeiro"]), {}, class: 'form-control' %>
+                  <%= form.select :kind, options_for_select(["terapeuta", "gerente", "recepcionista", "financeiro"]), {}, class: 'form-control' %>
                 <% end %>
                 <% if current_user.tecnico? %>
-                  <%= form.select :kinds, options_for_select(["terapeuta", "gerente", "recepcionista", "financeiro", "tecnico"]), {}, class: 'form-control' %>
+                  <%= form.select :kind, options_for_select(["terapeuta", "gerente", "recepcionista", "financeiro", "tecnico"]), {}, class: 'form-control' %>
                 <% end %>
               </div>
             </div>

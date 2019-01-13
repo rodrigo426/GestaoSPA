@@ -12,10 +12,6 @@ class UserPolicy < ApplicationPolicy
     user.gerente? || user.recepcionista? || user.tecnico?
   end
 
-  def update?
-    user.gerente? || user.recepcionista? || user.tecnico?
-  end
-
   def destroy?
     user.gerente? || user.tecnico?
   end

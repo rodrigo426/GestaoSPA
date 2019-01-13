@@ -6,8 +6,9 @@ class User < ApplicationRecord
   enum kind: [:terapeuta, :gerente, :recepcionista, :financeiro, :tecnico]
   enum status: [:active, :inactive]
 
-  has_many :phone_users
-  has_many :items, :through => :user_items
+  has_many :phone_users, dependent: :destroy
+  has_many :cashiers, dependent: :destroy
+  has_many :items, dependent: :destroy
   has_and_belongs_to_many :therapies
 
   #validates :color, uniqueness: true

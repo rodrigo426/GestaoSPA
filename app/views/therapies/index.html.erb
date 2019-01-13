@@ -15,6 +15,9 @@
               <th>Nome</th>
               <th>Valor</th>
               <th></th>
+              <% if current_user.gerente? %>
+                <th></th>
+              <% end %>
             </tr>
           </thead>
 
@@ -25,6 +28,9 @@
                 <td><%= therapy.price %></td>
                 <td><%= link_to('Editar', edit_therapy_path(therapy), class: 'btn btn-info') %>
                 </td>
+                <% if current_user.gerente? %>
+                    <td><%= link_to('Deletar', therapy, method: :delete, data: { confirm: 'CUIDADO! Ao deletar uma terapia, o historico e vendas relacionado a comanda também serão deletados. Tem certeza?' }, class: 'btn btn-danger') %></td>
+                <% end %>
               </tr>
             <% end %>
           </tbody>
