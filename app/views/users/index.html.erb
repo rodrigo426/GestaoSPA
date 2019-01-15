@@ -6,7 +6,7 @@
       <br/>
       <h1>Funcionários</h1>
       <div class="row justify-content-center">
-      <% if current_user.gerente? || current_user.recepcionista? || current_user.tecnico?%>
+      <% if current_user.gerente? || current_user.tecnico?%>
         <%= link_to 'Cadastrar novo Funcionário', new_user_path, class: 'btn btn-success' %>
       <% end %>
       </div>

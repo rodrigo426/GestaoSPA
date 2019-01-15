@@ -23,6 +23,7 @@
   <table id="countit" class='table table-striped table-bordered' style="width:90%;" align="center">
     <thead>
       <tr>
+        <th>Cliente</th>
         <th>Terapia</th>
         <th>Valor da Terapia</th>
         <th>Valor Pago</th>
@@ -39,7 +40,8 @@
     	<% if cashier.sim? %>
     	<% unless cashier.user.name == 'Julio' && cashier.user.kind == 'gerente'%>
   	    <tr>
-  	      <td><%= cashier.therapy.name if cashier.therapy%></td>
+          <td><%= cashier.client.name if cashier.client %></td>
+  	      <td><%= cashier.therapy.name if cashier.therapy %></td>
           <td><%= number_to_currency(cashier.price.to_f) %></td>
           <td class="count-value" style="display: none;"><%= cashier.price.to_f %></td>
   	      <td><%= number_to_currency(cashier.paid_value.to_f) %></td>

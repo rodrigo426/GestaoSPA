@@ -5,14 +5,13 @@ class ProductCashierController < ApplicationController
     @product_movements = ProductMovement.all
 
 	  if @product_movement.save
-	    format.html { 'Product movement was successfully created.' }
+	    format.html { 'Venda concluida!' }
 	  end
   end
 
 
   def create
     @product_movement = ProductMovement.new(product_movement_params)
-
-
   end
+
 end

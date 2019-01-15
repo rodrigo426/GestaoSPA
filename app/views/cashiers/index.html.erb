@@ -86,7 +86,7 @@
           <% @cashiers.order('created_at DESC').each do |cashier| %>
           <% unless cashier.therapy.blank? %>
             <tr>
-              <% if current_user.gerente? %>
+              <% if current_user.gerente? || current_user.tecnico? %>
                   <td><%= link_to('Deletar', cashier, method: :delete, data: { confirm: 'CUIDADO! Ao deletar uma venda, o historico relacionado a comanda também será deletado. Tem certeza?' }, class: 'btn btn-danger') %></td>
               <% end %>
               <td><%= cashier.client.name if cashier.client%></td>
