@@ -32,13 +32,13 @@
 
 
 	  <div class="card-body border">
-	    <h5><%= link_to_add_association('+', form, :product_movements, class: "btn btn-primary") %> Produto(s)</h5>
-	    <div id="product_movements">
-	      
+	  	<div id="product_movements">
 	      <%= form.simple_fields_for :product_movements do |product_movements_fields| %>
-	        <%= render partial: "product_movement_fields", locals: { f: product_movements_fields } %>
+	        <%= render partial: "product_movement_fields", f: product_movements_fields %>
 	      <% end %>
 	    </div>
+	  	
+	    <h5><%= link_to_add_association('+', form, :product_movements, class: "btn btn-primary") %> Produto(s)</h5>
 	  </div><br>
 
 

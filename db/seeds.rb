@@ -1,7 +1,7 @@
 # /db/seeds.rb
 
-User.create name: 'Julio', status: :active, kind: :gerente, email: 'julio@teste.com', password: 123456
-User.create name: 'Rodrigo', status: :active, kind: :tecnico, email: 'rodrigomoura426@gmail.com', password: 'umv6krc2ze'
+#User.create name: 'Julio', status: :active, kind: :gerente, email: 'julio@teste.com', password: 123456
+#User.create name: 'Rodrigo', status: :active, kind: :tecnico, email: 'rodrigomoura426@gmail.com', password: 'umv6krc2ze'
 #User.create name: 'Manuel', status: :active, kind: :terapeuta, email: 'manuel@teste.com', password: 123456
 #User.create name: 'Marcos', status: :active, kind: :terapeuta, email: 'marcos@teste.com', password: 123456
 
@@ -21,15 +21,15 @@ User.create name: 'Rodrigo', status: :active, kind: :tecnico, email: 'rodrigomou
 
 
 
-Pagamento.create name: 'Cartão de crédito'
-Pagamento.create name: 'Cartão de débito'
-Pagamento.create name: 'Dinheiro'
-Pagamento.create name: 'Cheque'
-Pagamento.create name: 'Tranferência Bancária'
-Pagamento.create name: 'Cortesia'
-Pagamento.create name: 'Pacote'
-Pagamento.create name: 'Permuta'
-Pagamento.create name: 'Pendente'
+#Pagamento.create name: 'Cartão de crédito'
+#Pagamento.create name: 'Cartão de débito'
+#Pagamento.create name: 'Dinheiro'
+#Pagamento.create name: 'Cheque'
+#Pagamento.create name: 'Tranferência Bancária'
+#Pagamento.create name: 'Cortesia'
+#Pagamento.create name: 'Pacote'
+#Pagamento.create name: 'Permuta'
+#Pagamento.create name: 'Pendente'
 
 #PhoneClient.create number:'22331122', client_id: '1'
 #PhoneClient.create number:'22331122', client_id: '1'
