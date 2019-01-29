@@ -97,7 +97,7 @@
 
 
 
-<% if current_user.gerente? || current_user.financeiro? || current_user.tecnico? %>
+<% unless current_user.terapeuta? %>
 <br><br>
 <a onclick="toogleProdutos()" href="javascript:void(0);" class="py-2 drawer-heading" style="color: #e0e0e0">Produtos</a>
     <div id="divProdutos">
@@ -107,12 +107,14 @@
           <span class="drawer-menu-text" style="color: #e0e0e0">Produtos</span>
         </a>
       </li>
+      <% unless current_user.recepcionista? %>
         <li class="drawer-menu-item">
           <a href="/product_movements">
             <i class="material-icons" style="color: #e0e0e0">local_atm</i>
             <span class="drawer-menu-text" style="color: #e0e0e0">Movimentação</span>
           </a>
         </li>
+        <% end %>
     </div>
 <% end %>
 
