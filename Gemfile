@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.4.1'
 
 
+gem 'autonumeric-rails', '~> 2.0', '>= 2.0.0.1'
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 gem 'ransack'

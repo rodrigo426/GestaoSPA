@@ -12,7 +12,8 @@ class Item < ApplicationRecord
 
 	after_create do
   		Cashier.create(price: self.therapy.price, paid: :nao, client_id: self.client_id, therapy_id: self.therapy_id, user_id: self.user_id)
-      Item.update(self.id, cashier_id: Cashier.last)
+      cashier = Cashier.last
+      Item.update(self.id, cashier_id: cashier.id)
   		
 	end
 end

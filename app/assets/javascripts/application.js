@@ -24,6 +24,7 @@
 //= require activestorage
 //= require turbolinks
 //= require moment
+//= require autonumeric
 //= require select2
 //= require fullcalendar
 //= require fullcalendar/locale-all

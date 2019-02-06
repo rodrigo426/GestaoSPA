@@ -29,7 +29,7 @@
                   <td><%= cashier.user.name if cashier.user%></td>
                   <td><%= cashier.client.name if cashier.client%></td>
                   <td><%= cashier.therapy.name if cashier.therapy%></td>
-                  <td><%= cashier.price %></td>
+                  <td>R$ <%= cashier.price %></td>
                   
                   <% if current_user.gerente? %>
                   <td><%= link_to('Deletar', cashier, method: :delete, data: { confirm: 'CUIDADO! Ao deletar uma comanda, o historico relacionado a comanda também será deletado. Tem certeza?' }, class: 'btn btn-danger') %></td>
@@ -40,11 +40,11 @@
 %></td>
                 </tr>
               <% else %>
-                <tr style="background-color: #99ddff">
+                <tr style="background-color: #bcc2ff">
                   <td><%= cashier.user.name if cashier.user%></td>
                   <td><%= cashier.client.name if cashier.client%></td>
                   <td><%= cashier.therapy.name if cashier.therapy%></td>
-                  <td><%= cashier.price %></td>
+                  <td>R$ <%= cashier.price %></td>
 
                   <% if current_user.gerente? %>
                   <td><%= link_to('Deletar', cashier, method: :delete, data: { confirm: 'CUIDADO! Ao deletar uma comanda, o historico relacionado a comanda também será deletado. Tem certeza?' }, class: 'btn btn-danger') %></td>
@@ -92,8 +92,8 @@
               <td><%= cashier.client.name if cashier.client%></td>
               <td><%= cashier.user.name if cashier.user%></td>
               <td><%= cashier.therapy.name if cashier.therapy%></td>
-              <td><%= cashier.price %></td>
-              <td><%= cashier.paid_value %></td>
+              <td>R$ <%= cashier.price %></td>
+              <td>R$ <%= cashier.paid_value %></td>
               <td><%= cashier.paymment if cashier.pagamento_caixa.blank? %></td>
               <td>
                 <% unless cashier.pagamento_caixa.blank? %>
