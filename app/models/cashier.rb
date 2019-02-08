@@ -20,12 +20,12 @@ class Cashier < ApplicationRecord
 	
 	after_update do
 		unless self.user.name == 'Julio'
-			Event.where(:cashier_id => self.id).first_or_create do |event|
-				event.name = self.user.name
-				event.price = self.therapist_value
-				event.description = "Repasse para terapeuta"
-				event.start = self.created_at
-			end
+			Event.find_or_initialize_by(:cashier_id => self.id).update_attributes(
+				:name => self.user.name,
+				:price => self.therapist_value,
+				:description => "Repasse para terapeuta",
+				:start => self.created_at,
+			)
 		end
 	end
 

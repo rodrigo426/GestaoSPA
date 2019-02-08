@@ -83,7 +83,7 @@
           </thead>
 
           <tbody>
-          <% @cashiers.order('created_at DESC').each do |cashier| %>
+          <% @cashiers.order('updated_at DESC').each do |cashier| %>
           <% unless cashier.therapy.blank? %>
             <tr>
               <% if current_user.gerente? || current_user.tecnico? %>

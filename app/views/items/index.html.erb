@@ -12,6 +12,7 @@
               <th>Cliente</th>
               <th>Terapeuta</th>
               <th>Terapia</th>
+              <th>Valor da Terapia</th>
               <th>Repasse</th>
               <th>Descrição</th>
               <th>Data</th>
@@ -32,7 +33,8 @@
                     <td><%= link_to(item.client.name, item.client) %></td>
                     <td><%= item.user.name %></td>
                     <td><%= item.therapy.name %></td>
-                    <td><%= item.cashier_id if item.cashier_id %></td>
+                    <td><%= item.cashier.price if item.cashier %></td>
+                    <td>R$ <%= item.cashier.therapist_value if item.cashier %></td>
                     <td><%= item.description %></td>
                     <td><%= item.created_at.strftime("%d/%m/%Y - %H:%M") %></td>
                     <td><%= link_to('Detalhes', item, class: 'btn btn-info') %></td>
@@ -46,6 +48,7 @@
                   <td><%= link_to(item.client.name, item.client) %></td>
                   <td><%= item.user.name %></td>
                   <td><%= item.therapy.name %></td>
+                  <td><%= item.cashier.price if item.cashier %></td>
                   <td>R$ <%= item.cashier.therapist_value if item.cashier %></td>
                   <td><%= item.description %></td>
                   <td><%= item.created_at.strftime("%d/%m/%Y - %H:%M") %></td>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_19_174908) do
+ActiveRecord::Schema.define(version: 2019_02_07_200458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2018_12_19_174908) do
     t.bigint "therapy_id"
     t.bigint "client_id"
     t.integer "discount"
-    t.decimal "therapist_value"
+    t.decimal "therapist_value", precision: 8, scale: 2
     t.bigint "product_movment_id"
     t.bigint "pagamento_caixa_id"
     t.index ["client_id"], name: "index_cashiers_on_client_id"
