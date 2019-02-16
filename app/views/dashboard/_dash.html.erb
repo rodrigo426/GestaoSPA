@@ -1,5 +1,5 @@
 <br />
-<% if current_user.gerente? || current_user.recepcionista? %>
+<% if current_user.gerente? || current_user.recepcionista?|| current_user.tecnico? %>
 <h3 align="center">Olá <%= current_user.name %>!</h3><br>
     <% unless current_user.financeiro? %>
     <div class="container">
@@ -51,6 +51,7 @@
           <tr>
             <th>Cliente</th>
             <th>Data</th>
+            <th>Telefone(s)</th>
           </tr>
         </thead>
 
@@ -61,13 +62,25 @@
                 <tr style="background-color: #DC3912">
                   <td><%= link_to(client.name, client, class: 'link-to-text-color') %></td>
                   <td><%= client.birthdate.strftime("%d/%m/%Y") %> - É hoje!</td>
-                  <td></td>
+                  <td>
+                    <% unless client.phone_clients.blank? %>
+                      <% client.phone_clients.each do |phone_client|%>
+                        <%= phone_client.number%>;&nbsp;
+                      <% end %>
+                    <% end %>
+                </td>
                 </tr>
               <% else %>
                 <tr style="background-color: #CBBA7F">
                   <td><%= link_to(client.name, client, class: 'link-to-text-color') %></td>
                   <td><%= client.birthdate.strftime("%d/%m/%Y") %></td>
-                  <td></td>
+                  <td>
+                    <% unless client.phone_clients.blank? %>
+                      <% client.phone_clients.each do |phone_client|%>
+                        <%= phone_client.number%>;&nbsp;
+                      <% end %>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             <% end %>
