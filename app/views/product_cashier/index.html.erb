@@ -97,6 +97,7 @@
 		<table id="product_movements_table" class='table table-striped table-bordered' style="width:90%;" align="center">
 		  <thead>
 		    <tr>
+		      <th>Cliente</th>
 		      <th>Produto</th>
 		      <th>Valor</th>
 		      <th>Valor de compra</th>
@@ -111,6 +112,7 @@
 		    <% @product_movements.order('created_at DESC').each do |product_movement| %>
 		      <% if product_movement.cashier %>
 		        <tr>
+		        	<td><%= product_movement.cashier.client.name if product_movement.cashier.client %></td>
 		          <td><%= product_movement.product.name if product_movement.product %></td>
 		          <td><%= number_to_currency(product_movement.price.to_f * product_movement.quantity) %></td>
 		          <td><%= number_to_currency(product_movement.buy_value.to_f * product_movement.quantity) %></td>
