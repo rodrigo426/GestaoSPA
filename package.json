@@ -2,7 +2,7 @@
   "name": "gestao-spa-ganiko",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.0.0",
+    "bootstrap": "^4.3.1",
     "dom-factory": "1.0.0-alpha.10",
     "grunt-contrib-uglify-es": "^3.3.0",
     "highcharts": "^6.2.0",
@@ -15,6 +15,6 @@
     "postcss-scss": "^2.0.0"
   },
   "devDependencies": {
-    "bootstrap": "^4.0.0"
+    "bootstrap": "^4.3.1"
   }
 }
