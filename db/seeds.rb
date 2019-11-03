@@ -30,7 +30,7 @@
 #Pagamento.create name: 'Pacote'
 #Pagamento.create name: 'Permuta'
 #Pagamento.create name: 'Pendente'
-Pagamento.create name: 'Vale Presente'
+#Pagamento.create name: 'Vale Presente'
 
 #PhoneClient.create number:'22331122', client_id: '1'
 #PhoneClient.create number:'22331122', client_id: '1'
