@@ -9,7 +9,7 @@ class Cashier < ApplicationRecord
 
 	enum paid: [:nao, :sim]
 	enum discount: ['Não', 'Sim']
-	enum paymment: ["Cartão de crédito", "Cartão de débito", "Dinheiro", "Cheque", "Tranferência Bancária", "Cortesia", "Pacote", "Permuta", "Pendente", "Vale Presente"]
+	enum paymment: ["Cartão de crédito", "Cartão de débito", "Dinheiro", "Cheque", "Tranferência Bancária", "Cortesia", "Pacote", "Permuta", "Pendente", "Vale Presente", "Pago"]
 	#usar_como_dinheiro :price
 	#usar_como_dinheiro :paid_value
 
