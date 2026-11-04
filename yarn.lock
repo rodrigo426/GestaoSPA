@@ -196,10 +196,10 @@ has-flag@^3.0.0:
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
   integrity sha1-tdRU3CGZriJWmfNGfloH87lVuv0=
 
-highcharts@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-6.2.0.tgz#2a6d04652eb43c66f462ca7e2d2808f1f2782b61"
-  integrity sha512-A4E89MA+kto8giic7zyLU6ZxfXnVeCUlKOyzFsah3+n4BROx4bgonl92KIBtwLud/mIWir8ahqhuhe2by9LakQ==
+highcharts@^11.4.9:
+  version "11.4.9"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-11.4.9.tgz#511bcfc7e46eeb8c37155c2d9c4ef8630ab03bac"
+  integrity sha512-LSFxFZBeffm45OUiTDntYfzZPCbMTs0oyg6lxsE6EHhdIWhlq/8WTYkHlEUHl3+vabdgWP7+EQx0DkoaaE/4rg==
 
 hosted-git-info@^2.1.4:
   version "2.7.1"
